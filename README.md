@@ -1,39 +1,33 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+### User Stories
+|   Id          	|   As a/an    	|   I want to be able to:                           	|   So I can                                                           	|
+|---------------	|--------------	|---------------------------------------------------	|----------------------------------------------------------------------	|
+|   Admin       	|              	|                                                   	|                                                                      	|
+|   1           	|   Artist     	|   add work                                        	|   Add info and image of work                                         	|
+| 2             	|   Artist     	|   edit work                                       	|   Edit info and image of work                                        	|
+| 3             	|   Artist     	|   Remove work                                     	|   Remove info and image of work                                      	|
+| 4             	|   Artist     	|   sell work                                       	|   Add info and image of work                                         	|
+| 5             	|   Artist     	|   create a profile                                	|   Add info/create a portal about myself                              	|
+|   Browsing    	|              	|                                                   	|                                                                      	|
+| 6             	|   Buyers     	|   Can browse/look for work                        	|    To see an array of available works                                	|
+| 7             	|   Buyers     	|   Can view details                                	|   To see more info about the piece of work                           	|
+| 8             	|   Buyers     	|   Can view info about artist                      	|   To find pieces of work                                             	|
+| 9             	|   Buyers     	|   Can search/filter                               	|   To find work by criteria                                           	|
+|   Accounts    	|              	|                                                   	|                                                                      	|
+| 10            	|   Buyer      	|   Can make account                                	|    Create an account to access history of purchases/save information 	|
+| 11            	|   Artist     	|   Can make account                                	|    To manage profile information and see a history of works sold     	|
+| 12            	|   Buyer      	|   Can edit account                                	|    To update info                                                    	|
+| 13            	|   Artist     	|   Can edit account                                	|    To update info                                                    	|
+| 14            	|   Buyer      	|   Can delete account                              	|    To remove info                                                    	|
+| 15            	|   Artist     	|   Can delete account                              	|    To remove info                                                    	|
+|   Purchasing  	|              	|                                                   	|                                                                      	|
+| 16            	|   Buyer      	|   Can complete a payment                          	|    securely complete a Strip transaction                             	|
+| 17            	|   Buyer      	|   Can view purchase details/total before payment  	|    ensure purchase details are correct                               	|
+| 18            	|   Buyer      	|   Can provide shipping details                    	|    input correct info                                                	|
+| 19            	|   Buyer      	|   View a puchase history                          	|                                                                      	|
+| 20            	|   Artist     	|   View a history of items sold                    	|                                                                      	|
 
-Welcome Chris Marsh,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
 
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: *Make Public*,
-
-Another blue button should appear to click: *Open Browser*.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: *Make Public*,
-
-Another blue button should appear to click: *Open Browser*.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+Nav bar based on: https://demos.creative-tim.com/navbar-with-icons/index.html?_ga=2.98554264.649268495.1596619877-1871526498.1594128054
+Font: https://www.fontsquirrel.com/fonts/Latin-Modern-Mono
+Body Font: https://fonts.google.com/specimen/Open+Sans+Condensed?standard-styles=&sidebar.open=true&selection.family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300
