@@ -34,8 +34,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <!-- Load Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!-- Nav JS -->
-        <script src="{% static 'js/ct-navbar.js' %}"></script>
+
         <!-- stripe JS -->
         <script src="https://js.stripe.com/v3/"></script>
         {% endblock %}
@@ -46,70 +45,88 @@
     </head>
 
     <body>
-        <header class="container-fluid fixed-top">
-            <!-- Navbar code based on https://demos.creative-tim.com/navbar-with-icons/index.html?_ga=2.98554264.649268495.1596619877-1871526498.1594128054 -->
-            <nav class="navbar navbar-ct-blue navbar-fixed-top navbar-transparent" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand navbar-brand-logo" href="https://www.creative-tim.com">
-                            <div class="logo">
-                                <img src="" />
-                            </div>
-                            <div class="brand">Kunst Huset</div>
-                        </a>
+        <div class="">
+            <header>
+                <!-- Navbar code based on https://codepen.io/mavrK/pen/pgpXBr -->
+                <div class="fixed-nav-bar">
+                    <div class="sub-menu-icon">
+                        <span class="sub-menu-icon__line menu-icon__line-left"></span>
+                        <span class="sub-menu-icon__line"></span>
+                        <span class="sub-menu-icon__line menu-icon__line-right"></span>
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="javascript:void(0)" data-toggle="search">
-                                    <i class="fas fa-search"></i>
-                                    <p>Search</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-shopping-basket">
-                                        <span class="label"> 23 </span>
-                                    </i>
-                                    <p>Cart</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fas fa-user-circle"></i>
-                                    <p>Account</p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Register/Login</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">Manage Profile</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Add art</a></li>
-                                </ul>
-                            </li>
+                    <div class="logo">[<span>Kunst</span>Huset<span>]</span></div>
+                    <input type="checkbox" id="menuButton" />
+                    <label for="menuButton" class="menu-button-label">
+                        <div class="white-bar"></div>
+                        <div class="white-bar"></div>
+                        <div class="white-bar"></div>
+                        <div class="white-bar"></div>
+                    </label>
+                </div>
+                <!-- Account management nav -->
+                <div class="the-bass">
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item">
+                            <a href="" class="drop-down-btn">LOGIN</a>
+                        </div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="" class="drop-down-btn">LOGIN</a></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="" class="drop-down-btn">LOGIN</a></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="" class="drop-down-btn">LOGIN</a></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"></div>
+                    </div>
+                </div>
+                <!-- sub nav - adapted from https://codepen.io/stevenrzy/pen/pogXXEB -->
+                <div class="sub-nav">
+                    <div class="sub-nav__content">
+                        <!-- list of categories -->
+                        <ul class="sub-nav__list">
+                            <li class="sub-nav__list-item">2D</li>
+                            <li class="sub-nav__list-item">3D</li>
+                        </ul>
+                        <!-- list of artists -->
+                        <ul class="sub-nav__list">
+                            <li class="sub-nav__list-item">Artist</li>
+                            <li class="sub-nav__list-item">Artist</li>
                         </ul>
                     </div>
-                    <!-- /.navbar-collapse -->
                 </div>
-                <!-- /.container-fluid -->
-            </nav>
-            <!--  end navbar -->
-        </header>
+
+                <!-- Page header -->
+                {% block page_header %} {% endblock %}
+            </header>
+            <div class="rela-block deer-section">
+                <!-- Page content -->
+                {% block content %} {% endblock %}
+            </div>
+
+            <footer class="rela-block footer site-content">
+                <div class="rela-block footer-links-container">
+                    <div class="footer-flex-column">
+                        <p class="text-muted">Copyright CMH 2020</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
         <!-- Temporary message display -->
         {% if messages %}
         <div class="message-container"></div>
         {% endif %}
-        <!-- Page header -->
-        {% block page_header %} {% endblock %}
-        <!-- Page content -->
-        {% block content %} {% endblock %}
+
         <!-- Post-loaded JS -->
-        {% block postloadjs %} {% endblock %}
+        {% block postloadjs %}
+        <!-- Nav JS -->
+        <script src="{% static 'js/navbar.js' %}"></script>
+        {% endblock %}
     </body>
 </html>
