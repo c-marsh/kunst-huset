@@ -37,7 +37,7 @@ body {
 }
 .fixed-nav-bar .logo {
     position: absolute;
-    left: 40px;
+    left: 100px;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -120,6 +120,16 @@ body {
     -webkit-transition: 0.35s ease;
     transition: 0.35s ease;
 }
+
+.drop-down-item a {
+    color: #e78533;
+    font-family: "latin_modern_mono_prop_li10Rg", "Times New Roman", Times, serif, sans-serif;
+    text-decoration: none;
+    background-color: transparent;
+    position: relative;
+    top: 12px;
+    left: 10px;
+}
 .the-bass.dropped .drop-down-container {
     left: 50%;
 }
@@ -201,8 +211,8 @@ body {
     width: 48px;
     position: fixed;
     z-index: 2;
-    left: 50px;
-    top: 30px;
+    left: 38px;
+    top: 38px;
     cursor: pointer;
 }
 .sub-menu-icon__line {
