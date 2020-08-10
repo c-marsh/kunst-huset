@@ -1,0 +1,43 @@
+ [
+   {
+      "pk":1,
+      "model":"artworks.category",
+      "fields":{
+         "name":"photography",
+         "friendly_name":"Photography"
+      }
+   },
+   {
+      "pk":2,
+      "model":"artworks.category",
+      "fields":{
+         "name":"3d",
+         "friendly_name":"3D/Sculpture"
+      }
+   },
+   {
+      "pk":3,
+      "model":"artworks.category",
+      "fields":{
+         "name":"multimedia",
+         "friendly_name":"Multimedia"
+      }
+   },
+    {
+      "pk":4,
+      "model":"artworks.category",
+      "fields":{
+         "name":"painting",
+         "friendly_name":"2D/Wall Mounted"
+      }
+   },
+    {
+      "pk":5,
+      "model":"artworks.category",
+      "fields":{
+         "name":"video",
+         "friendly_name":"Video"
+      }
+   }
+]
+
