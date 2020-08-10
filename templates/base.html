@@ -50,11 +50,17 @@
                 <!-- Navbar code based on https://codepen.io/mavrK/pen/pgpXBr -->
                 <div class="fixed-nav-bar">
                     <div class="sub-menu-icon">
-                        <span class="sub-menu-icon__line menu-icon__line-left"></span>
-                        <span class="sub-menu-icon__line"></span>
-                        <span class="sub-menu-icon__line menu-icon__line-right"></span>
+                        <input type="checkbox" id="menuButton2" />
+                        <label for="menuButton2" class="menu-button-label2">
+                            <div class="white-bar"></div>
+                            <div class="white-bar"></div>
+                            <div class="white-bar"></div>
+                            <div class="white-bar"></div>
+                        </label>
                     </div>
-                    <div class="logo">[<span>Kunst</span>Huset<span>]</span></div>
+                    <div class="logo">
+                        <div class="logo-text">[<span>Kunst</span>Huset<span>]</span></div>
+                    </div>
                     <input type="checkbox" id="menuButton" />
                     <label for="menuButton" class="menu-button-label">
                         <div class="white-bar"></div>
@@ -90,10 +96,10 @@
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item">
                             <a class=" " href="">
-                                
-                                    <p class="my-0"><i class="fas fa-shopping-basket fa-sm"></i>
-                                        {% if grand_total %} ${{ grand_total|floatformat:2 }} {% else %} $0.00 {% endif %}
-                                    </p>
+                                <p class="my-0">
+                                    <i class="fas fa-shopping-basket fa-sm"></i>
+                                    {% if grand_total %} ${{ grand_total|floatformat:2 }} {% else %} $0.00 {% endif %}
+                                </p>
                             </a>
                         </div>
                     </div>

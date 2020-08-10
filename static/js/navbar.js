@@ -31,7 +31,7 @@ const app = (() => {
 
   const init = () => {
     body = document.querySelector('body');
-    menu = document.querySelector('.sub-menu-icon');
+    menu = document.querySelector('#menuButton2');
     menuItems = document.querySelectorAll('.sub-nav__list-item');
 
     applyListeners();
