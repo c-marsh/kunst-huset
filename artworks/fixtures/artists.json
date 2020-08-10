@@ -1,0 +1,31 @@
+ [
+   {
+      "pk":1,
+      "model":"artworks.artists",
+      "fields":{
+         "artist":"Otto Wagner"
+      }
+   },
+   {
+      "pk":2,
+      "model":"artworks.artists",
+      "fields":{
+         "artist":"Christian de Portzamparc"
+      }
+   },
+   {
+      "pk":3,
+      "model":"artworks.artists",
+      "fields":{
+         "artist":"Emil Hoppe"
+      }
+   },
+    {
+      "pk":4,
+      "model":"artworks.artists",
+      "fields":{
+         "artist":"Bernard Tschumi"
+      }
+   }
+]
+
