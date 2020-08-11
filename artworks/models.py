@@ -18,10 +18,10 @@ class Category(models.Model):
 
 
 class Artists(models.Model):
-    artist = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
 
     def __str__(self):
-        return self.artist
+        return self.name
 
 
 class Artwork(models.Model):

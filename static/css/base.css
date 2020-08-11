@@ -297,7 +297,6 @@ body {
     text-align: center;
     font-size: calc(2vw + 10px);
     font-weight: 200;
-
 }
 .sub-nav__list-item {
     position: relative;
@@ -315,8 +314,8 @@ body {
     margin-right: 25px;
 }
 
-.sub-nav__list-item a:hover{
-text-decoration: none;
+.sub-nav__list-item a:hover {
+    text-decoration: none;
 }
 
 .sub-nav__list-item:before {
@@ -442,7 +441,7 @@ body.sub-nav-active .sub-nav__list-item:nth-child(4) {
     line-height: 52px;
     letter-spacing: 10px;
 }
-. .hover-pointer {
+.hover-pointer {
     position: absolute;
     top: 80px;
     left: 50%;
@@ -552,11 +551,17 @@ body.sub-nav-active .sub-nav__list-item:nth-child(4) {
     width: 220%;
 }
 
+#btn-search {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0px; 
+}
+
 /* Art Details page */
 .featured-art-img img {
     width: 100%;
 }
-
 
 @media screen and (max-width: 800px) {
     .fixed-nav-bar .logo {

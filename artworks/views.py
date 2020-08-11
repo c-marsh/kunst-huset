@@ -12,6 +12,25 @@ def gallery(request):
     categories = Category.objects.all()
     query = None
     category = None
+    sort = None
+    direction = None
+
+    if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'title':
+                sortkey = 'lower_title'
+                artworks = artworks.annotate(lower_name=Lower('title')) 
+            if sortkey == 'artist':
+                sortkey = 'artist__name'
+            if sortkey == 'category':
+                sortkey = 'category__name'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            artworks = artworks.order_by(sortkey)
 
 
 # Search return
@@ -28,7 +47,7 @@ def gallery(request):
                 return redirect(reverse('gallery'))
             # Search in fields
             queries = Q(title__icontains=query) | Q(
-                description__icontains=query) | Q(medium__icontains=query)
+                description__icontains=query) | Q(medium__icontains=query) | Q(artist__name__icontains=query)
             artworks = artworks.filter(queries)
 
     context = {
