@@ -23,6 +23,7 @@
         </div>
     </div>
     <main class="page-content">
+    
         {%for art in artworks%} {%if art.sold is False %}
         <a href="{%url 'art_detail' art.id%}">
             <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
@@ -36,7 +37,21 @@
                 </div>
             </div>
         </a>
-        {%else%} {%endif%} {%endfor%}
+        {%else %} 
+        <a href="{%url 'art_detail' art.id%}">
+            <span class="badge badge-secondary price-tag">SOLD OUT</span>
+            <div class="card sold">
+                <!-- add background image based on  -->
+                <div class="card-bg" style="background-image: url({{art.image.url}});">
+                    <div class="content">
+                        <h2 class="title">{{art.title|truncatechars:95}}</h2>
+                        <p class="copy">{{art.artist}}</p>
+                    </div>
+                </div>
+            </div>
+        </a> 
+        
+        {%endif%} {%empty%}<p>There are no results. Currently the search does not search artists, however they are listed alphabetically in the menu.</p>{%endfor%}
     </main>
 
     {%endblock%}
