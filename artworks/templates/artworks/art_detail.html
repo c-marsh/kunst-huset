@@ -1,0 +1,41 @@
+{%extends 'base.html'%} {%load static%} {% block page_header %}
+<div class="page-header"></div>
+{% endblock %} {%block content%}
+<div class="jumbotron my-5 m-md-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-3 featured-art-img">
+            <a href="{{ artwork.image.url }}" target="_blank"><img class="align-self-center mt-3" src="{{artwork.image.url}}" alt="{{artwork.title}}" /></a>
+        </div>
+
+        <div class="col-12 col-md-7">
+            <h3 class="text-uppercase mt-3">{{artwork.title}}</h3>
+            <h4 class="text-uppercase lead">{{artwork.artist}} {{artwork.date}}</h4>
+            <hr />
+            <blockquote class="blockquote">{{artwork.description}}</blockquote>
+            <blockquote class="blockquote">{{artwork.medium}}</blockquote>
+            <p class="text-muted">{%if artwork.framed%}Mounted/Framed | {%endif%}{%if artwork.length%}{{artwork.length}}cm x {%endif%}{%if artwork.width%}{{artwork.width}}cm x {%endif%}{%if artwork.depth%}{{artwork.depth}}cm | {%endif%}{%if artwork.weight%}{{artwork.weight}}kg{%endif%}{%if artwork.duration%}{{artwork.duration}}s {%endif%}</p>
+            {%if artwork.sold%}
+            <span class="badge badge-secondary price-tag">Sold</span>
+            {%else%}
+            <span class="badge badge-secondary price-tag">£{{artwork.price}}</span>
+            {%endif%} {%if artwork.sold is False%}
+            <div class="row my-5 justify-content-around">
+                <div class="wrap">
+                    <a class="slider-btn slider-btn-back" href="{% url 'gallery' %}">Back</a>
+                </div>
+                <div class="wrap">
+                    <a class="slider-btn slider-btn-buy" href="#">Buy</a>
+                </div>
+            </div>
+            {%else%}
+            <div class="row my-5 justify-content-around">
+                <div class="wrap">
+                    <a class="slider-btn slider-btn-back" href="{% url 'gallery' %}">Back</a>
+                </div>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}
