@@ -9,7 +9,7 @@
     <main class="page-content">
         {%for art in artworks%} {%if art.sold is False %}
         <a href="#"
-            > <span class="badge badge-secondary price-tag">£{{art.price}}</span>
+            > <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
             <div class="card">
                 <!-- add background image based on  -->
                 <div class="card-bg" style="background-image: url({{art.image.url}});">

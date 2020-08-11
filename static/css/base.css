@@ -260,6 +260,10 @@ body {
     position: fixed;
     z-index: 7;
 }
+
+.sub-nav a{
+    color: #212529;
+}
 .sub-nav:before,
 .sub-nav:after {
     content: "";
@@ -355,6 +359,7 @@ body.sub-nav-active .sub-nav:before {
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
 }
+
 body.sub-nav-active .sub-nav__list-item {
     opacity: 1;
     -webkit-transform: translateX(0%);

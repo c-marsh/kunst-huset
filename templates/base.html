@@ -107,8 +107,11 @@
                 <!-- sub nav - adapted from https://codepen.io/stevenrzy/pen/pogXXEB -->
                 <div class="sub-nav">
                     <div class="sub-nav__content">
+                    <ul class="sub-nav__list">
+                            <a href="{% url 'home' %}"><li class="sub-nav__list-item">Home</li></a></ul>
                         <!-- list of categories -->
                         <ul class="sub-nav__list">
+                            <a href="{% url 'gallery' %}"><li class="sub-nav__list-item">Gallery</li></a>
                             <li class="sub-nav__list-item">2D</li>
                             <li class="sub-nav__list-item">3D</li>
                         </ul>
