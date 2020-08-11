@@ -38,7 +38,8 @@ const app = (() => {
   };
 
   const applyListeners = () => {
-    menu.addEventListener('click', () => toggleClass(body, 'sub-nav-active'));
+      menu.addEventListener('click', () => toggleClass(body, 'sub-nav-active', 'sub-nav__list'));
+      
   };
 
   const toggleClass = (element, stringClass) => {
