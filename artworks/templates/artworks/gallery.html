@@ -6,10 +6,26 @@
 {% endblock %} {%block content%}
 <div class="container">
     <div class="row"><h1 class="my-5 mx-4">Gallery</h1></div>
+    <div class="row">
+        <div class="col-10">
+            <form method="GET" action="{% url 'gallery' %}">
+                <div class="input-group w-100 ml-3">
+                    <div class="input-group-append">
+                        <button class="form-control btn border border-black rounded-0" type="submit" id="btn-search">
+                            <span class="icon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <input class="form-control border border-black rounded-0" type="text" name="search" placeholder="Search our site" />
+                </div>
+            </form>
+        </div>
+    </div>
     <main class="page-content">
         {%for art in artworks%} {%if art.sold is False %}
-        <a href="{%url 'art_detail' art.id%}"
-            > <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
+        <a href="{%url 'art_detail' art.id%}">
+            <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
             <div class="card">
                 <!-- add background image based on  -->
                 <div class="card-bg" style="background-image: url({{art.image.url}});">
