@@ -106,6 +106,10 @@ body {
     transition: transform var(--d) var(--e);
     z-index: 1;
 }
+
+.page-content a:hover{
+    color: whitesmoke;
+}
 .content > * + * {
     margin-top: 1rem;
 }
