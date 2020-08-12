@@ -95,7 +95,7 @@
                     {% endif %}
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item">
-                            <a class=" " href="">
+                            <a class=" " href="{% url 'view_basket'%}">
                                 <p class="my-0">
                                     <i class="fas fa-shopping-basket fa-sm"></i>
                                     {% if grand_total %} ${{ grand_total|floatformat:2 }} {% else %} $0.00 {% endif %}

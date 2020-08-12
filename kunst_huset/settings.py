@@ -75,7 +75,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', #Required by AllAuth
+                'django.template.context_processors.request',  # Required by AllAuth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'basket.contexts.basket_content',
@@ -176,5 +176,5 @@ LOGIN_REDIRECT_URL = '/'
 
 STANDARD_DELIVERY_PERCENTAGE = 20  # Delivery percentage
 FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
-INSURANCE_PERCENTAGE = 7.5  # Insurance percentage for postal insurance
+INSURANCE_PERCENTAGE = 1  # Insurance percentage for postal insurance
 VAT = 20  # Sales tax percentage

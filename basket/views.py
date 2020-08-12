@@ -22,7 +22,6 @@ def add_to_basket(request, art_id):
     else:
         basket[art_id] = quantity
         messages.success(request, f'Added {artwork.title} to your basket')
-    print(request.session['basket'])
     request.session['basket'] = basket
     return redirect(redirect_url)
 
@@ -30,12 +29,5 @@ def add_to_basket(request, art_id):
 # Create your views here.
 def view_basket(request):
     # A view to return the basket
-    artists = Artists.objects.all()
-    categories = Category.objects.all()
 
-    context = {
-        'artists': artists,
-        'categories': categories,
-    }
-
-    return render(request, 'basket/basket.html', context)
+    return render(request, 'basket/basket.html')
