@@ -1,4 +1,5 @@
-$(".btt-link").click(function (e) {
+// Back to top and sort selector code from Code Institute resources
+$(".top-link").click(function (e) {
     window.scrollTo(0, 0);
 });
 
