@@ -6,6 +6,7 @@
 {% endblock %} {%block content%}
 <div class="container">
     <div class="row"><h1 class="my-5 mx-1">Gallery</h1></div>
+     
     <div class="row">
         <div class="col-12 col-md-8 mb-3">
             <form method="GET" action="{% url 'gallery' %}">
@@ -24,6 +25,7 @@
         <div
           class="col-12 col-md-4 my-auto order-md-last d-flex justify-content-center justify-content-md-end"
         >
+        <div class="row">
           <div class="sort-select-wrapper w-100 mb-3">
             <select
               id="sort-selector"
@@ -39,7 +41,16 @@
             <option value="category_asc" {%if current_sorting == 'category_asc' %}selected{%endif%}>Category (A to Z)</option> 
             <option value="category_desc" {%if current_sorting == 'category_desc' %}selected{%endif%}>Category (Z to A)</option> 
             </select>
-          </div>
+          </div></div>
+          <div class="row">
+          <div class="col-12 ">
+            <p class="text-muted mt-3 text-center text-md-left">
+            {%if search_string or categories or sorting != 'None_None' %}
+            <span class="small"> <a href="{% url 'gallery' %}">reset</a> | </span>
+            {%endif%}
+            {{artworks|length}} results{%if search_string%} found for <strong>"{{search_string}}"</strong>{%endif%}
+            </p> 
+        </div></div>
         </div>
     </div>
     <main class="page-content">

@@ -21,7 +21,7 @@ def gallery(request):
             sort = sortkey
             if sortkey == 'title':
                 sortkey = 'lower_title'
-                artworks = artworks.annotate(lower_name=Lower('title')) 
+                artworks = artworks.annotate(lower_name=Lower('title'))
             if sortkey == 'artist':
                 sortkey = 'artist__name'
             if sortkey == 'category':
@@ -47,14 +47,18 @@ def gallery(request):
                 return redirect(reverse('gallery'))
             # Search in fields
             queries = Q(title__icontains=query) | Q(
-                description__icontains=query) | Q(medium__icontains=query) | Q(artist__name__icontains=query)
+                description__icontains=query) | Q(
+                    medium__icontains=query) | Q(artist__name__icontains=query)
             artworks = artworks.filter(queries)
+
+    sorting = f'{sort}_{direction}'
 
     context = {
         'artists': artists,
         'categories': categories,
         'artworks': artworks,
-        'search_term': query,
+        'search_string': query,
+        'sorting': sorting,
     }
 
     return render(request, 'artworks/gallery.html', context)
