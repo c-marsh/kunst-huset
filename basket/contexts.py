@@ -3,7 +3,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 
 
-def bag_contents(request):
+def basket_content(request):
 
     basket_items = []
     sub_total = 0
@@ -13,7 +13,7 @@ def bag_contents(request):
         delivery = sub_total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     else:
         delivery = Decimal(200 + sub_total * 0.005)
-    insurance = Decimal(round(settings.INSURANCE_PERCENTAGE * total, -1)) # set insurance value, round up to 10
+    insurance = Decimal(round(settings.INSURANCE_PERCENTAGE * sub_total, -1)) # set insurance value, round up to 10
     vat = Decimal(((insurance+sub_total+delivery)/100)*settings.VAT)
     grand_total = Decimal(delivery + sub_total + vat)
 
