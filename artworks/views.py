@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Artwork, Artists, Category
 # Create your views here.
 
@@ -21,7 +22,7 @@ def gallery(request):
             sort = sortkey
             if sortkey == 'title':
                 sortkey = 'lower_title'
-                artworks = artworks.annotate(lower_name=Lower('title'))
+                artworks = artworks.annotate(lower_title=Lower('title'))
             if sortkey == 'artist':
                 sortkey = 'artist__name'
             if sortkey == 'category':
