@@ -15,15 +15,15 @@
             <blockquote class="blockquote">{{artwork.medium}}</blockquote>
             <p class="text-muted">{%if artwork.framed%}Mounted/Framed | {%endif%}{%if artwork.length%}{{artwork.length}}cm x {%endif%}{%if artwork.width%}{{artwork.width}}cm x {%endif%}{%if artwork.depth%}{{artwork.depth}}cm | {%endif%}{%if artwork.weight%}{{artwork.weight}}kg{%endif%}{%if artwork.duration%}{{artwork.duration}}s {%endif%}</p>
             {%if artwork.sold%}
-            <span class="badge badge-secondary price-tag">Sold</span>
+            <span class="badge badge-secondary price-tag" id="price">Sold</span>
             {%else%}
-            <span class="badge badge-secondary price-tag">£{{artwork.price}}</span>
+            <span class="badge badge-secondary price-tag" id="price">£{{artwork.price}}</span>
             {%endif%} {%if artwork.sold is False%}
             <form class="form" action="{% url 'add_to_basket' artwork.id %}" method="POST">
                 {% csrf_token %}
                 
-                <div class="col-12">
-                    <p class="mt-3"><strong>Quantity:</strong></p>
+                <div class="col-12 px-0">
+                    <p class="mt-3"><strong>Quantity:</strong> (Max <span class="available">{{artwork.qty}}</span>)</p>
                     <div class="form-group w-50">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -60,5 +60,11 @@
         </div>
     </div>
 </div>
+
+{%endblock%}
+    {%block postloadjs%}
+{{block.super}}
+<script src="{% static 'js/controls.js' %}"></script>
+
 
 {%endblock%}
