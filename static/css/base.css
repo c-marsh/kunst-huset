@@ -560,11 +560,23 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    margin-top: 0px; 
+    margin-top: 0px;
 }
 /* Gallery page */
 .small a {
     color: white;
+}
+
+#reset {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+.reset-text {
+    padding-left: 0.8rem;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
@@ -588,7 +600,6 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     background-color: #161616;
     color: #fff;
     border: 0px;
-
 }
 
 .top-link {

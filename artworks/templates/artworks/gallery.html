@@ -8,11 +8,15 @@
     <div class="row"><div class="col-12"><h1 class="my-5 mx-1 text-center text-md-left">Gallery</h1></div>
      </div><div class="row">
           <div class="col-12 ">
-            <p class="text-muted mt-3 text--left small mb-0">
+            
             {%if search_string or categories or sorting != 'None_None' %}
-            <span class="small badge-secondary"> <a class="px-2"href="{% url 'gallery' %}">reset</a> </span>
+            <a class="btn search-btn border-black rounded-0" href="{% url 'gallery' %}" id="reset">
+                            <span class="icon">
+                                <i class="fas fa-undo"></i>                            </span>
+                        </a><p class="text-muted mt-3 text-left small mb-0 d-inline-block">
+                        
             {%endif%}
-             <span class="px-1">{{artworks|length}} results{%if search_string%} found for <strong>"{{search_string}}"</strong>{%endif%}</span>
+             <span class="reset-text">{{artworks|length}} results{%if search_string%} found for <strong>"{{search_string}}"</strong>{%endif%}</span>
             </p> 
         </div></div>
     <div class="row">
