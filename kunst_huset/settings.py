@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', #Required by AllAuth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'basket.contexts.basket_content',
             ],
         },
     },
@@ -172,3 +173,8 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+STANDARD_DELIVERY_PRECENTAGE = 20  # Delivery percentage
+FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
+INSURANCE_PERCENTAGE = 7.5  # Insurance percentage for postal insurance
+VAT = 20  # Sales tax percentage
