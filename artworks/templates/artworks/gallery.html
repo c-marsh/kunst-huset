@@ -5,8 +5,16 @@
 <div class="page-header"></div>
 {% endblock %} {%block content%}
 <div class="container">
-    <div class="row"><h1 class="my-5 mx-1">Gallery</h1></div>
-     
+    <div class="row"><div class="col-12"><h1 class="my-5 mx-1 text-center text-md-left">Gallery</h1></div>
+     </div><div class="row">
+          <div class="col-12 ">
+            <p class="text-muted mt-3 text--left small mb-0">
+            {%if search_string or categories or sorting != 'None_None' %}
+            <span class="small badge-secondary"> <a class="px-2"href="{% url 'gallery' %}">reset</a> </span>
+            {%endif%}
+             <span class="px-1">{{artworks|length}} results{%if search_string%} found for <strong>"{{search_string}}"</strong>{%endif%}</span>
+            </p> 
+        </div></div>
     <div class="row">
         <div class="col-12 col-md-8 mb-3">
             <form method="GET" action="{% url 'gallery' %}">
@@ -18,7 +26,7 @@
                             </span>
                         </button>
                     </div>
-                    <input class="form-control border border-black rounded-0" type="text" name="search" placeholder="Search our site" />
+                    <input class="form-control border border-black rounded-0" type="text" name="search" placeholder="Search Title, Artist, Description and medium" />
                 </div>
             </form>
         </div>
@@ -42,15 +50,7 @@
             <option value="category_desc" {%if current_sorting == 'category_desc' %}selected{%endif%}>Category (Z to A)</option> 
             </select>
           </div></div>
-          <div class="row">
-          <div class="col-12 ">
-            <p class="text-muted mt-3 text-center text-md-left">
-            {%if search_string or categories or sorting != 'None_None' %}
-            <span class="small"> <a href="{% url 'gallery' %}">reset</a> | </span>
-            {%endif%}
-            {{artworks|length}} results{%if search_string%} found for <strong>"{{search_string}}"</strong>{%endif%}
-            </p> 
-        </div></div>
+          
         </div>
     </div>
     <main class="page-content">

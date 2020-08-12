@@ -562,7 +562,10 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     line-height: 1.5;
     margin-top: 0px; 
 }
-
+/* Art page */
+.small a {
+    color: white;
+}
 /* Art Details page */
 .featured-art-img img {
     width: 100%;
