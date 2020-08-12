@@ -20,7 +20,7 @@ body {
 .page-content {
     display: grid;
     grid-gap: 1rem;
-    padding-bottom: 1rem; 
+    padding-bottom: 1rem;
     max-width: 1024px;
     margin: 0 auto;
 }
@@ -88,9 +88,16 @@ body {
     background-position: center;
 }
 
-.price-tag {
-    position: RELATIVE;
-    top: 40px;
+.sales-card {
+    position: absolute;
+}
+
+.price-tag,
+.sales-tag,
+.delete-tag {
+    position: absolute;
+    top: 80px;
+
     z-index: 1;
     background-color: #161616;
     border-radius: 0px;
@@ -107,7 +114,7 @@ body {
     z-index: 1;
 }
 
-.page-content a:hover{
+.page-content a:hover {
     color: whitesmoke;
 }
 .content > * + * {
@@ -190,3 +197,13 @@ body {
         transition-duration: 0s;
     }
 }
+
+.price-tag, .price-tag:focus-within
+.price-tag:focus,
+.price-tag:hover {
+    top: 40px;
+    position: relative;
+    display: inline-grid;
+    cursor: default;
+}
+
