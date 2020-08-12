@@ -21,7 +21,7 @@
             {%endif%} {%if artwork.sold is False%}
             <form class="form" action="{% url 'add_to_basket' artwork.id %}" method="POST">
                 {% csrf_token %}
-                
+
                 <div class="col-12 px-0">
                     <p class="mt-3"><strong>Quantity:</strong> (Max <span class="available">{{artwork.qty}}</span>)</p>
                     <div class="form-group w-50">
@@ -45,7 +45,7 @@
                         <a class="slider-btn slider-btn-back" href="{% url 'gallery' %}">Back</a>
                     </div>
                     <div class="wrap">
-                        <a class="slider-btn slider-btn-buy" href="#">Buy</a>
+                        <button class="slider-btn slider-btn-buy" target="submit">Buy</button>
                     </div>
                     <input type="hidden" name="redirect_url" value="{{ request.path }}" />
                 </div>
@@ -61,10 +61,7 @@
     </div>
 </div>
 
-{%endblock%}
-    {%block postloadjs%}
-{{block.super}}
+{%endblock%} {%block postloadjs%} {{block.super}}
 <script src="{% static 'js/controls.js' %}"></script>
-
 
 {%endblock%}
