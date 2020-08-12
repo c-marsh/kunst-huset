@@ -1,0 +1,62 @@
+{%extends 'base.html'%} {%load static%} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
+
+{% endblock %}{% block page_header %}
+<div class="page-header"></div>
+{% endblock %} {%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-5 mx-1 text-center text-md-left">Gallery</h1>
+        </div>
+    </div>
+    <div class="row">
+        {%if basket_items%}
+        <div class="col-12">
+            <h6><strong>Basket Total: £{{ total|floatformat:2 }}</strong></h6>
+            <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+            <h4 class="mt-4">
+                <strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong>
+            </h4>
+            {%else%}{%endif%}
+        </div>
+    </div>
+    {%if basket_items%} {%for each in basket_items%}
+    <main class="page-content">
+        <!-- Bag contents -->
+        <a href="{%url 'art_detail' art.id%}">
+            <span class="badge badge-secondary delete-tag"
+                ><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove from basket</small></a></span
+            >
+            <span class="badge badge-secondary qty-tag">£{{art.price|floatformat:"0"}}</span>
+            <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
+            <div class="card">
+                <!-- add background image based on  -->
+                <div class="card-bg" style="background-image: url({{art.image.url}});">
+                    <div class="content">
+                        <p class="copy">{{art.medium}}</p>
+                        <p class="copy">{{art.artist}}</p>
+                        <p class="title">{{art.title|truncatechars:95}}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {%endfor%}
+        <!-- /Bag contents -->
+    </main>
+    {%else%}
+    <!-- Bag Empty -->
+    <div class="jumbotron row my-5 m-md-5 justify-content-center">
+        <div class="col-12">
+            <p class="lead mb-5">Your Bag is empty.</p>
+        </div>
+        <div class="wrap">
+            <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
+        </div>
+    </div>
+    <!-- /Bag Empty -->
+    {%endif%} {%endblock%} {%block postloadjs%} {{block.super}}
+    <script src="{% static 'js/sort.js' %}"></script>
+
+    {%endblock%}
+</div>
