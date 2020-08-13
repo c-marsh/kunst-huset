@@ -1,4 +1,4 @@
-{%extends 'base.html'%} {%load static%} {% block extra_css %}
+{%extends 'base.html'%} {%load static%} {% load basket_calc %}{% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
 {% endblock %}{% block page_header %}
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        {%if basket_items%}
+        
         <div class="col-12 col-lg-4">
             <h6><strong>Basket Total: £{{ sub_total|floatformat:2 }}</strong></h6>
             <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
@@ -20,7 +20,8 @@
             <h4 class="mt-4">
                 <strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong>
             </h4>
-            {%else%}{%endif%}
+            {%if basket_items%}
+            
         </div>
         <div class="col-12 col-md-6 col-lg-3 my-3 ml-3">
             <div class="wrap">
@@ -34,21 +35,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12">{%else%}{%endif%}
             <hr />
             <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:</h2>
         </div>
-    </div>
+    </div>{%if basket_items%} {%for each in basket_items%}
     <main class="page-content">
-        {%if basket_items%} {%for each in basket_items%}
+        
         <!-- Bag contents -->
         <div>
             <form method="POST" action="{% url 'remove_basket' each.item_id %}">
                                 {% csrf_token %}
-                <button class="text-danger remove-item badge badge-secondary price-tag" id="remove_{{ each.item_id }}" type="submit">Remove</a>
+                <button class="text-danger remove-item badge badge-secondary price-tag" id="remove_{{ each.item_id }}" type="submit">Remove</button></form>
             </button>
             <span class="badge badge-secondary price-tag">QTY: {{each.quantity|floatformat:"0"}}</span>
-            <span class="badge badge-secondary price-tag">£{{each.artwork.price|floatformat:"0"}}</span>
+            <span class="badge badge-secondary price-tag">£{{each.artwork.price|calc_subtotal:each.quantity|floatformat:"0"}}</span>
             <div class="card">
                 <!-- add background image based on  -->
                 <div class="card-bg sales-card" style="background-image: url({{each.artwork.image.url}});">
@@ -67,7 +68,7 @@
     <!-- Bag Empty -->
     <div class="jumbotron row my-5 m-md-5 justify-content-center">
         <div class="col-12">
-            <p class="lead mb-5">Your Bag is empty.</p>
+            <p class="lead mb-5 text-center">Your Bag is empty.</p>
         </div>
         <div class="wrap">
             <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
