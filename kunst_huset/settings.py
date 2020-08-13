@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'home',
     'artworks',
     'profiles',
-    'basket'
+    'basket',
+    'checkout'
 
 ]
 

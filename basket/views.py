@@ -13,11 +13,9 @@ def remove_basket(request, item_id):
     if item_id in list(basket.keys()):
         del basket[item_id]
 
-        messages.success(request, f'removed item to your basket')
+        messages.success(request, 'removed item to your basket')
         request.session['basket'] = basket
         return redirect(reverse('view_basket'))
-    # except Exception as e:
-    #     return HttpResponse(status=500)
 
 
 def add_to_basket(request, sales_id):
@@ -29,6 +27,7 @@ def add_to_basket(request, sales_id):
 
     basket = request.session.get('basket', {})
 
+    # while basket[sales_id] <= artwork.qty:
     if sales_id in list(basket.keys()):
         basket[sales_id] += quantity
         messages.success(
@@ -39,6 +38,10 @@ def add_to_basket(request, sales_id):
         messages.success(request, f'Added {artwork.title} to your basket')
     request.session['basket'] = basket
     return redirect(redirect_url)
+    # basket[sales_id] = quantity
+    # messages.error(request, f'Not enough of {artwork.title} on sale')
+    # request.session['basket'] = basket
+    # return redirect(redirect_url)
 
 
 # Create your views here.
