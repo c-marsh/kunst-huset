@@ -3,19 +3,19 @@ html {
     height: 100%
 }
 
-#msform {
+#payment-form {
     text-align: center;
     position: relative;
     margin-top: 20px
 }
 
-#msform #id-save-info{
+#payment-form #id-save-info{
     top: 6px;
     margin: 0px 5px 0px 0px;
 }
 
 
-#msform fieldset .form-card {
+#payment-form fieldset .form-card {
     background: white;
     border: 0 none;
     border-radius: 0px;
@@ -26,7 +26,7 @@ html {
     position: relative
 }
 
-#msform fieldset {
+#payment-form fieldset {
     background: white;
     border: 0 none;
     border-radius: 0.5rem;
@@ -37,17 +37,18 @@ html {
     position: relative
 }
 
-#msform fieldset:not(:first-of-type) {
+#payment-form fieldset:not(:first-of-type) {
     display: none
 }
 
-#msform fieldset .form-card {
+#payment-form fieldset .form-card {
     text-align: left;
     color: #9E9E9E
 }
-
-#msform input,
-#msform textarea {
+.StripeElement,
+.stripe-style-input,
+#payment-form input,
+#payment-form textarea {
     padding: 0px 8px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -60,9 +61,11 @@ html {
     font-size: 16px;
     letter-spacing: 1px
 }
-
-#msform input:focus,
-#msform textarea:focus {
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active,
+#payment-form input:focus,
+#payment-form textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
