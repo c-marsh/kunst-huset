@@ -24,7 +24,7 @@
         </div>
         <div class="col-12 col-md-6 col-lg-3 my-3 ml-3">
             <div class="wrap">
-                <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">Checkout</a>
+                <a class="slider-btn slider-btn-checkout" href="{%url 'gallery'%}">Checkout</a>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 my-3 ml-3">
@@ -43,9 +43,10 @@
         {%if basket_items%} {%for each in basket_items%}
         <!-- Bag contents -->
         <div>
-            <span class="badge badge-secondary price-tag">
-                <a class="text-danger float-right remove-item" id="remove_{{ each.item_id }}"><small>Remove from basket</small></a>
-            </span>
+            <form method="POST" action="{% url 'remove_basket' each.item_id %}">
+                                {% csrf_token %}
+                <button class="text-danger remove-item badge badge-secondary price-tag" id="remove_{{ each.item_id }}" type="submit">Remove</a>
+            </button>
             <span class="badge badge-secondary price-tag">QTY: {{each.quantity|floatformat:"0"}}</span>
             <span class="badge badge-secondary price-tag">£{{each.artwork.price|floatformat:"0"}}</span>
             <div class="card">

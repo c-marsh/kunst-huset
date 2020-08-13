@@ -536,6 +536,11 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     content: "\2039";
     padding-left: 4px;
 }
+
+.slider-btn-checkout:after {
+    content: ">";
+    padding-left: 4px;
+}
 .slider-btn:hover {
     transition: all 0.6s ease;
     transition-delay: 0.3s;
@@ -560,6 +565,9 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     width: 220%;
 }
 
+.slider-btn-checkout:hover:before {
+    width: 180%;
+}
 #btn-search {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;

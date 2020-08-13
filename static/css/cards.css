@@ -97,7 +97,7 @@ body {
 .delete-tag {
     position: absolute;
     top: 80px;
-
+    border: 0px;
     z-index: 1;
     background-color: #161616;
     border-radius: 0px;
