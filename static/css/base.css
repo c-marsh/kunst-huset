@@ -576,10 +576,22 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     height: 30px;
 }
 .slider-btn-next::after {
-    content: ">";
+    font-family: FontAwesome;
+    content: "\f054";
+    top: 4px;
 }
 .slider-btn-previous::after {
-    content: "<";
+    font-family: FontAwesome;
+    content: "\f053";
+    left: -58px;
+    top: 4px;
+}
+
+.slider-btn-cancel::after {
+    font-family: FontAwesome;
+    content: "\f00d";
+    left: -57px;
+    top: 6px;
 }
 .slider-btn-toast:after {
     color: #fff;
