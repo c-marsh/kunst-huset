@@ -1,0 +1,172 @@
+{%extends 'base.html'%} {%load static%} {% load basket_calc %}{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="{% static 'css/slider.css' %}" type="text/css" charset="utf-8" />
+
+{% endblock %}{% block page_header %}
+<div class="page-header"></div>
+{% endblock %} {%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-5 mx-1 text-center text-lg-left">Checkout</h1>
+        </div>
+    </div>
+    <div class="row text-center text-lg-left">
+        <div class="align-self-center col-12 col-lg-4">
+            <h6><strong>Basket Total: £{{ sub_total|floatformat:2 }}</strong></h6>
+            <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+            <h6>VAT: £{{ vat|floatformat:2 }}</h6>
+
+            <h4 class="mt-4">
+                <strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong>
+            </h4>
+        </div>
+        <div class="col-11 col-md-8 col-lg-7 text-center p-0 mt-3 mb-2">
+            <!-- MultiStep Form -->
+            <div class="container-fluid justify-content-center">
+                <div class="row justify-content-center mt-0">
+                    <div class="card px-0 pb-0 mb-3" id="slider">
+                        <form action="{% url 'checkout' %}" method="POST" id="msform">
+                            {% csrf_token %}
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Contact</strong></li>
+                                <li id="personal"><strong>Shipping</strong></li>
+                                <li id="payment"><strong>Payment</strong></li>
+                                <li id="confirm"><strong>Finish</strong></li>
+                            </ul>
+                            <!-- fieldsets -->
+                            <fieldset class="rounded px-3 mb-5">
+                                <div class="form-card">
+                                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                                    {{ order_form.full_name | as_crispy_field }} {{ order_form.email | as_crispy_field }}
+                                </div>
+                                <div class="row justify-content-around">
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <a class="slider-btn slider-btn-previous previous" href="{%url 'gallery'%}">Cancel</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <button class="slider-btn slider-btn-next next" name="next">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="rounded px-3 mb-5">
+                                <div class="form-card">
+                                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                                    {{ order_form.phone_number | as_crispy_field }} {{ order_form.street_address1 | as_crispy_field }} {{ order_form.street_address2 | as_crispy_field }} {{ order_form.town_or_city | as_crispy_field }} {{ order_form.county | as_crispy_field }} {{ order_form.postcode | as_crispy_field }} {{ order_form.country | as_crispy_field }}
+                                    <div class="form-check form-check-inline mt-3 mr-0 small">
+                                        {% if user.is_authenticated %}
+                                        <input class="form-check-input w-auto small" type="checkbox" id="id-save-info" name="save-info" checked />
+                                        <label class="form-check-label small" for="id-save-info">Save this delivery information to my profile</label>
+                                        
+                                        {% else %}
+                                        <label class="form-check-label small" for="id-save-info"> <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information </label>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="row justify-content-around mt-5">
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <button class="slider-btn slider-btn-previous previous" name="previous">Previous</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <button class="slider-btn slider-btn-next next" name="next">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="px-3">
+                                <div class="form-card">
+                                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                                    <!-- A Stripe card element will go here -->
+                                    <div class="mb-3" id="card-element"></div>
+                                    <!-- Used to display form errors -->
+                                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                                    <input type="hidden" value="{{ client_secret }}" name="client_secret" />
+                                </div>
+                                <div class="row justify-content-around">
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <button class="slider-btn slider-btn-previous previous" name="previous">Previous</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                                        <div class="wrap">
+                                            <button class="slider-btn slider-btn-next next" name="next">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h2 class="fs-title text-center">Success !</h2>
+                                <br /><br />
+                                <div class="row justify-content-center">
+                                    <div class="col-3"><img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image" /></div>
+                                </div>
+                                <br /><br />
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5>You Have Successfully Signed Up</h5>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+        <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:{%if basket_items%} <span class="text-muted">(qty: {{items_count}})</span>{%endif%}</h2>
+    </div>
+</div>
+{%if basket_items%} {%for each in basket_items%}
+<main class="page-content">
+    <!-- Bag contents -->
+    <div>
+        
+        <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>
+        <span class="badge badge-secondary price-tag">£{{each.artwork.price|calc_subtotal:each.quantity|floatformat:"0"}}</span>
+        <div class="card">
+            <!-- add background image based on  -->
+            <div class="card-bg sales-card" style="background-image: url({{each.artwork.image.url}});">
+                <div class="content">
+                    <p class="copy">{{each.artwork.medium}}</p>
+                    <p class="copy">{{each.artwork.artist}}</p>
+                    <p class="title">{{each.artwork.title|truncatechars:95}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    <!-- /Bag contents -->
+</main>
+{%else%}
+<!-- Bag Empty -->
+<div class="jumbotron row my-5 m-md-5 justify-content-center">
+    <div class="col-12">
+        <p class="lead mb-5 text-center">Your Bag is empty.</p>
+    </div>
+    <div class="wrap">
+        <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
+    </div>
+</div>
+
+<!-- /Bag Empty -->
+{%endif%} {%endblock%} {%block postloadjs%} {{block.super}}
+<script src="{% static 'js/slider.js' %}"></script>
+
+{%endblock%}
