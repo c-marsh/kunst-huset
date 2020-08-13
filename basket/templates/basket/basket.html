@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-12">{%else%}{%endif%}
             <hr />
-            <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:</h2>
+            <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:{%if basket_items%} <span class="text-muted">(qty: {{items_count}})</span>{%endif%}</h2>
         </div>
     </div>{%if basket_items%} {%for each in basket_items%}
     <main class="page-content">
@@ -46,9 +46,9 @@
         <div>
             <form method="POST" action="{% url 'remove_basket' each.item_id %}">
                                 {% csrf_token %}
-                <button class="text-danger remove-item badge badge-secondary price-tag" id="remove_{{ each.item_id }}" type="submit">Remove</button></form>
+                <button class="text-danger remove-item badge badge-secondary price-tag delete-tag" id="remove_{{ each.item_id }}" type="submit">Remove</button></form>
             </button>
-            <span class="badge badge-secondary price-tag">QTY: {{each.quantity|floatformat:"0"}}</span>
+            <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>
             <span class="badge badge-secondary price-tag">£{{each.artwork.price|calc_subtotal:each.quantity|floatformat:"0"}}</span>
             <div class="card">
                 <!-- add background image based on  -->

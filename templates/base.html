@@ -106,13 +106,13 @@
                 </div>
                 <!-- sub nav - adapted from https://codepen.io/stevenrzy/pen/pogXXEB -->
                 <div class="sub-nav">
-                    <div class="sub-nav__content" >
+                    <div class="sub-nav__content">
                         <ul class="sub-nav__list mb-5">
                             <li class="sub-nav__list-item text-uppercase"><a href="{% url 'home' %}">Home</a></li>
                             <li class="sub-nav__list-item text-uppercase"><a href="{% url 'gallery' %}">Gallery</a></li>
                         </ul>
                         <!-- list of categories -->
-                        <ul class="sub-nav__list" >
+                        <ul class="sub-nav__list">
                             <li class="sub-nav__list-item"><a href="{% url 'gallery' %}?category=photography">Photography</a></li>
                             <li class="sub-nav__list-item"><a href="{% url 'gallery' %}?category=painting">2D/Painting/Drawing</a></li>
                             <li class="sub-nav__list-item"><a href="{% url 'gallery' %}?category=3d">3D/Sculpture/Installation</a></li>
@@ -120,7 +120,7 @@
                             <li class="sub-nav__list-item"><a href="{% url 'gallery' %}?category=multimedia">Multimedia</a></li>
                         </ul>
                         <!-- list of artists -->
-                        <ul class="sub-nav__list" >
+                        <ul class="sub-nav__list">
                             <li class="sub-nav__list-item">Artist</li>
                             <li class="sub-nav__list-item">Artist</li>
                         </ul>
@@ -143,13 +143,19 @@
                 </div>
             </footer>
         </div>
-        <!-- Temporary message display -->
+        <!-- message display -->
         {% if messages %}
-        <div class="message-container"></div>
-        {% endif %}
+        <div class="message-container">
+            {%for message in messages%} {%with message.level as level%} {% if level == 40%} {% include 'extend/notifications/notification_error.html'%} {% elif level == 40%} {% include 'extend/notifications/notification_warning.html'%} {% elif level == 25%} {% include 'extend/notifications/notification_success.html'%} {% else %} {%include 'extend/notifications/notification_info.html'%} {% endif %} {%endwith%} {%endfor%}
+        </div>
+        {% endif %} 
 
         <!-- Post-loaded JS -->
         {% block postloadjs %}
+        <!-- Notification Toasts -->
+        <script type="text/javascript">
+            $(".toast").toast("show");
+        </script>
         <!-- Nav JS -->
         <script src="{% static 'js/navbar.js' %}"></script>
         {% endblock %}

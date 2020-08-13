@@ -88,9 +88,6 @@ body {
     background-position: center;
 }
 
-.sales-card {
-    position: absolute;
-}
 
 .price-tag,
 .sales-tag,
@@ -201,9 +198,12 @@ body {
 .price-tag, .price-tag:focus-within
 .price-tag:focus,
 .price-tag:hover {
-    top: 40px;
+    top: 80px;
     position: relative;
     display: inline-grid;
     cursor: default;
 }
 
+.delete-tag{
+    top: 60px;
+}

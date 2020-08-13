@@ -532,6 +532,18 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     height: 30px;
 }
 
+.slider-btn-toast:after {
+    color: #fff;
+    content: "+";
+    font-size: 40px;
+    position: absolute;
+    z-index: 6;
+    left: -0.92em;
+       top: -1px;
+    bottom: 0;
+    margin-left: 2px;
+    height: 30px;
+}
 .slider-btn-back:after {
     content: "\2039";
     padding-left: 4px;
@@ -627,6 +639,27 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     font-size: 125%;
     border-radius: 0; 
 }
+
+/* Toast */
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+.center-button{
+    margin: 0px 83px;
+}
+
 
 @media screen and (max-width: 800px) {
     .fixed-nav-bar .logo {
