@@ -16,7 +16,7 @@ def basket_content(request):
         sub_total += quantity * artwork.price
         items_count += quantity
         basket_items.append({
-            'sales_id': sales_id,
+            'item_id': sales_id,
             'quantity': quantity,
             'artwork': artwork,
         })

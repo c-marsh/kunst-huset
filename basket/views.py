@@ -1,8 +1,22 @@
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 
 from artworks.models import Category, Artists, Artwork
+
+
+def remove_basket(request, sales_id):
+    """remove specified art in the shopping basket"""
+
+    try:
+        basket = request.session.get('basket', {})
+
+        basket.pop(sales_id)
+        messages.success(request, f'removed {artwork.title} to your basket')
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
 
 
 def add_to_basket(request, sales_id):

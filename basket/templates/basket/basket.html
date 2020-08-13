@@ -22,20 +22,20 @@
             </h4>
             {%else%}{%endif%}
         </div>
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3 my-3 ml-3">
             <div class="wrap">
                 <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">Checkout</a>
             </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3 my-3 ml-3">
             <div class="wrap">
                 <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
             </div>
         </div>
     </div>
-<div class="row">
+    <div class="row">
         <div class="col-12">
-        <hr>
+            <hr />
             <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:</h2>
         </div>
     </div>
@@ -43,9 +43,9 @@
         {%if basket_items%} {%for each in basket_items%}
         <!-- Bag contents -->
         <div>
-            <span class="badge badge-secondary price-tag"
-                ><a class="text-danger float-right" id="remove_{{ each.artwork.sales_id }}"><small>Remove from basket</small></a></span
-            >
+            <span class="badge badge-secondary price-tag">
+                <a class="text-danger float-right remove-item" id="remove_{{ each.item_id }}"><small>Remove from basket</small></a>
+            </span>
             <span class="badge badge-secondary price-tag">QTY: {{each.quantity|floatformat:"0"}}</span>
             <span class="badge badge-secondary price-tag">£{{each.artwork.price|floatformat:"0"}}</span>
             <div class="card">
@@ -72,9 +72,9 @@
             <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
         </div>
     </div>
-    <!-- /Bag Empty -->
-    {%endif%} {%endblock%} {%block postloadjs%} {{block.super}}
-    <script src="{% static 'js/sort.js' %}"></script>
-
-    {%endblock%}
 </div>
+<!-- /Bag Empty -->
+{%endif%} {%endblock%} {%block postloadjs%} {{block.super}}
+<script src="{% static 'js/remove.js' %}"></script>
+
+{%endblock%}
