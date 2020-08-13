@@ -183,7 +183,11 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
+# Stripe
 STANDARD_DELIVERY_PERCENTAGE = 20  # Delivery percentage
 FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
-INSURANCE_PERCENTAGE = 1  # Insurance percentage for postal insurance
 VAT = 20  # Sales tax percentage
+STRIPE_CURRENCY = 'gbp'
+STRIPE_PK  = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SK = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH = os.getenv('STRIPE_WH_SECRET', '')
