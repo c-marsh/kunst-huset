@@ -35,7 +35,7 @@ body {
     }
 }
 
-.card,
+.card:not(#slider),
 .card-bg {
     min-height: 250px;
     position: relative;
@@ -49,7 +49,7 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 600px) {
-    .card {
+    .card:not(#slider) {
         height: 350px;
     }
 }
@@ -65,7 +65,7 @@ body {
     transition: transform calc(var(--d) * 1.5) var(--e);
     pointer-events: none;
 }
-.card:after {
+.card:after:not(#slider) {
     content: "";
     display: block;
     position: absolute;
@@ -93,7 +93,7 @@ body {
 .sales-tag,
 .delete-tag {
     position: absolute;
-    top: 80px;
+    top: 40px;
     border: 0px;
     z-index: 1;
     background-color: #161616;
@@ -151,7 +151,7 @@ body {
 }
 
 @media (hover: hover) and (min-width: 600px) {
-    .card:after {
+    .card:after:not(#slider) {
         transform: translateY(0);
     }
 
@@ -164,33 +164,33 @@ body {
         transition: transform var(--d) var(--e), opacity var(--d) var(--e);
     }
 
-    .card:hover,
-    .card:focus-within {
+    .card:hover:not(#slider),
+    .card:focus-within:not(#slider) {
         align-items: center;
     }
-    .card:hover:before,
-    .card:focus-within:before {
+    .card:hover:before:not(#slider),
+    .card:focus-within:before:not(#slider) {
         transform: translateY(-4%);
     }
-    .card:hover:after,
-    .card:focus-within:after {
+    .card:hover:after:not(#slider),
+    .card:focus-within:after:not(#slider) {
         transform: translateY(-50%);
     }
-    .card:hover .content,
-    .card:focus-within .content {
+    .card:hover:not(#slider) .content,
+    .card:focus-within:not(#slider) .content {
         transform: translateY(0);
     }
-    .card:hover .content > *:not(.title),
-    .card:focus-within .content > *:not(.title) {
+    .card:hover:not(#slider) .content > *:not(.title),
+    .card:focus-within:not(#slider) .content > *:not(.title) {
         opacity: 1;
         transform: translateY(0);
         transition-delay: calc(var(--d) / 8);
     }
 
-    .card:focus-within:before,
-    .card:focus-within:after,
-    .card:focus-within .content,
-    .card:focus-within .content > *:not(.title) {
+    .card:focus-within:before:not(#slider),
+    .card:focus-within:after:not(#slider),
+    .card:focus-within:not(#slider) .content,
+    .card:focus-within:not(#slider) .content > *:not(.title) {
         transition-duration: 0s;
     }
 }
@@ -198,12 +198,15 @@ body {
 .price-tag, .price-tag:focus-within
 .price-tag:focus,
 .price-tag:hover {
-    top: 80px;
     position: relative;
     display: inline-grid;
     cursor: default;
 }
 
 .delete-tag{
-    top: 60px;
+    top: 100px;
+    cursor: pointer;
+}
+.delete-tag:hover{
+    cursor: pointer;
 }
