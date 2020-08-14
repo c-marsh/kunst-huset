@@ -50,7 +50,7 @@
             </button>
             <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>
             <span class="badge badge-secondary price-tag">£{{each.artwork.price|calc_subtotal:each.quantity|floatformat:"0"}}</span>
-            <div class="card">
+            <div class="card card-fade">
                 <!-- add background image based on  -->
                 <div class="card-bg sales-card" style="background-image: url({{each.artwork.image.url}});">
                     <div class="content">
