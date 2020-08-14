@@ -1,0 +1,121 @@
+{%extends 'base.html'%} {%load static%} {% load basket_calc %}{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="{% static 'checkout/css/slider.css' %}" type="text/css" charset="utf-8" />
+
+{% endblock %}{% block page_header %}
+<div class="page-header"></div>
+{% endblock %} {%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-5 mx-1 text-center text-lg-left">Confirmation</h1>
+        </div>
+    </div>
+    
+    <div class="row justify-content-around text-center text-lg-left">
+        <div class="align-self-center col-12 col-lg-4">
+        <p>A confirmation email has been sent to <strong>{{order.email}}</strong> for your records.</p>
+        <hr>
+            <h6>Order No: <strong>{{ order.order_number }}</strong></h6>
+            <h6>Order Date: {{ order.date }}</h6>
+            <hr />
+            <h5 class="mt-1 mb-0 text-uppercase">Shipping/Billing:</h5>
+            <h6 class="mt-1 mb-0">{{ order.street_address1 }}</h6>
+            {% if order.street_address2 %}
+            <h6 class="my-0">{{ order.street_address2 }}</h6>
+            {%endif%}
+            <h6 class="my-0">{{ order.town_or_city }}</h6>
+            {% if order.county %}
+            <h6 class="my-0">{{ order.county }}</h6>
+            {%endif%} {% if order.postcode %}
+            <h6 class="my-0">{{ order.postcode }}</h6>
+            {%endif%}
+            <h6 class="mb-1">{{ order.country }}</h6>
+
+            <hr />
+            <h6><strong>Basket Total: £{{ order.order_total }}</strong></h6>
+            <h6>Delivery: £{{ order.delivery_cost }}</h6>
+            <h6>VAT: £{{ order.vat_total }}</h6>
+
+            <h4 class="mt-4">
+                <strong>Grand Total: £{{ order.grand_total }}</strong>
+            </h4>
+        </div>
+        <div class="align-self-center col-10 col-lg-7 mb-2 mt-3 offset-1 offset-lg-0 p-0 text-center">
+            <!-- MultiStep Form based on https://bbbootstrap.com/snippets/multi-step-form-wizard-30467045 -->
+            <div class="container-fluid justify-content-center">
+                <div class="row justify-content-center mt-0">
+                    <div class="card px-0 pb-0 mb-3" id="slider">
+                        <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                            {% csrf_token %}
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Contact</strong></li>
+                                <li class="active" id="personal"><strong>Shipping</strong></li>
+                                <li class="active" id="payment"><strong>Payment</strong></li>
+                                <li class="active" id="confirm"><strong>Finish</strong></li>
+                            </ul>
+                            <!-- fieldsets -->
+
+                            <fieldset>
+                                <h2 class="fs-title text-center">Success !</h2>
+                                <br /><br />
+                                <div class="row justify-content-center">
+                                    <div class="col-3"><img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image" /></div>
+                                </div>
+                                <br /><br />
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5>You Have Successfully Completed Your Purchase</h5>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row container">
+    <div class="col-12">
+        <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:{%if basket_items%} <span class="text-muted">(qty: {{items_count}})</span>{%endif%}</h2>
+    </div>
+</div>
+
+<div class="page-content container">
+    {% for item in order.lineitems.all %}
+    <!-- Bag contents -->
+    <div>
+        <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>
+        <span class="badge badge-secondary price-tag">£{{each.artwork.price}}</span>
+        <div class="card">
+            <!-- add background image based on  -->
+            <div class="card-bg sales-card" style="background-image: url({{each.artwork.image.url}});">
+                <div class="content">
+                    <p class="copy">{{each.artwork.medium}}</p>
+                    <p class="copy">{{each.artwork.artist}}</p>
+                    <p class="title">{{each.artwork.title|truncatechars:95}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    <!-- /Bag contents -->
+</div>
+
+<!-- Bag Empty -->
+<div class="jumbotron row my-5 m-md-5 justify-content-center">
+    <div class="wrap">
+        <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
+    </div>
+</div>
+
+<!-- /Bag Empty -->
+{%endblock%} {%block postloadjs%} {{block.super}}
+<script src="{% static 'checkout/js/slider.js' %}"></script>
+{{ stripe_public_key|json_script:"id_stripe_public_key" }} {{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe.js' %}"></script>
+{%endblock%}
