@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+
 import os
+if os.path.exists("env.py"):
+    import env 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -192,6 +195,7 @@ STANDARD_DELIVERY_PERCENTAGE = 20  # Delivery percentage
 FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
 VAT = 20  # Sales tax percentage
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PK = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SK = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_PK = os.environ.get('STRIPE_PUBLIC_KEY', '')
+STRIPE_SK = os.environ.get('STRIPE_SECRET_KEY', '')
+STRIPE_WH = os.environ.get('STRIPE_WH_SECRET', '')
+
