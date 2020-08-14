@@ -18,27 +18,27 @@ def remove_basket(request, item_id):
         return redirect(reverse('view_basket'))
 
 
-def add_to_basket(request, sales_id):
+def add_to_basket(request, item_id):
     """add specified art to the shopping basket"""
 
-    artwork = get_object_or_404(Artwork, pk=sales_id)
+    artwork = get_object_or_404(Artwork, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
     basket = request.session.get('basket', {})
 
-    # while basket[sales_id] <= artwork.qty:
-    if sales_id in list(basket.keys()):
-        basket[sales_id] += quantity
+    # while basket[item_id] <= artwork.qty:
+    if item_id in list(basket.keys()):
+        basket[item_id] += quantity
         messages.success(
-            request, f'Added {artwork.title} to {basket[sales_id]}')
+            request, f'Added {artwork.title} to {basket[item_id]}')
 
     else:
-        basket[sales_id] = quantity
+        basket[item_id] = quantity
         messages.success(request, f'Added {artwork.title} to your basket')
     request.session['basket'] = basket
     return redirect(redirect_url)
-    # basket[sales_id] = quantity
+    # basket[item_id] = quantity
     # messages.error(request, f'Not enough of {artwork.title} on sale')
     # request.session['basket'] = basket
     # return redirect(redirect_url)

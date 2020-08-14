@@ -11,12 +11,12 @@ def basket_content(request):
     items_count = 0
     basket = request.session.get('basket', {})
 
-    for sales_id, quantity in basket.items():
-        artwork = get_object_or_404(Artwork, pk=sales_id)
+    for item_id, quantity in basket.items():
+        artwork = get_object_or_404(Artwork, pk=item_id)
         sub_total += quantity * artwork.price
         items_count += quantity
         basket_items.append({
-            'item_id': sales_id,
+            'item_id': item_id,
             'quantity': quantity,
             'artwork': artwork,
         })

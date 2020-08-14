@@ -47,7 +47,7 @@ def checkout(request):
                 try:
                     artwork = Artwork.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
-                        item_id=item_id,
+                        order=order,
                         quantity=quantity,
                         artwork=artwork,
                     )
@@ -85,6 +85,8 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
+
+        order_form = OrderForm()
     # warning in case public key not detected
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
