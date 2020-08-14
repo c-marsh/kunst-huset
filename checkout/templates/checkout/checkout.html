@@ -133,8 +133,8 @@
         <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:{%if basket_items%} <span class="text-muted">(qty: {{items_count}})</span>{%endif%}</h2>
     </div>
 </div>
-{%if basket_items%} {%for each in basket_items%}
-<div class="page-content container">
+{%if basket_items%} 
+<div class="page-content container">{%for each in basket_items%}
     <!-- Bag contents -->
     <div>
         <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>

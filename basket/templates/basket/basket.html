@@ -39,9 +39,9 @@
             <hr />
             <h2 class="my-2 mx-1 text-center text-md-left">Basket Content:{%if basket_items%} <span class="text-muted">(qty: {{items_count}})</span>{%endif%}</h2>
         </div>
-    </div>{%if basket_items%} {%for each in basket_items%}
+    </div>{%if basket_items%} 
     <main class="page-content">
-        
+        {%for each in basket_items%}
         <!-- Bag contents -->
         <div>
             <form method="POST" action="{% url 'remove_basket' each.item_id %}">
