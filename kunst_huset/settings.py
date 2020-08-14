@@ -188,6 +188,6 @@ STANDARD_DELIVERY_PERCENTAGE = 20  # Delivery percentage
 FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
 VAT = 20  # Sales tax percentage
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PK  = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_PK = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SK = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH = os.getenv('STRIPE_WH_SECRET', '')
