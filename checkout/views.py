@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.shortcuts import get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -51,25 +52,26 @@ def checkout(request):
                         artwork=artwork,
                     )
                     order_line_item.save()
-                # defensive design incase item isn't found, remove and redirect customer
+    # defensive design incase item isn't found, remove and redirect customer
                 except Artwork.DoesNotExist:
                     messages.error(request, (
-                        "One of the items in your basket wasn't found in our database. "
-                        "Please call us for assistance!")
+                        "One of the items in your basket wasn't found in " +
+                        "our database. Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_basket'))
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_completed', args=[order.order_number]))
+            return redirect(reverse('checkout_completed',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
 
     else:
         basket = request.session.get('basket', {})
-        # return message if bag is empty
+        # return message if basket is empty
         if not basket:
             messages.error(
                 request, "There's nothing in your basket at the moment")
@@ -93,6 +95,27 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+    }
+
+    return render(request, template, context)
+
+
+def checkout_completed(request, order_number):
+    """
+    Handles a completed checkout
+    """
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'basket' in request.session:
+        del request.session['basket']
+
+    template = 'checkout/checkout_completed.html'
+    context = {
+        'order': order,
     }
 
     return render(request, template, context)
