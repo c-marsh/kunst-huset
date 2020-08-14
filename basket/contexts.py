@@ -24,7 +24,8 @@ def basket_content(request):
         delivery = sub_total * Decimal(
             settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     else:
-        delivery = round(((200) + sub_total * Decimal(0.05)), 2)
+        delivery = 200 + (Decimal((sub_total/500) *
+                          settings.STANDARD_DELIVERY_PERCENTAGE))
 
     vat = Decimal(((sub_total+delivery)/100)*Decimal(settings.VAT))
     grand_total = Decimal(delivery + sub_total)
