@@ -21,7 +21,8 @@ def basket_content(request):
             'artwork': artwork,
         })
     if sub_total < settings.FIXED_DELIVERY_THRESHOLD:
-        delivery = sub_total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        delivery = sub_total * Decimal(
+            settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     else:
         delivery = round(((200) + sub_total * Decimal(0.05)), 2)
 
