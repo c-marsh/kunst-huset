@@ -36,6 +36,12 @@ body {
     -webkit-transition: 0.35s ease;
     transition: 0.35s ease;
 }
+
+.fixed-nav-bar .logo a {
+    color: #ccc;
+    text-decoration: none;
+}
+
 .fixed-nav-bar .logo {
     position: absolute;
     left: 100px;
@@ -504,6 +510,9 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     background-color: transparent;
     border: none;
 }
+a.slider-btn:hover {
+    text-decoration: none!important;
+}
 
 .slider-btn-next,
 .slider-btn-previous {
@@ -586,7 +595,13 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     left: -58px;
     top: 4px;
 }
-
+.slider-btn-socancel::after {
+    font-family: FontAwesome;
+    content: "\f00d";
+    left: -52px;
+    top: 6px;
+    font-size: 30px;
+}
 .slider-btn-cancel::after {
     font-family: FontAwesome;
     content: "\f00d";
@@ -606,13 +621,132 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     height: 30px;
 }
 .slider-btn-back:after {
-    content: "\2039";
+    font-family: FontAwesome;
+    content: ""\f053"";
     padding-left: 4px;
+}
+.slider-btn-more-art:after {
+    font-family: FontAwesome;
+    content: "\f302";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+.slider-btn-primary,
+.slider-btn-password{
+        margin-left: 0px; 
+}
+.slider-btn-password:after {
+        font-family: FontAwesome;
+    content: "\f084";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+
+.slider-btn-verify:after {
+    font-family: FontAwesome;
+    content: "\f0e0";
+    left: -57px;
+    top: 5px;
+    font-size: 30px;
 }
 
 .slider-btn-checkout:after {
-    content: ">";
-    padding-left: 4px;
+    font-family: FontAwesome;
+    content: "\f09d";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+.slider-btn-buy:after {
+    font-family: FontAwesome;
+    content: "\f291";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+.slider-btn-finish:after {
+    font-family: FontAwesome;
+    content: "\f00c";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+.slider-btn-back:after {
+    font-family: FontAwesome;
+    content: "\f053";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+
+.slider-btn-home:after {
+    font-family: FontAwesome;
+    content: "\f015";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+.slider-btn-del:after {
+    font-family: FontAwesome;
+    content: "\f068";
+    left: -57px;
+    top: 5px;
+    font-size: 30px;
+}
+
+.slider-btn-primary:after {
+    font-family: FontAwesome;
+    content: "\f005";
+    left: -59px;
+    top: 5px;
+    font-size: 30px;
+}
+
+.slider-btn-signup:after {
+    font-family: FontAwesome;
+    content: "\f234";
+    left: -59px;
+    top: 5px;
+    word-wrap: none;
+    font-size: 30px;
+}
+
+.slider-btn-reset:after {
+    font-family: FontAwesome;
+    content: "\f2f5";
+    left: -56px;
+    top: 5px;
+    word-wrap: none;
+    font-size: 30px;
+}
+
+.slider-btn-signin:after {
+    font-family: FontAwesome;
+    content: "\f2f6";
+    left: -59px;
+    top: 5px;
+    word-wrap: none;
+    font-size: 30px;
+}
+
+.slider-btn-reset:after {
+    font-family: FontAwesome;
+    content: "\f0e2";
+    left: -59px;
+    top: 5px;
+    word-wrap: none;
+    font-size: 30px;
+}
+
+.slider-btn-signout:after {
+    font-family: FontAwesome;
+    content: "\f2f5";
+    left: -59px;
+    top: 5px;
+    word-wrap: none;
+    font-size: 30px;
 }
 .slider-btn:hover {
     transition: all 0.6s ease;
@@ -626,26 +760,33 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     width: 140%;
 }
 
+.slider-btn-reset:hover:before,
+.slider-btn-signup:hover:before,
+.slider-btn-home:hover:before,
+.slider-btn-del:hover:before,
+.slider-btn-finish:hover:before{
+    width: 200%;
+}
+
 .slider-btn-buy:hover:before {
     width: 250%;
 }
-
+.slider-btn-primary:hover:before,
+.slider-btn-verify:hover:before{
+    width:150%;
+}
+.slider-btn-add:hover:before,
+.slider-btn-socancel:hover:before,
+.slider-btn-signout:hover:before,
+.slider-btn-signin:hover:before,
+.slider-btn-previous:hover:before,
+.slider-btn-checkout:hover:before,
 .slider-btn-more-art:hover:before {
     width: 180%;
 }
 
-.slider-btn-back:hover:before {
-    width: 220%;
-}
 
-.slider-btn-checkout:hover:before {
-    width: 180%;
-}
-
-.slider-btn-previous:hover:before {
-    width: 180%;
-}
-
+.slider-btn-back:hover:before,
 .slider-btn-next:hover:before {
     width: 220%;
 }
@@ -744,6 +885,8 @@ select option[value=""] {
 #id_country {
     font-size: 14px;
 }
+
+
 @media screen and (max-width: 800px) {
     .fixed-nav-bar .logo {
         left: 50%;
