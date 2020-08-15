@@ -423,7 +423,9 @@ body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     left: 0;
     right: 0;
 }
-
+.jumbotron {
+    background-color: #e5e9e9;
+}
 .page-header {
     height: 100px;
     background-color: #1a1a1a;

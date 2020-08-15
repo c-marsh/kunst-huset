@@ -15,7 +15,7 @@ class UserProfile(models.Model):
     # publicly visible profile info
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=60, blank=True)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=5000, blank=True)
     location = models.CharField(max_length=30, blank=True)
     is_artist = models.BooleanField('artist status', default=False)
     is_customer = models.BooleanField('customer status', default=False)

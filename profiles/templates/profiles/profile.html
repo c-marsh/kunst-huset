@@ -1,23 +1,37 @@
-{%extends 'base.html'%} {%load static%} {% block page_header %}
+{%extends 'base.html'%} {%load static%} {% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}" type="text/css" charset="utf-8" />
+{% endblock %}{% block page_header %}
 <div class="page-header"></div>
 {% endblock %} {%block content%}
-<div class="jumbotron my-5 m-md-5">
+<div class="jumbotron my-3 m-md-3">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-3 featured-artist-img"><img src="{% static 'img/logo.png'%}" class="rounded-circle" alt="Cinque Terre" /></div>
-        <div class="col-12 col-md-7">
-            <h1 class="text-uppercase">{{profile}}</h1>
-            <h2 class="text-uppercase"></h2>
-           
-            <div class="wrap">
-                <a class="slider-btn" href="#">Learn More</a>
+        <div class="col-6 col-lg-3 featured-artist-img"><img src="{{profile.artist_image.url}}" class="rounded-circle" alt="{{profile.full_name}}" /></div>
+        <div class="col-12 col-md-7 text-center text-lg-left">
+            <h1 class="text-uppercase">{{profile.full_name}}</h1>
+            <div class="card sm-container ">
+                <ul id="web-bar" class="text-center">
+                    {% if profile.artist_link%}<a href="{{profile.artist_link}}" target="_blank"
+                        ><li class="active" id="web"><strong>Website</strong></li></a
+                    >{%endif%} {% if profile.artist_insta%}<a href="{{profile.artist_insta}}" target="_blank"
+                        ><li class="active" id="insta"><strong>Instagram</strong></li></a
+                    >{%endif%} {% if profile.artist_deviant%}<a href="{{profile.artist_deviant}}" target="_blank"
+                        ><li class="active" id="deviant"><strong>DeviantArt</strong></li></a
+                    >{%endif%} {% if profile.artist_twitter%}<a href="{{profile.artist_twitter}}" target="_blank"
+                        ><li class="active" id="twitter"><strong>Twitter</strong></li></a
+                    >{%endif%}
+                </ul>
             </div>
+            <h2 class="text-uppercase">{{profile.location}}</h2>
+            <p class="">{{profile.bio}}</p>
+           
         </div>
     </div>
 </div>
 
 <div class="jumbotron row my-5 m-md-5 justify-content-center">
- <div class="wrap">
-                <a class="slider-btn" href="#">More art</a>
-            </div>
+    <div class="wrap">
+        <a class="slider-btn slider-btn-more-art" href="{% url 'gallery'%}">More art</a>
+    </div>
 </div>
 {%endblock%}
