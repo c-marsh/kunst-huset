@@ -13,7 +13,7 @@ Extend Allauth authentication
 
 class UserProfile(models.Model):
     # publicly visible profile info
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=60, blank=True)
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
@@ -39,14 +39,13 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# create profile
+
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    Create or update the user profile
+    """
     if created:
-        Profile.objects.create(user=instance)
-
-
-# update profile
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+        UserProfile.objects.create(user=instance)
+    # Existing users: just save the profile
+    instance.userprofile.save()
