@@ -2,22 +2,47 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
-{% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign Out" %}</h2>
-<hr>
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+{% endblock %}
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+{% block inner_content %}<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">{% trans "Sign Out" %}</h1>
+                <form class="signup" id="signup_form" method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
 
+                    <!-- fieldsets -->
+                    <div class="align-self-center">
+                        <ul id="progressbar">
+                            <li class="active" id="account"><strong>Account</strong></li>
+                        </ul>
+                        <p class="mb-5">{% trans 'Are you sure you want to sign out?' %}</p>
+                    </div>
+                    <fieldset>
+                        {% if redirect_field_value %}<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />{% endif %}
+                        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+
+                        <div class="row justify-content-around mt-3">
+                            <div class="col-12 col-md-5 col-lg-3 ml-3 my-3">
+                                <div class="wrap">
+                                    <a class="slider-btn slider-btn-socancel ml-3" href="{% url 'home' %}">Cancel</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5 col-lg-3 my-3">
+                                <div class="wrap">
+                                    <button class="slider-btn slider-btn-signout text-nowrap" type="submit">{% trans 'Sign Out' %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

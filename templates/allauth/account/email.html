@@ -1,75 +1,101 @@
-{% extends "account/base.html" %}
+{% extends "account/base.html" %} {% load i18n %} {% block head_title %}{% trans "Account" %}{% endblock %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
-{% load i18n %}
+<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+{% endblock %} {% block inner_content %}
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">{% trans "E-mail Addresses" %}</h1>
+            </div>
 
-{% block head_title %}{% trans "Account" %}{% endblock %}
+            {% if user.emailaddress_set.all %}
 
-{% block inner_content %}
-    <hr>
-    <h2 class="logo-font mb-4">{% trans "E-mail Addresses" %}</h2>
-    <hr>
-{% if user.emailaddress_set.all %}
-<p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+            <form id="signup_form" action="{% url 'account_email' %}" class="email_list" method="post">
+                {% csrf_token %}
+                <div class="align-self-center">
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Account</strong></li>
+                    </ul>
+                    <p class="mb-5">{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+                </div>
+                <fieldset class="blockLabels">
+                    {% for emailaddress in user.emailaddress_set.all %}
+                    <div class="ctrlHolder">
+                        <label for="email_radio_{{forloop.counter}}" class="{% if emailaddress.primary %}primary_email{%endif%}">
+                            <input id="email_radio_{{forloop.counter}}" type="radio" name="email" {% if emailaddress.primary or user.emailaddress_set.count == 1 %}checked="checked"{%endif %} value="{{emailaddress.email}}" /> {{ emailaddress.email }} {% if emailaddress.verified %}
+                            <span class="verified">{% trans "Verified" %}</span>
+                            {% else %}
+                            <span class="unverified">{% trans "Unverified" %}</span>
+                            {% endif %} {% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %}
+                        </label>
+                    </div>
+                    {% endfor %}
 
-<form action="{% url 'account_email' %}" class="email_list" method="post">
-{% csrf_token %}
-<fieldset class="blockLabels">
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                            <div class="wrap">
+                                <button class="slider-btn slider-btn-verify text-nowrap ml-3 secondaryAction" type="submit" name="action_send">{% trans 'Re-send Verification' %}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                            <div class="wrap">
+                                <button class="slider-btn slider-btn-del ml-3 text-nowrap primaryAction" type="submit" name="action_remove">{% trans 'Remove' %}</button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 my-3">
+                            <div class="wrap">
+                                <button class="slider-btn slider-btn-primary text-nowrap secondaryAction" type="submit" name="action_primary">{% trans 'Make Primary' %}</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
 
-  {% for emailaddress in user.emailaddress_set.all %}
-<div class="ctrlHolder">
-      <label for="email_radio_{{forloop.counter}}" class="{% if emailaddress.primary %}primary_email{%endif%}">
+            {% else %}
+            <p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
 
-      <input id="email_radio_{{forloop.counter}}" type="radio" name="email" {% if emailaddress.primary or user.emailaddress_set.count == 1 %}checked="checked"{%endif %} value="{{emailaddress.email}}"/>
+            {% endif %}
+            <form id="signup_form" method="post" action="{% url 'account_email' %}" class="add_email">
+                {% csrf_token %}
+                <div class="align-self-center">
+                    <fieldset>
+                        {{ form|crispy }}
 
-{{ emailaddress.email }}
-    {% if emailaddress.verified %}
-    <span class="verified">{% trans "Verified" %}</span>
-    {% else %}
-    <span class="unverified">{% trans "Unverified" %}</span>
-    {% endif %}
-      {% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %}
-</label>
+                        <div class="row justify-content-around">
+                            <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                                <div class="wrap">
+                                    <a class="slider-btn slider-btn-socancel ml-3 text-nowrap" href="{%url 'home'%}">Cancel</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                                <div class="wrap">
+                                    <button class="slider-btn slider-btn-add ml-3 text-nowrap secondaryAction" type="submit" name="action_add">{% trans "Add E-mail" %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-  {% endfor %}
 
-<div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
-</div>
-
-</fieldset>
-</form>
-
-{% else %}
-<p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
-
-{% endif %}
-
-
-    <h2>{% trans "Add E-mail Address" %}</h2>
-
-    <form method="post" action="{% url 'account_email' %}" class="add_email">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
-    </form>
-
-{% endblock %}
-
-
-{% block extra_body %}
+{% endblock %} {% block extra_body %}
 <script type="text/javascript">
-(function() {
-  var message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
-  var actions = document.getElementsByName('action_remove');
-  if (actions.length) {
-    actions[0].addEventListener("click", function(e) {
-      if (! confirm(message)) {
-        e.preventDefault();
-      }
-    });
-  }
-})();
+    (function () {
+        var message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
+        var actions = document.getElementsByName("action_remove");
+        if (actions.length) {
+            actions[0].addEventListener("click", function (e) {
+                if (!confirm(message)) {
+                    e.preventDefault();
+                }
+            });
+        }
+    })();
 </script>
 {% endblock %}

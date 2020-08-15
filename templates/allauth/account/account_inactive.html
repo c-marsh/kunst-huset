@@ -2,12 +2,40 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+{% block head_title %}{% trans "Account Inactive" %}{% endblock %}{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
+
+<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+{% endblock %}
 
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Account Inactive" %}</h2>
-<hr>
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">{% trans "Account Inactive" %}</h1>
+                <div id="signup_form" class="password_reset">
+                    <!-- fieldsets -->
+                    <div class="align-self-center">
+                        <ul id="progressbar">
+                            <li class="active" id="account"><strong>Account</strong></li>
+                        </ul>
+                    </div>
 
-<p>{% trans "This account is inactive." %}</p>
+                    <p class="mb-5">{% trans "This account is inactive." %}</p>
+                    <div class="row justify-content-around mt-3">
+                        <div class="col-12 col-md-5 col-lg-3 ml-3 my-3 mb-5">
+                            <div class="wrap">
+                                <a class="slider-btn slider-btn-home ml-3" href="{% url 'home' %}">Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 {% endblock %}
