@@ -1,14 +1,33 @@
-{% extends "account/base.html" %}
+{% extends "account/base.html" %} {% load i18n %} {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
-{% load i18n %}
+<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+{% endblock %}{% block inner_content %}
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">{% trans "Verify Your E-mail Address" %}</h1>
+                <div id="signup_form" class="password_reset">
+                    <!-- fieldsets -->
+                    <div class="align-self-center">
+                        <ul id="progressbar">
+                            <li class="active" id="account"><strong>Account</strong></li>
+                        </ul>
+                    </div>
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
-
-{% block inner_content %}
-    <hr>
-    <h2 class="logo-font mb-4">{% trans "Verify Your E-mail Address" %}</h2>
-    <hr>
-
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+                    <p class="mb-5">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+                    <div class="row justify-content-around mt-3">
+                        <div class="col-12 col-md-5 col-lg-3 ml-3 my-3">
+                            <div class="wrap">
+                                <a class="slider-btn slider-btn-home ml-3" href="{% url 'home' %}">Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
