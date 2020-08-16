@@ -74,14 +74,27 @@
                     {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item">
-                            <a href="" class="drop-down-btn">Manage Art</a>
+                            <a href="{% url 'admin:index' %}" class="drop-down-btn">Admin</a>
                         </div>
                     </div>
                     {% endif %}
+                    {% if Profile.UserProfile.is_artist %}
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="#" class="drop-down-btn">Add Art</a></div>
+                    </div>
+                    {% endif %}
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="{% url 'edit_profile_type' user_id=request.user%}" class="drop-down-btn">Edit Account Type</a></div>
+                    </div>
 
                     <div class="rela-block drop-down-container">
-                        <div class="drop-down-item"><a href="{% url 'profile' %}" class="drop-down-btn">Profile</a></div>
+                        <div class="drop-down-item"><a href="{% url 'edit_profile' user_id=request.user%}" class="drop-down-btn">Edit Details</a></div>
                     </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="{% url 'edit_artist_profile' user_id=request.user %}" class="drop-down-btn">Edit Public Profile</a></div>
+                    </div>
+
+                    
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="{% url 'account_logout' %}" class="drop-down-btn">Logout</a></div>
                     </div>
@@ -121,8 +134,9 @@
                         </ul>
                         <!-- list of artists -->
                         <ul class="sub-nav__list">
-                            <li class="sub-nav__list-item">Artist</li>
-                            <li class="sub-nav__list-item">Artist</li>
+                        {%for artist in artists%}
+                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="" >{{artist.name}}</a></li>
+                        {%endfor%}
                         </ul>
                     </div>
                 </div>
