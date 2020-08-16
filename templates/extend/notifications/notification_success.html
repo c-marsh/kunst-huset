@@ -17,7 +17,7 @@
             </div>
         </div>
         <!-- toast basket -->
-        {% if grand_total %}
+        {% if grand_total and not account_management%}
 
         <p class="logo-font bg-white text-black py-1">Your Basket ({{items_count}})</p>
         <div class="bag-notification-wrapper">

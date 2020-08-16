@@ -16,6 +16,7 @@ def public_profile(request, user):
     context = {
         'profile': profile,
         'artworks': artworks
+        
     }
     return render(request, template, context)
 
@@ -28,7 +29,8 @@ def profile(request):
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
-        'artworks': artworks
+        'artworks': artworks,
+        'account_management': True
     }
     return render(request, template, context)
 
@@ -41,7 +43,7 @@ def edit_profile(request, user_id):
         form = UserForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, 'Details updated successfully')
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
@@ -51,6 +53,7 @@ def edit_profile(request, user_id):
     context = {
         'form': form,
         'profile': profile,
+        'account_management': True
     }
 
     return render(request, template, context)
@@ -64,7 +67,7 @@ def edit_artist(request, user_id):
         form = ArtistForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, 'Public profile updated successfully')
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
@@ -74,6 +77,7 @@ def edit_artist(request, user_id):
     context = {
         'form': form,
         'profile': profile,
+        'account_management': True
     }
 
     return render(request, template, context)
@@ -87,7 +91,7 @@ def edit_selector(request, user_id):
         form = SelectorForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, 'Profile selector updated successfully')
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
@@ -97,6 +101,7 @@ def edit_selector(request, user_id):
     context = {
         'form': form,
         'profile': profile,
+        'account_management': True
     }
 
     return render(request, template, context)
