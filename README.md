@@ -132,16 +132,19 @@ If the basket holds contents the display provides:
             - with an option to store if logged in,
                 - or otherwise providing a log-in or register link
         - payment details on the third page.
+        - An order summary presented after checkout
+        - Defensive design that ensures an order is created from return stripe webhook, in the case of a failure on the front end to create an order.
 
 </details>
 
 ## Additional Features
+### Administration
+Custom styled login/out/account admin pages.
 
 ### Notifications
-
 Notifications are provided by colour coded toasts to provide the user with feedback and assurance. These dismissable Toasts also feature a basket preview when items are added, and a button to take the browser to the basket.
-### Menus
 
+### Menus
 Two Menus are provided via means of hamburger icons at either end of the menu bar. These are:
 <details>
   <summary> The Gallery Menu</summary> 
@@ -171,6 +174,17 @@ This provides navigation of the account and purchasing related elements and disp
 
 ### Profile/Artist Page
 
+# Bugs
+## Major
+User info not saving/updating from their pages
+Poor Database structure - Artist DB may be obsolete
+Order history not saving to profiles
+
+## Minor
+Artists disappear from menu on some pages
+
+### Cosmetic
+Buttons on some form pages too close to text
 
 
 
