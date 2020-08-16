@@ -1,0 +1,50 @@
+{% extends "base.html" %} {%load static%} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
+
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}" type="text/css" charset="utf-8" />
+{% endblock %} {% block page_header %}
+<div class="page-header">
+</div>
+{% endblock %} {%block content%}
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">Edit Profile Details</h1>
+            </div>
+            <form class="profile-form" id="profile-form" method="POST" action="{% url 'edit_artist' user_id=request.user%}">
+                {% csrf_token %}
+
+                <!-- fieldsets -->
+                <div class="align-self-center">
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Account</strong></li>
+                    </ul>
+                
+                </div>
+                <fieldset class="mx-auto">
+                    {{ form|crispy }} 
+                    <hr>
+                    <div class="row justify-content-around mt-3">
+                        <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                            <div class="wrap">
+                                <a class="slider-btn slider-btn-home ml-3" href="{% url 'home' %}">Home</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 my-3">
+                            <div class="wrap">
+                                <button class="slider-btn slider-btn-signup text-nowrap" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{%block postloadjs%}
+{{block.super}}
+<script src="{%url static 'profiles/js/profiles.js'"></script>
+{% endblock %}

@@ -79,7 +79,7 @@ def edit_artist(request, user_id):
     return render(request, template, context)
 
 @login_required
-def edit_profile_type(request, user_id):
+def edit_selector(request, user_id):
     """ Edit if an account is artist or customer"""
     profile = get_object_or_404(UserProfile, user_id=request.user)
 
