@@ -79,6 +79,16 @@ html {
     width: 100%;
     font-size: initial;
 }
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
+}
+
+#id_default_country option:first-child {
+    color: #aab7c4;
+}
+
 #profile-form #id_is_artist, #profile-form #id_is_customer{padding: 0px 67px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
