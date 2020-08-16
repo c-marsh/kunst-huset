@@ -10,6 +10,9 @@ from artworks.models import Artwork
 
 
 class Order(models.Model):
+    """
+        Defines the order model
+        """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      blank=True, related_name='orders',
@@ -75,6 +78,9 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+        Class of each basket item total
+        """
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE,
                               related_name='lineitems')
