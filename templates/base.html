@@ -59,7 +59,9 @@
                         </label>
                     </div>
                     <div class="logo">
-                        <div class="logo-text"><a href="{%url 'home'%}">[<span>Kunst</span>Huset<span>]</span></a></div>
+                        <div class="logo-text">
+                            <a href="{%url 'home'%}">[<span>Kunst</span>Huset<span>]</span></a>
+                        </div>
                     </div>
                     <input type="checkbox" id="menuButton" />
                     <label for="menuButton" class="menu-button-label">
@@ -77,24 +79,25 @@
                             <a href="{% url 'admin:index' %}" class="drop-down-btn">Admin</a>
                         </div>
                     </div>
-                    {% endif %}
-                    {% if Profile.UserProfile.is_artist %}
+                    {% endif %} {% if Profile.UserProfile.is_artist %}
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="#" class="drop-down-btn">Add Art</a></div>
                     </div>
                     {% endif %}
                     <div class="rela-block drop-down-container">
-                        <div class="drop-down-item"><a href="{% url 'edit_profile_type' user_id=request.user%}" class="drop-down-btn">Edit Account Type</a></div>
+                        <div class="drop-down-item"><a href="{% url 'edit_selector' user_id=request.user%}" class="drop-down-btn">Edit Account Type</a></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="{% url 'account_email' %}" class="drop-down-btn">Change E-mail</a></div>
                     </div>
 
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="{% url 'edit_profile' user_id=request.user%}" class="drop-down-btn">Edit Details</a></div>
                     </div>
                     <div class="rela-block drop-down-container">
-                        <div class="drop-down-item"><a href="{% url 'edit_artist_profile' user_id=request.user %}" class="drop-down-btn">Edit Public Profile</a></div>
+                        <div class="drop-down-item"><a href="{% url 'edit_artist' user_id=request.user %}" class="drop-down-btn">Edit Public Profile</a></div>
                     </div>
 
-                    
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="{% url 'account_logout' %}" class="drop-down-btn">Logout</a></div>
                     </div>
@@ -134,9 +137,9 @@
                         </ul>
                         <!-- list of artists -->
                         <ul class="sub-nav__list">
-                        {%for artist in artists%}
-                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="" >{{artist.name}}</a></li>
-                        {%endfor%}
+                            {%for artist in artists%}
+                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artist.name}}</a></li>
+                            {%endfor%}
                         </ul>
                     </div>
                 </div>
@@ -162,7 +165,7 @@
         <div class="message-container">
             {%for message in messages%} {%with message.level as level%} {% if level == 40%} {% include 'extend/notifications/notification_error.html'%} {% elif level == 40%} {% include 'extend/notifications/notification_warning.html'%} {% elif level == 25%} {% include 'extend/notifications/notification_success.html'%} {% else %} {%include 'extend/notifications/notification_info.html'%} {% endif %} {%endwith%} {%endfor%}
         </div>
-        {% endif %} 
+        {% endif %}
 
         <!-- Post-loaded JS -->
         {% block postloadjs %}

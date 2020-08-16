@@ -79,7 +79,7 @@ body {
     background-color: #000;
 }
 .drop-down-container {
-    height: 15%;
+    height: 12.7%;
     width: 90%;
     left: 160%;
     margin-top: 5px;
@@ -145,6 +145,7 @@ body {
 .the-bass.dropped .drop-down-container {
     left: 50%;
 }
+/* Bass animation stagger slide in */
 .the-bass.dropped .drop-down-container:nth-child(1) {
     -webkit-transition: 0.3s ease, left 0.4s 0.4s ease;
     transition: 0.3s ease, left 0.4s 0.4s ease;
@@ -169,6 +170,16 @@ body {
     -webkit-transition: 0.3s ease, left 0.4s 0.7s ease;
     transition: 0.3s ease, left 0.4s 0.7s ease;
 }
+.the-bass.dropped .drop-down-container:nth-child(7) {
+    -webkit-transition: 0.3s ease, left 0.4s 0.76s ease;
+    transition: 0.3s ease, left 0.4s 0.76s ease;
+}
+
+.the-bass.dropped .drop-down-container:nth-child(8) {
+    -webkit-transition: 0.3s ease, left 0.4s 0.82s ease;
+    transition: 0.3s ease, left 0.4s 0.82s ease;
+}
+/* hamburgers */
 .menu-button-label2 {
     position: absolute;
     height: 48px;
@@ -204,6 +215,8 @@ body {
     -webkit-transition: 0.4s ease, width 0.3s ease;
     transition: 0.4s ease, width 0.3s ease;
 }
+
+/* hamburger animation */
 .menu-button-label .white-bar:nth-child(1),
 .menu-button-label2 .white-bar:nth-child(1) {
     top: 24%;
@@ -391,6 +404,7 @@ body.sub-nav-active .sub-nav__list-item {
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, -webkit-transform 0.3s ease;
 }
+
 body.sub-nav-active .sub-nav__list-item:nth-child(0) {
     -webkit-transition-delay: 0.5s;
     transition-delay: 0.5s;
@@ -415,6 +429,31 @@ body.sub-nav-active .sub-nav__list-item:nth-child(4) {
 body.sub-nav-active .sub-nav__list-item:nth-child(5) {
     -webkit-transition-delay: 1s;
     transition-delay: 1s;
+}
+
+body.sub-nav-active .sub-nav__list-item:nth-child(6) {
+    -webkit-transition-delay: 1.1s;
+    transition-delay: 1.1s;
+}
+
+body.sub-nav-active .sub-nav__list-item:nth-child(7) {
+    -webkit-transition-delay: 1.2s;
+    transition-delay: 1.2s;
+}
+
+body.sub-nav-active .sub-nav__list-item:nth-child(8) {
+    -webkit-transition-delay: 1.3s;
+    transition-delay: 1.3s;
+}
+
+body.sub-nav-active .sub-nav__list-item:nth-child(9) {
+    -webkit-transition-delay: 1.4s;
+    transition-delay: 1.4s;
+}
+
+body.sub-nav-active .sub-nav__list-item:nth-child(10) {
+    -webkit-transition-delay: 1.5s;
+    transition-delay: 1.5s;
 }
 
 .sub-nav-active a.artist-list {
