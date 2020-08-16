@@ -18,7 +18,7 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=5000, blank=True)
     location = models.CharField(max_length=30, blank=True)
     is_artist = models.BooleanField('artist status', default=False)
-    is_customer = models.BooleanField('customer status', default=False)
+    is_customer = models.BooleanField('customer status', default=True)
     artist_image = models.ImageField(null=True, blank=True)
     artist_image_url = models.URLField(max_length=1024, null=True, blank=True)
     artist_link = models.URLField(max_length=1024, null=True, blank=True)
