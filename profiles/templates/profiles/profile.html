@@ -1,77 +1,76 @@
-{%extends 'base.html'%} {%load static%} {% block extra_css %}
+{% extends "base.html" %} {%load static%} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
-<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}" type="text/css" charset="utf-8" />
-{% endblock %}{% block page_header %}
+<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+{% endblock %} {% block page_header %}
 <div class="page-header"></div>
 {% endblock %} {%block content%}
-<div class="jumbotron my-3 m-md-3">
-    <div class="row justify-content-center">
-        <div class="col-6 col-lg-3 featured-artist-img"><img src="{{profile.artist_image.url}}" class="rounded-circle" alt="{{profile.full_name}}" /></div>
-        <div class="col-12 col-md-7 text-center text-lg-left">
-            <h1 class="text-uppercase">{{profile.full_name}}</h1>
-            <div class="card sm-container ">
-                <ul id="web-bar" class="text-center">
-                    {% if profile.artist_link%}<a href="{{profile.artist_link}}" target="_blank"
-                        ><li class="active" id="web"><strong>Website</strong></li></a
-                    >{%endif%} {% if profile.artist_insta%}<a href="{{profile.artist_insta}}" target="_blank"
-                        ><li class="active" id="insta"><strong>Instagram</strong></li></a
-                    >{%endif%} {% if profile.artist_deviant%}<a href="{{profile.artist_deviant}}" target="_blank"
-                        ><li class="active" id="deviant"><strong>DeviantArt</strong></li></a
-                    >{%endif%} {% if profile.artist_twitter%}<a href="{{profile.artist_twitter}}" target="_blank"
-                        ><li class="active" id="twitter"><strong>Twitter</strong></li></a
-                    >{%endif%}
-                </ul>
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center mt-0">
+        <div class="card px-0 pb-0 mb-3 col-11 col-lg-6" id="signup">
+            <div class="col-12">
+                <h1 class="my-5 mx-1 text-center text-uppercase">Account Management</h1>
             </div>
-            <h2 class="text-uppercase">{{profile.location}}</h2>
-            <p class="">{{profile.bio}}</p>
-           
+            <div class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                <!-- fieldsets -->
+                <div class="align-self-center">
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Account</strong></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <p class="text-muted">Order History</p>
+                    <div class="order-history table-responsive">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Order Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                            <li class="small">
+                                                 {{ item.artwork.title|truncatechars:29 }} |<span class="text-muted"> {{ item.artwork.artist }} </span>| {{ item.artwork.medium }} x {{ item.quantity }}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>${{ order.vat_total }}</td>
+                                    <td>${{ order.grand_total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
+                        <div class="wrap">
+                            <a class="slider-btn slider-btn-home ml-3" href="{% url 'home' %}">Home</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 my-3">
+                        <div class="wrap">
+                            <button class="slider-btn slider-btn-signup text-nowrap" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-{%for art in artworks%}
-{{artwork.artist}}{%endfor%}{{profile.user_id}}
-    <main class="page-content">
-    
-        {%for art in artworks%} {%if art.sold is False %}
-        <a href="{%url 'art_detail' art.id%}">
-            <span class="badge badge-secondary price-tag">£{{art.price|floatformat:"0"}}</span>
-            <div class="card card-fade">
-                <!-- add background image based on  -->
-                <div class="card-fade card-bg" style="background-image: url({{art.image.url}});">
-                    <div class="content">
-                        <h2 class="title">{{art.title|truncatechars:95}}</h2>
-                        <p class="copy">{{art.artist}}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {%else %} 
-        <a href="{%url 'art_detail' art.id%}">
-            <span class="badge badge-secondary price-tag">SOLD OUT</span>
-            <div class="card card-fade sold">
-                <!-- add background image based on  -->
-                <div class="card-bg" style="background-image: url({{art.image.url}});">
-                    <div class="content">
-                        <h2 class="title">{{art.title|truncatechars:95}}</h2>
-                        <p class="copy">{{art.artist}}</p>
-                    </div>
-                </div>
-            </div>
-        </a> 
-        
-        {%endif%} {%empty%}<p>There are no results. Currently the search does not search artists, however they are listed alphabetically in the menu.</p>{%endfor%}
-    </main>
-    <div class="top-button shadow-sm rounded-0">
 
-
-<div class="jumbotron row my-5 m-md-5 justify-content-center">
-    <div class="wrap">
-        <a class="slider-btn slider-btn-more-art" href="{% url 'gallery'%}">More art</a>
-    </div>
-</div>
-
-<a class="top-link d-flex h-100">
-<i class="fas fa-arrow-up text-black mx-auto my-auto"></i> 
-</a> 
-{%endblock%}
+{% endblock %}
