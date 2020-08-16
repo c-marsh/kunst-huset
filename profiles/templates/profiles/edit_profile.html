@@ -1,7 +1,7 @@
 {% extends "base.html" %} {%load static%} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
-<link rel="stylesheet" href="{% static 'css/sign_in.css' %}" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}" type="text/css" charset="utf-8" />
 {% endblock %} {% block page_header %}
 <div class="page-header">
 </div>
@@ -12,7 +12,7 @@
             <div class="col-12">
                 <h1 class="my-5 mx-1 text-center text-uppercase">Edit Profile Details</h1>
             </div>
-            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            <form class="profile-form" id="profile-form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
 
                 <!-- fieldsets -->
@@ -22,9 +22,10 @@
                     </ul>
                 
                 </div>
-                <fieldset>
+                <fieldset class="mx-auto">
                     {{ form|crispy }} 
-                    <div class="row justify-content-around">
+                    <hr>
+                    <div class="row justify-content-around mt-3">
                         <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
                             <div class="wrap">
                                 <a class="slider-btn slider-btn-home ml-3" href="{% url 'home' %}">Home</a>
@@ -42,4 +43,8 @@
     </div>
 </div>
 
+{% endblock %}
+{%block postloadjs%}
+{{block.super}}
+<script src="{%url static 'profiles/js/profiles.js'"></script>
 {% endblock %}
