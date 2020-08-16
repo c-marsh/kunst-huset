@@ -56,7 +56,7 @@ def edit_profile(request, user_id):
     return render(request, template, context)
 
 @login_required
-def edit_artist_profile(request, user_id):
+def edit_artist(request, user_id):
     """ Edit artist profile details"""
     profile = get_object_or_404(UserProfile, user_id=request.user)
 
@@ -70,7 +70,7 @@ def edit_artist_profile(request, user_id):
     else:
         form = ArtistForm(instance=profile)
 
-    template = 'profiles/edit_profile.html'
+    template = 'profiles/edit_artist.html'
     context = {
         'form': form,
         'profile': profile,
@@ -93,7 +93,7 @@ def edit_profile_type(request, user_id):
     else:
         form = SelectorForm(instance=profile)
 
-    template = 'profiles/edit_profile.html'
+    template = 'profiles/edit_selector.html'
     context = {
         'form': form,
         'profile': profile,
