@@ -1,1 +1,1 @@
-web: gunicorn kunst_huset.wsgi.py:application --preload
+web: gunicorn kunst_huset.wsgi.py:application 
