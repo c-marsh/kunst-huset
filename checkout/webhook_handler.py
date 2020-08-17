@@ -18,6 +18,23 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
+    def _email_confirmation(self, order):
+        """Send the user a confirmation email"""
+        customer_email = order.email
+        subject = render_to_string(
+            'checkout/email_confirmation_templates/email_subject.txt',
+            {'order': order})
+        body = render_to_string(
+            'checkout/email_confirmation_templates/email_body_copy.txt',
+            {'order': order})
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email]
+        )
+
     def handle_payment_intent_succeeded(self, event):
         """
         Handle a successful payment webhook event
@@ -51,7 +68,6 @@ class StripeWH_Handler:
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
-
         # check 5 times, 1 second apart if the order exists before creating
         # an instance from the webhook to prevent payment and no instance
         # of the order.
@@ -79,6 +95,7 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            self._email_confirmation(order)
             return HttpResponse(
                 content=(f'Webhook received: {event["type"]} | SUCCESS: '
                          'Verified order already in database'),
@@ -114,6 +131,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+        self._email_confirmation(order)
         return HttpResponse(
             content=(f'Webhook received: {event["type"]} | SUCCESS: '
                      'Created order in webhook'),
