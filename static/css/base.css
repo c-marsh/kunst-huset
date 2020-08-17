@@ -79,7 +79,7 @@ body {
     background-color: #000;
 }
 .drop-down-container {
-    height: 12.7%;
+    height: 9.8%;
     width: 90%;
     left: 160%;
     margin-top: 5px;
@@ -139,7 +139,7 @@ body {
     text-decoration: none;
     background-color: transparent;
     position: relative;
-    top: 12px;
+    top: 5px;
     left: 10px;
 }
 .the-bass.dropped .drop-down-container {
@@ -178,6 +178,26 @@ body {
 .the-bass.dropped .drop-down-container:nth-child(8) {
     -webkit-transition: 0.3s ease, left 0.4s 0.82s ease;
     transition: 0.3s ease, left 0.4s 0.82s ease;
+}
+
+.the-bass.dropped .drop-down-container:nth-child(9) {
+    -webkit-transition: 0.3s ease, left 0.4s 0.88s ease;
+    transition: 0.3s ease, left 0.4s 0.88s ease;
+}
+
+.the-bass.dropped .drop-down-container:nth-child(10) {
+    -webkit-transition: 0.3s ease, left 0.4s 0.94s ease;
+    transition: 0.3s ease, left 0.4s 0.94s ease;
+}
+
+.the-bass.dropped .drop-down-container:nth-child(11) {
+    -webkit-transition: 0.3s ease, left 0.4s 1.0s ease;
+    transition: 0.3s ease, left 0.4s 1.0s ease;
+}
+
+.the-bass.dropped .drop-down-container:nth-child(12) {
+    -webkit-transition: 0.3s ease, left 0.4s 1.06s ease;
+    transition: 0.3s ease, left 0.4s 1.06s ease;
 }
 /* hamburgers */
 .menu-button-label2 {
