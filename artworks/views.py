@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Artwork, Category
+from .forms import ArtworkForm
 # Create your views here.
 
 
@@ -74,4 +75,13 @@ def art_detail(request, art_id):
         'artwork': artwork,
     }
 
+    return render(request, template, context)
+
+def add_art(request):
+    """Add Artworks"""
+    form = ArtworkForm()
+    template = 'artworks/add_art.html'
+    context = {
+        'form': form,
+    }
     return render(request, template, context)
