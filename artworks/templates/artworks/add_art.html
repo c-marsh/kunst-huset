@@ -3,8 +3,7 @@
 
 <link rel="stylesheet" href="{% static 'artworks/css/artworks.css' %}" type="text/css" charset="utf-8" />
 {% endblock %} {% block page_header %}
-<div class="page-header">
-</div>
+<div class="page-header"></div>
 {% endblock %} {%block content%}
 <div class="container-fluid justify-content-center">
     <div class="row justify-content-center mt-0">
@@ -20,11 +19,11 @@
                     <ul id="progressbar">
                         <li class="active" id="art-man"><strong>Art Management</strong></li>
                     </ul>
-                
                 </div>
                 <fieldset class="mx-auto">
-                    {{ form|crispy }} 
-                    <hr>
+                    {{ form| crispy }}
+
+                    <hr />
                     <div class="row justify-content-around mt-3">
                         <div class="col-12 col-md-6 col-lg-3 ml-3 my-3">
                             <div class="wrap">
@@ -43,8 +42,7 @@
     </div>
 </div>
 
-{% endblock %}
-{%block postloadjs%}
-{{block.super}}
+{% endblock %} {%block postloadjs%} {{block.super}}
 <script src="{%url static 'artworks/js/artworks.js'"></script>
+
 {% endblock %}
