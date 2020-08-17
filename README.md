@@ -176,20 +176,95 @@ This provides navigation of the account and purchasing related elements and disp
 
 # Bugs
 ## Major
-User info not saving/updating from their pages
-Poor Database structure - Artist DB may be obsolete
-Order history not saving to profiles
-checkout does not update inventory of stock
+ - ~~Poor Database structure - Artist DB may be obsolete~~
+ - ~~Order history not saving to profiles~~
+ - checkout does not update inventory of stock
 
 ## Minor
-Artists disappear from menu on some pages
-
+- Artists disappear from menu on some pages
 
 ### Cosmetic
-Buttons on some form pages too close to text
+- Artist fields for adding art displaying all users not just artists
+- Buttons on some form pages too close to text
+- Make right hand menu bass responsive to number of menu items.
+- image upload fields need styling
+
+
+# Future Developement
+ - Show all art from an artist on their public profile
+ - Sign-up including more profile data
+ - Implement better use of the is_artist/is_customer fields to streamline menus.
+ - Better gallery filtering including filtering out sold pieces.
 
 
 
+# Deployment
+This website was deployed on Heroku and can be found at https://kunst-huset.herokuapp.com/
+
+## Heroku Deployment
+First login and create your app on the Heroku site, and select a region. Then in the app settings, under ‘Config Vars’ you can should set the following Stripe keys which can be easily found on their dashboard after signing up.
+- STRIPE_WH_SECRET as your WH key
+- STRIPE_SECRET_KEY as the Stripe secret key 
+- STRIPE_PUBLIC_KEY for the Stripe Public Key
+
+Under the resources start a PostGres Database
+
+
+Then create a ‘requirements’ file, which lists all the dependencies by typing in the following command in the bash terminal:
+
+```
+pip3 freeze > -v requirements.txt
+```
+
+Copy the postgres URL from Heroku config vars into the placeholder: ```dj_database_url.parse(os.environ.get(POSTGRES URL))```
+
+Run migrations to the new database with ```python3 manage.py migrate```
+
+You will then need to create a ‘Procfile’, which lists the process types in an application.:
+```
+Echo web: python run. py > Procfile
+```
+
+This should then be commited to your repository before Pushing to Heroku:
+```
+Git add . > git commit -m “Setup Heroku” > git push
+```
+
+This will update your repository.
+
+
+Back on the Heroku site, under 'Deploy' , select Select 'Heroku Git'- which allows CLI interaction from the IDE terminal and use the following commands:
+```
+$ heroku login 
+Press any key except q and (key in your credentials in the preview window)
+$ git add .
+$ git commit -am “initial commit to heroku”
+$ git push Heroku master
+```
+
+
+On Heroku, select ‘Open app’ to see your live app.
+
+## Local Deployment
+This can be done by clicking ‘clone or download’ on my GitHub Repository.
+
+Then install all the dependencies listed in the requirements.txt file
+
+Create a .gitignore file containing, to prevent sensitive information being revealed in commits.
+```
+env.py
+__pychache__
+```
+Then create an ‘env.py’ file in the root directory with the following code:
+```
+import os
+
+os.environos.environ["STRIPE_PUBLIC_KEY"] = key
+os.environ["STRIPE_SECRET_KEY"] = key
+os.environ["STRIPE_WH_SECRET"] = key
+```
+
+For the rest reference the Django documentation.
 
 
 
