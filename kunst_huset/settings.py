@@ -123,7 +123,7 @@ WSGI_APPLICATION = 'kunst_huset.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("POSTGRESS"))
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 else:
     DATABASES = {
