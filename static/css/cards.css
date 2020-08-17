@@ -12,10 +12,7 @@ body {
     height: 100%;
 }
 
-.page-content {
-    display: grid;
-    place-items: center;
-}
+
 
 .page-content {
     display: grid;
@@ -24,6 +21,16 @@ body {
     max-width: 1024px;
     margin: 0 auto;
 }
+
+.page-content, .page-content a {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available; 
+}
+
 @media (min-width: 768px) {
     .page-content {
         grid-template-columns: repeat(2, 1fr);
