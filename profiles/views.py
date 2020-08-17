@@ -7,6 +7,7 @@ from .models import UserProfile
 
 from artworks.models import Artwork, Artists
 
+
 def public_profile(request, user):
     """ A view to individual profiles"""
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -16,23 +17,26 @@ def public_profile(request, user):
     context = {
         'profile': profile,
         'artworks': artworks
-        
     }
     return render(request, template, context)
+
 
 @login_required
 def profile(request):
     """ A view to individual profiles"""
     profile = get_object_or_404(UserProfile, user=request.user)
     artworks = Artwork.objects.all()
+    orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
         'artworks': artworks,
+        'orders': orders,
         'account_management': True
     }
     return render(request, template, context)
+
 
 @login_required
 def edit_profile(request, user_id):
@@ -45,7 +49,8 @@ def edit_profile(request, user_id):
             form.save()
             messages.success(request, 'Details updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserForm(instance=profile)
 
@@ -58,6 +63,7 @@ def edit_profile(request, user_id):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_artist(request, user_id):
     """ Edit artist profile details"""
@@ -69,7 +75,8 @@ def edit_artist(request, user_id):
             form.save()
             messages.success(request, 'Public profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = ArtistForm(instance=profile)
 
@@ -82,6 +89,7 @@ def edit_artist(request, user_id):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_selector(request, user_id):
     """ Edit if an account is artist or customer"""
@@ -93,7 +101,8 @@ def edit_selector(request, user_id):
             form.save()
             messages.success(request, 'Profile selector updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = SelectorForm(instance=profile)
 
@@ -106,6 +115,7 @@ def edit_selector(request, user_id):
 
     return render(request, template, context)
 
+
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -114,7 +124,7 @@ def order_history(request, order_number):
         'A confirmation email was sent on the order date.'
     ))
 
-    template = 'checkout/checkout_success.html'
+    template = 'checkout/checkout_completed.html'
     context = {
         'order': order,
         'from_profile': True,

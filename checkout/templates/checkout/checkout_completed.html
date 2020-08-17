@@ -12,11 +12,11 @@
             <h1 class="my-5 mx-1 text-center text-lg-left">Confirmation</h1>
         </div>
     </div>
-    
+
     <div class="row justify-content-around text-center text-lg-left">
         <div class="align-self-center col-12 col-lg-4">
-        <p>A confirmation email has been sent to <strong>{{order.email}}</strong> for your records.</p>
-        <hr>
+            <p>A confirmation email has been sent to <strong>{{order.email}}</strong> for your records.</p>
+            <hr />
             <h6>Order No: <strong>{{ order.order_number }}</strong></h6>
             <h6>Order Date: {{ order.date }}</h6>
             <hr />
@@ -105,13 +105,18 @@
     {%endfor%}
     <!-- /Bag contents -->
 </div>
-
-
+{% if from_profile %}
+<div class="jumbotron row my-5 m-md-5 justify-content-center">
+    <div class="wrap">
+        <a class="slider-btn slider-btn-back" href="{%url 'profile'%}">Back</a>
+    </div>
+</div>
+{%else%}
 <div class="jumbotron row my-5 m-md-5 justify-content-center">
     <div class="wrap">
         <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
     </div>
 </div>
+{%endif%}
 
-
-{%endblock%} 
+{%endblock%}

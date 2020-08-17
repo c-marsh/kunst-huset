@@ -53,8 +53,6 @@ class Order(models.Model):
 
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        self.grand_total = self.order_total + self.delivery_cost
-        self.vat_total = (self.grand_total / 100) * (settings.VAT)
         if self.order_total < settings.FIXED_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * Decimal(
                 settings.STANDARD_DELIVERY_PERCENTAGE / 100)
@@ -62,6 +60,8 @@ class Order(models.Model):
             self.delivery_cost = 200 + \
                 Decimal((self.order_total/500) *
                         settings.STANDARD_DELIVERY_PERCENTAGE)
+        self.grand_total = self.order_total + self.delivery_cost
+        self.vat_total = (self.grand_total / 100) * (settings.VAT)
         self.save()
 
     def save(self, *args, **kwargs):

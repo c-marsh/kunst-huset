@@ -18,16 +18,17 @@
                         <li class="active" id="account"><strong>Account</strong></li>
                     </ul>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12">
                     <p class="text-muted">Order History</p>
                     <div class="order-history table-responsive">
                         <table class="table table-sm table-borderless">
                             <thead>
-                                <tr>
-                                    <th>Order Number</th>
+                                <tr class="text-uppercase">
+                                    <th>Order No.</th>
                                     <th>Date</th>
                                     <th>Items</th>
-                                    <th>Order Total</th>
+                                    <th>VAT</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,21 +36,21 @@
                                 <tr>
                                     <td>
                                         <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
+                                            {{ order.order_number|truncatechars:9 }}
                                         </a>
                                     </td>
-                                    <td>{{ order.date }}</td>
+                                    <td>{{ order.date|date:"SHORT_DATE_FORMAT" }}</td>
                                     <td>
                                         <ul class="list-unstyled">
                                             {% for item in order.lineitems.all %}
                                             <li class="small">
-                                                 {{ item.artwork.title|truncatechars:29 }} |<span class="text-muted"> {{ item.artwork.artist }} </span>| {{ item.artwork.medium }} x {{ item.quantity }}
+                                                 {{ item.artwork.title|truncatechars:29 }} <br><span class="text-muted"> {{ item.artwork.artist }} </span><br> {{ item.artwork.medium|truncatechars:25 }} x {{ item.quantity }}
                                             </li>
                                             {% endfor %}
                                         </ul>
                                     </td>
-                                    <td>${{ order.vat_total }}</td>
-                                    <td>${{ order.grand_total }}</td>
+                                    <td>£{{ order.vat_total }}</td>
+                                    <td>£{{ order.grand_total }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
