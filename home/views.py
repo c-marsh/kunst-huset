@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from artworks.models import Category#, Artists
+from artworks.models import Category
 
 
 # Create your views here.

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, HttpResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
-from artworks.models import Category, Artwork#, Artists
+from artworks.models import Category, Artwork
 
 
 def remove_basket(request, item_id):

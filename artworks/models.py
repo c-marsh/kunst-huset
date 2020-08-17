@@ -19,17 +19,6 @@ class Category(models.Model):
         return self.friendly_name
 
 
-# class Artists(models.Model):
-#     class Meta:
-#         # Fix display in Admin
-#         verbose_name_plural = 'Artists'
-#     name = models.CharField(max_length=254)
-#     artist_id = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.name
-
-
 class Artwork(models.Model):
     category = models.ForeignKey('Category',
                                  null=True, blank=True,

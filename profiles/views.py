@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import UserForm, ArtistForm, SelectorForm
 from .models import UserProfile
 
-from artworks.models import Artwork#, Artists
+from artworks.models import Artwork
 
 
 def public_profile(request, user):

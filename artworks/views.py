@@ -2,14 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Artwork, Category#, Artists
+from .models import Artwork, Category
 # Create your views here.
 
 
 def gallery(request):
     # Shows gallery view of all art
     artworks = Artwork.objects.all()
-    # artists = artworks.art
     categories = Category.objects.all()
     query = None
     category = None
@@ -55,7 +54,6 @@ def gallery(request):
     sorting = f'{sort}_{direction}'
 
     context = {
-        # 'artists': artists,
         'categories': categories,
         'artworks': artworks,
         'search_string': query,
@@ -68,13 +66,10 @@ def gallery(request):
 def art_detail(request, art_id):
     # Shows detailed view of specific art piece
     artwork = get_object_or_404(Artwork, pk=art_id)
-    # artists = Artists.objects.all()
     categories = Category.objects.all()
-
     template = 'artworks/art_detail.html'
 
     context = {
-        # 'artists': artists,
         'categories': categories,
         'artwork': artwork,
     }
