@@ -99,7 +99,8 @@ class SelectorForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'is_artist': '<br>Tick above if this account to sell work. This will make your profile publicly available.',
+            'is_artist': '<br>Tick above if this account to sell work.' +
+            'This will make your profile publicly available.',
             'is_customer': 'Tick above if this account to purchase art'
         }
         self.fields['is_artist'].widget.attrs['autofocus'] = True
