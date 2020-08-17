@@ -136,7 +136,7 @@
 {%if basket_items%} 
 <div class="page-content container">{%for each in basket_items%}
     <!-- Bag contents -->
-    <div>
+    <div class="w-100">
         <span class="badge badge-secondary price-tag">QTY: {{each.quantity}}</span>
         <span class="badge badge-secondary price-tag">£{{each.artwork.price|calc_subtotal:each.quantity|floatformat:"0"}}</span>
         <div class="card-fade">
