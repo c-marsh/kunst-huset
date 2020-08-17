@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+
 """
 Extend Allauth authentication
 """
@@ -39,7 +40,6 @@ class UserProfile(models.Model):
         return self.full_name
 
 
-
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
@@ -49,3 +49,8 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+
+# Create a UserProfile instance on creation of a profile
+post_save.connect(create_or_update_user_profile, sender=User)
+
