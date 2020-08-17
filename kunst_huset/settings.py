@@ -15,7 +15,7 @@ from pathlib import Path
 import os
 import dj_database_url
 if os.path.exists("env.py"):
-    import env 
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -30,7 +30,7 @@ SECRET_KEY = 'gez(%+y0yu_kbb4y+^a-0c+zq6%bv=1ibh^%sv18ic^*+j)zl*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kunst-huset.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -121,17 +121,17 @@ WSGI_APPLICATION = 'kunst_huset.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# if 'DATABASE_URL' in os.environ:
-# DATABASES = {
-#     'default': dj_database_url.parse("")
-# }
-#     else:
-DATABASES = {
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("POSTGRESS"))
+}
+else:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            }
-        }
+    }
+}
 
 
 # Password validation
@@ -203,10 +203,10 @@ LOGIN_REDIRECT_URL = '/'
 
 # Stripe
 STANDARD_DELIVERY_PERCENTAGE = 20  # Delivery percentage
-FIXED_DELIVERY_THRESHOLD = 1000  # Set a threshold at which to apply a fixed rate/change in delivery calc
+# Set a threshold at which to apply a fixed rate/change in delivery calc
+FIXED_DELIVERY_THRESHOLD = 1000
 VAT = 20  # Sales tax percentage
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PK = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SK = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH = os.environ.get('STRIPE_WH_SECRET', '')
-

@@ -212,7 +212,7 @@ Under the resources start a PostGres Database
 Then create a ‘requirements’ file, which lists all the dependencies by typing in the following command in the bash terminal:
 
 ```
-pip3 freeze > -v requirements.txt
+pip3 freeze > requirements.txt
 ```
 
 Copy the postgres URL from Heroku config vars into the placeholder: ```dj_database_url.parse(os.environ.get(POSTGRES URL))```
@@ -223,16 +223,25 @@ Then use ```python3 manage.py loaddata categories```. Due to the artworks depend
 
 Finally create a superuser with ```python3 manage.py createsuperuser```.
 
+This is now deployed to the Heroku PostGres database.
 
-You will then need to create a ‘Procfile’, which lists the process types in an application.:
 ```
-Echo web: python run. py > Procfile
+pip3 install gunicorn
+pip3 freeze > requirements.txt
 ```
 
+Will install gunicorn which acts as a webserver.
+
+You will then need to create a ‘Procfile’, which lists the process types in an application:
+
+```
+echo web: gunicorn kunst-huset.wsgi:application > Procfile
+```
 This should then be commited to your repository before Pushing to Heroku:
 ```
 Git add . > git commit -m “Setup Heroku” > git push
 ```
+Add the app to ALLOWED_HOSTS in settings.py
 
 This will update your repository.
 
@@ -241,6 +250,7 @@ Back on the Heroku site, under 'Deploy' , select Select 'Heroku Git'- which allo
 ```
 $ heroku login 
 Press any key except q and (key in your credentials in the preview window)
+heroku config:set DISABLE_COLLECTSTATIC=1 --app kunst-huset
 $ git add .
 $ git commit -am “initial commit to heroku”
 $ git push Heroku master
