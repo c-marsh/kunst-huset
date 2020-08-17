@@ -30,7 +30,7 @@ SECRET_KEY = 'gez(%+y0yu_kbb4y+^a-0c+zq6%bv=1ibh^%sv18ic^*+j)zl*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kunst-huset.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['cmh-kh.herokuapp.com', 'localhost']
 
 
 # Application definition
