@@ -32,6 +32,7 @@ This project uses Django to build a site for artists to sell art. It works on pr
 | 20            	|   Artist     	|   View a history of items sold                    	|                                                                      	|
 </details>
 
+
 ## Design
 The site is designed using a minimalist colour scheme. This is to allow the art to stand out from the site, while the site primarily uses smooth movements of menus and cards to complement the products on sale.
 
