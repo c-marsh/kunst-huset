@@ -209,7 +209,6 @@ First login and create your app on the Heroku site, and select a region. Then in
 
 Under the resources start a PostGres Database
 
-
 Then create a ‘requirements’ file, which lists all the dependencies by typing in the following command in the bash terminal:
 
 ```
@@ -219,6 +218,11 @@ pip3 freeze > -v requirements.txt
 Copy the postgres URL from Heroku config vars into the placeholder: ```dj_database_url.parse(os.environ.get(POSTGRES URL))```
 
 Run migrations to the new database with ```python3 manage.py migrate```
+
+Then use ```python3 manage.py loaddata categories```. Due to the artworks dependencies on user profiles, it can't be migrated across.
+
+Finally create a superuser with ```python3 manage.py createsuperuser```.
+
 
 You will then need to create a ‘Procfile’, which lists the process types in an application.:
 ```
