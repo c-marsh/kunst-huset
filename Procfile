@@ -1,1 +1,1 @@
-web: gunicorn kunst_huset.wsgi
+web: gunicorn kunst_huset.wsgi:application
