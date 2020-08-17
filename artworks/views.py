@@ -97,9 +97,9 @@ def add_art(request):
     if request.method == 'POST':
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
-            tester = form.save()
+            artwork = form.save()
             messages.success(request, 'Successfully added art!')
-            return redirect(reverse('art_detail', args=[tester.id]))
+            return redirect(reverse('art_detail', args=[artwork.id]))
         else:
             messages.error(
                 request, 'Failed to add product. Please ensure the' +
@@ -110,5 +110,30 @@ def add_art(request):
     template = 'artworks/add_art.html'
     context = {
         'form': form,
+    }
+    return render(request, template, context)
+
+
+def edit_art(request, art_id):
+    """Edit Artworks"""
+    artwork = get_object_or_404(Artwork, id=art_id)
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST, request.FILES, instance=artwork)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The details of this listing have been updated!')
+            return redirect(reverse('art_detail', args=[artwork.id]))
+        else:
+            messages.error(
+                request, 'Failed to add product. Please ensure the' +
+                         'form is valid.')
+    else:
+        form = ArtworkForm(instance=artwork)
+        messages.info(request, f'You are editing {artwork.title}')
+
+    template = 'artworks/edit_art.html'
+    context = {
+        'form': form,
+        'artwork': artwork,
     }
     return render(request, template, context)
