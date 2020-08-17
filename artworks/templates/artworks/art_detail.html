@@ -5,6 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-3 featured-art-img">
             <a href="{{ artwork.image.url }}" target="_blank"><img class="align-self-center mt-3" src="{{artwork.image.url}}" alt="{{artwork.title}}" /></a>
+            {% if request.user.is_superuser %}
+            <div class="row">
+                <div class="col-12 text-center">
+                    <small>
+                        <a class="text-uppercase text-muted" href="{% url 'edit_art' artwork.id %}">Edit</a> |
+                        <a class="text-uppercase text-muted" href="{% url 'delete_art' artwork.id %}">Delete</a>
+                    </small>
+                </div>
+            </div>
+
+            {% endif %}
         </div>
 
         <div class="col-12 col-md-7">

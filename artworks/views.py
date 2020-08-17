@@ -137,3 +137,11 @@ def edit_art(request, art_id):
         'artwork': artwork,
     }
     return render(request, template, context)
+
+
+def delete_art(request, art_id):
+    """Delete Artworks"""
+    artwork = get_object_or_404(Artwork, id=art_id)
+    artwork.delete()
+    messages.success(request, 'The listing has been deleted from the website!')
+    return redirect(reverse('gallery'))
