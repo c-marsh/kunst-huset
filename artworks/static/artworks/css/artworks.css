@@ -2,18 +2,18 @@ html {
     height: 100%;
 }
 
-#profile-form {
+#art-form {
     text-align: center;
     position: relative;
     margin-top: 20px;
 }
 
-#profile-form #id-save-info {
+#art-form #id-save-info {
     top: 6px;
     margin: 0px 5px 0px 0px;
 }
 
-#profile-form fieldset .form-card {
+#art-form fieldset .form-card {
     background: white;
     border: 0 none;
     border-radius: 0px;
@@ -24,7 +24,7 @@ html {
     position: relative;
 }
 
-#profile-form fieldset {
+#art-form fieldset {
     background: white;
     border: 0 none;
     border-radius: 0.5rem;
@@ -35,18 +35,18 @@ html {
     position: relative;
 }
 
-#profile-form fieldset:not(:first-of-type) {
+#art-form fieldset:not(:first-of-type) {
     display: none;
 }
 
-#profile-form fieldset .form-card {
+#art-form fieldset .form-card {
     text-align: left;
     color: #9e9e9e;
 }
 .StripeElement,
 .stripe-style-input,
-#profile-form input,
-#profile-form textarea {
+#art-form input,
+#art-form textarea {
     padding: 0px 8px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -62,8 +62,8 @@ html {
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active,
-#profile-form input:focus,
-#profile-form textarea:focus {
+#art-form input:focus,
+#art-form textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -87,8 +87,8 @@ html {
     color: #aab7c4;
 }
 
-#profile-form #id_is_artist,
-#profile-form #id_is_customer {
+#art-form #id_is_artist,
+#art-form #id_is_customer {
     padding: 0px 67px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;

@@ -14,6 +14,7 @@ class ArtworkAdmin(admin.ModelAdmin):
         'framed',
         'image',
         'id',
+        'pk'
     )
 
     ordering = ('artist',)

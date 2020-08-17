@@ -47,3 +47,8 @@ class Artwork(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_artist(self):
+        return self.artist
+
+

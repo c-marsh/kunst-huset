@@ -11,10 +11,23 @@ def gallery(request):
     # Shows gallery view of all art
     artworks = Artwork.objects.all()
     categories = Category.objects.all()
+    for art in artworks:
+        duplicate = art.artist
+
+    def Artist(duplicate):
+        final_list = []
+        for num in duplicate:
+            if num not in final_list:
+                final_list.append(num)
+        print(final_list)
+        return final_list
+
+
     query = None
     category = None
     sort = None
     direction = None
+    final_list = None 
 
     if request.GET:
         if 'sort' in request.GET:
@@ -23,8 +36,8 @@ def gallery(request):
             if sortkey == 'title':
                 sortkey = 'lower_title'
                 artworks = artworks.annotate(lower_title=Lower('title'))
-            # if sortkey == 'artist':
-            #     sortkey = 'artist__name'
+            if sortkey == 'final_list':
+                sortkey = 'final_list__name'
             if sortkey == 'category':
                 sortkey = 'category__name'
             if 'direction' in request.GET:
@@ -59,6 +72,7 @@ def gallery(request):
         'artworks': artworks,
         'search_string': query,
         'sorting': sorting,
+        'artists': final_list,
     }
 
     return render(request, 'artworks/gallery.html', context)
@@ -66,7 +80,7 @@ def gallery(request):
 
 def art_detail(request, art_id):
     # Shows detailed view of specific art piece
-    artwork = get_object_or_404(Artwork, pk=art_id)
+    artwork = get_object_or_404(Artwork, id=art_id)
     categories = Category.objects.all()
     template = 'artworks/art_detail.html'
 
@@ -77,9 +91,22 @@ def art_detail(request, art_id):
 
     return render(request, template, context)
 
+
 def add_art(request):
     """Add Artworks"""
-    form = ArtworkForm()
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST, request.FILES)
+        if form.is_valid():
+            tester = form.save()
+            messages.success(request, 'Successfully added art!')
+            return redirect(reverse('art_detail', args=[tester.id]))
+        else:
+            messages.error(
+                request, 'Failed to add product. Please ensure the' +
+                         'form is valid.')
+    else:
+        form = ArtworkForm()
+
     template = 'artworks/add_art.html'
     context = {
         'form': form,
