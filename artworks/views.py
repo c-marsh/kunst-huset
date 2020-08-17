@@ -2,14 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Artwork, Artists, Category
+from .models import Artwork, Category#, Artists
 # Create your views here.
 
 
 def gallery(request):
     # Shows gallery view of all art
     artworks = Artwork.objects.all()
-    artists = Artists.objects.all()
+    # artists = artworks.art
     categories = Category.objects.all()
     query = None
     category = None
@@ -23,8 +23,8 @@ def gallery(request):
             if sortkey == 'title':
                 sortkey = 'lower_title'
                 artworks = artworks.annotate(lower_title=Lower('title'))
-            if sortkey == 'artist':
-                sortkey = 'artist__name'
+            # if sortkey == 'artist':
+            #     sortkey = 'artist__name'
             if sortkey == 'category':
                 sortkey = 'category__name'
             if 'direction' in request.GET:
@@ -55,7 +55,7 @@ def gallery(request):
     sorting = f'{sort}_{direction}'
 
     context = {
-        'artists': artists,
+        # 'artists': artists,
         'categories': categories,
         'artworks': artworks,
         'search_string': query,
@@ -68,13 +68,15 @@ def gallery(request):
 def art_detail(request, art_id):
     # Shows detailed view of specific art piece
     artwork = get_object_or_404(Artwork, pk=art_id)
-    artists = Artists.objects.all()
+    # artists = Artists.objects.all()
     categories = Category.objects.all()
 
+    template = 'artworks/art_detail.html'
+
     context = {
-        'artists': artists,
+        # 'artists': artists,
         'categories': categories,
         'artwork': artwork,
     }
 
-    return render(request, 'artworks/art_detail.html', context)
+    return render(request, template, context)

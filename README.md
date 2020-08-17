@@ -179,9 +179,11 @@ This provides navigation of the account and purchasing related elements and disp
 User info not saving/updating from their pages
 Poor Database structure - Artist DB may be obsolete
 Order history not saving to profiles
+checkout does not update inventory of stock
 
 ## Minor
 Artists disappear from menu on some pages
+
 
 ### Cosmetic
 Buttons on some form pages too close to text

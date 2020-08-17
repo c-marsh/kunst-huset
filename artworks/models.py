@@ -1,5 +1,6 @@
 from django.db import models
 from profiles.models import UserProfile
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -18,23 +19,22 @@ class Category(models.Model):
         return self.friendly_name
 
 
-class Artists(models.Model):
-    name = models.CharField(max_length=254)
-    # artist_username = models.OneToOneField('UserProfile',
-    #                            null=True, blank=True,
-    #                            on_delete=models.SET_NULL)
+# class Artists(models.Model):
+#     class Meta:
+#         # Fix display in Admin
+#         verbose_name_plural = 'Artists'
+#     name = models.CharField(max_length=254)
+#     artist_id = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class Artwork(models.Model):
     category = models.ForeignKey('Category',
                                  null=True, blank=True,
                                  on_delete=models.SET_NULL)
-    artist = models.ForeignKey('Artists',
-                               null=True, blank=True,
-                               on_delete=models.SET_NULL)
+    artist = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     date = models.CharField(max_length=10, null=True, blank=True)
     title = models.CharField(max_length=254)
     description = models.TextField()

@@ -5,15 +5,15 @@ from django.contrib import messages
 from .forms import UserForm, ArtistForm, SelectorForm
 from .models import UserProfile
 
-from artworks.models import Artwork, Artists
+from artworks.models import Artwork#, Artists
 
 
 def public_profile(request, user):
     """ A view to individual profiles"""
-    profile = get_object_or_404(UserProfile, user=request.user)
+    profile = get_object_or_404(UserProfile, user=user_id)
     artworks = Artwork.objects.all()
 
-    template = 'profiles/profile.html'
+    template = 'profiles/public_profile.html'
     context = {
         'profile': profile,
         'artworks': artworks

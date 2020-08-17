@@ -76,10 +76,10 @@
                     {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item">
-                            <a href="{% url 'admin:index' %}" class="drop-down-btn">Admin</a>
+                            <a href="{% url 'admin:index' %}" class="drop-down-btn">Admin {{profiles.bio}}</a>
                         </div>
                     </div>
-                    {% endif %} {% if Profile.UserProfile.is_artist %}
+                    {% endif %} {% if Profile.UserProfile.is_artist is True %}
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="#" class="drop-down-btn">Add Art</a></div>
                     </div>
@@ -100,6 +100,9 @@
 
                     <div class="rela-block drop-down-container">
                         <div class="drop-down-item"><a href="{% url 'account_logout' %}" class="drop-down-btn">Logout</a></div>
+                    </div>
+                    <div class="rela-block drop-down-container">
+                        <div class="drop-down-item"><a href="{% url 'profile' %}" class="drop-down-btn">Order History</a></div>
                     </div>
                     {% else %}
                     <div class="rela-block drop-down-container">
@@ -137,8 +140,8 @@
                         </ul>
                         <!-- list of artists -->
                         <ul class="sub-nav__list">
-                            {%for artist in artists%}
-                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artist.name}}</a></li>
+                            {%for artwork.artist in artworks%}
+                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artwork.artist}}</a></li>
                             {%endfor%}
                         </ul>
                     </div>
