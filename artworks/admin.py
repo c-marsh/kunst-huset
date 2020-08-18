@@ -12,7 +12,6 @@ class ArtworkAdmin(admin.ModelAdmin):
         'qty',
         'sold',
         'framed',
-        'image',
         'id',
         'pk'
     )
