@@ -180,10 +180,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
     # Cache control
-    # AWS_S3_OBJECT_PARAMETERS = {
-    #     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-    #     'CacheControl': 'max-age=94608000',
-    # }
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
 
     AWS_STORAGE_BUCKET_NAME = "cmh-kh"
     AWS_S3_REGION_NAME = 'eu-west-2'
@@ -216,8 +216,7 @@ DEFAULT_FROM_EMAIL = 'kunst-huset@example.com'
 # Email verification/setup
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/profiles/edit_profile'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
