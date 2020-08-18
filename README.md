@@ -178,8 +178,14 @@ This provides navigation of the account and purchasing related elements and disp
 # Bugs
 ## Major
  - ~~Poor Database structure - Artist DB may be obsolete~~
+ 
  - ~~Order history not saving to profiles~~
- - checkout does not update inventory of stock
+
+ - While more items than inventory can't be added to a basket from the page, this could be added again by revisting the page. Ideally the basket should verify against the inventory of an item to prevent buying more than is in stock.
+
+ - Checkout does not update inventory of stock or show an update an item as sold if the inventory is sold out. Ideally this would happen from the payment webhook.
+
+ - Currently a user doesn't have to provide a name on signup. This populates the list or Artists with a lot of plank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated awy from without completing.). 
 
 ## Minor
 - Artists disappear from menu on some pages
@@ -198,6 +204,648 @@ This provides navigation of the account and purchasing related elements and disp
  - Better gallery filtering including filtering out sold pieces.
 
 
+# Testing
+
+**Issue Report **
+
+Site quality report for https://cmh-kh.herokuapp.com/ produced on Tuesday, August 18, 2020.
+
+**Category  Results**
+
+Overall Quality  ██████████  12 pages with quality issues
+
+Errors  ██████████  12 pages with broken links or other errors
+
+Accessibility  ██████████  12 pages with accessibility problems
+
+Compatibility  ██████████  0 pages with browser specific issues
+
+Search  ██████████  12 pages with search engine issues
+
+Standards  ██████████  12 pages have W3C standards issues
+
+Usability  ██████████  12 pages with usability issues
+
+Totals  34 pages and images checked
+
+
+
+<details>
+  <summary> Errors </summary>
+
+This section shows site quality issues, including broken links and server mis-configurations.
+
+<details>
+  <summary> Priority 1 </summary>
+
+1 issues on 12 pages 
+
+<details>
+
+  <summary><strike>This link is broken. The src or href is an empty string.</strike> FIXED</summary>
+
+href='' or src='' can cause unexpected effects such as traffic spikes or cookie corruption, and causes JavaScript error events to fire on Firefox.
+
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/> line 104\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 117\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 117\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 117\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 116\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 113\
+Link: Christopher Marsh-Hilfiker URL is empty.\
+<https://cmh-kh.herokuapp.com/basket/> line 116
+
+**Informative**
+
+These messages are for information only and do not indicate errors
+
+Spell checking was not enabled for this scan.
+
+If you want to check spelling, set the language using the Edit Scan command in OnDemand.
+
+<https://cmh-kh.herokuapp.com/> line 1
+
+</details>
+
+</details>
+
+</details>
+
+<details>
+
+  <summary> Accessibility </summary>
+
+This section shows accessibility issues, indicating problems for older users, people with disabilities or accessibility needs. Automated testing cannot detect all accessibility issues, so should be used alongside human testing.
+
+<details>
+  <summary> Level A</summary>
+
+6 issues on 12 pages
+
+<details>
+  <summary> All fieldset elements should be labeled with legend elements.</summary>
+
+
+The first child element inside a fieldset must be a legend element, which provides a label or description for the group. legend elements in other positions may be ignored.
+
+<https://cmh-kh.herokuapp.com/accounts/login/> line 146\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 147  
+
+Guideline: [WCAG 2.1 A H71](https://www.w3.org/TR/WCAG-TECHS/H71.html) [Section 508 (2017) A H71](https://www.w3.org/TR/WCAG-TECHS/H71.html)
+
+</details>
+
+<details>
+  <summary>Each a element must contain text or an img with an alt attribute.</summary>
+
+A link name allows screen readers to voice what the links does. If there is no link text or the `alt` text is blank, screen readers have nothing to read, so read out the URL instead. To add a name do one of the following:\
+- Add text between thea\
+- element start and end tags\
+- Add anaria-label\
+- attribute\
+- Add anaria-labelledby\
+- attribute\
+- Add an\
+img alt\
+- attribute if the link contains an\
+img\
+- element
+
+<https://cmh-kh.herokuapp.com/artworks/> line 141\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 141\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 141\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 141\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 141\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 141  
+
+Guideline: [WCAG 2.1 A F89](https://www.w3.org/TR/WCAG-TECHS/F89.html) [Section 508 (2017) A F89](https://www.w3.org/TR/WCAG-TECHS/F89.html)
+</details>
+
+<details>
+  <summary>HTML form control has no accessible name.</summary>
+
+A label (or name) linked to the control allows screen readers to voice the label correctly when reading the control. To add a label do one of the following:\
+- Use alabel\
+- element with thefor\
+- attribute set to the ID of the form control\
+- Wrap alabel\
+- element around the form control\
+- Add atitle\
+- attribute\
+- Add anaria-label\
+- attribute\
+- Add an\
+aria-labelledby\
+- attribute
+
+<https://cmh-kh.herokuapp.com/accounts/login/> line 57\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 57\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 57\
+<https://cmh-kh.herokuapp.com/artworks/> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 56 162 171\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 53 156\
+<https://cmh-kh.herokuapp.com/basket/> line 56  
+
+Guideline: [WCAG 2.1 A F68](https://www.w3.org/TR/WCAG20-TECHS/F68.html) [Section 508 (2017) A F68](https://www.w3.org/TR/WCAG20-TECHS/F68.html)
+
+</details>
+
+<details>
+  <summary>Some pages have the same title, so the title cannot be used to distinguish pages.</summary>
+
+Change the title elements so they are unique for each page.
+
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 44\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/> .\
+<https://cmh-kh.herokuapp.com/basket/> line 47  
+
+Guideline: [WCAG 2.1 A F25](https://www.w3.org/TR/WCAG20-TECHS/F25.html) [Section 508 (2017) A F25](https://www.w3.org/TR/WCAG20-TECHS/F25.html)
+
+</details>
+
+<details>
+  <summary>The label element is blank.</summary>
+
+Add text to the label describing the associated control.
+
+<https://cmh-kh.herokuapp.com/> line 33\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 58\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 58\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 58\
+<https://cmh-kh.herokuapp.com/artworks/> line 57\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 57\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 57\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 57\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 57\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 57\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 54\
+<https://cmh-kh.herokuapp.com/basket/> line 57  
+
+Guideline: [WCAG 2.1 A 4.1.2](https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html) [Section 508 (2017) A 4.1.2](https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html)
+
+</details>
+
+<details>
+  <summary><strike>This button element is empty and has no accessible name.</strike> FIXED</summary>
+
+A programmatically determined name allows screen readers to tell users what the control does. To add a name do one of the following:\
+- Add text between thebutton\
+- start and end tags\
+- Add atitle\
+- attribute\
+- Add anaria-label\
+- attribute\
+- Add anaria-labelledby\
+- attribute\
+- Add an\
+img alt\
+- attribute if the button contains an\
+img\
+- element
+
+<https://cmh-kh.herokuapp.com/artworks/> line 156\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 156\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 156\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 156\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 156\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 156\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 152 158  
+
+Guideline: [WCAG 2.1 A 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html) [Section 508 (2017) A 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+
+</details>
+
+</details>
+
+<details>
+  <summary>Level AA</summary>
+
+2 issues on 1 pages
+
+<details>
+  <summary>Ensure that text and background colors have enough contrast.</summary>
+
+Some users find it hard to read light gray text on a white background, dark gray text on a black background and white text on a red background.\
+- The contrast ratio should be 3.0 or more for 18 point text, or larger\
+- The contrast ratio should be 3.0 or more for 14 point bold text, or larger\
+- The contrast ratio should be 4.5 or more for all other text
+
+The text color to background color contrast ratio is:\
+3.14 with color: rgb(108,117,125);background-color: rgb(40,40,40);font-size: 16.50pt;font-weight: 400;\
+<https://cmh-kh.herokuapp.com/> line 133  
+
+Guideline: [WCAG 2.1 AA 1.4.3](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) [Section 508 (2017) AA 1.4.3](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+
+</details>
+
+<details>
+  <summary>Provide information about the general layout of a site using a site map or table of contents.</summary>
+
+You should provide a link labeled 'Site Map' or 'Sitemap' or the equivalent in your language, on every page.
+
+<https://cmh-kh.herokuapp.com/> line 1  
+
+Guideline: [WCAG 2.1 AA 2.4.5](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-mult-loc.html) [Section 508 (2017) AA 2.4.5](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-mult-loc.html)
+</details>
+
+</details>
+
+</details>
+
+
+<details>
+  <summary>Compatibility</summary>
+
+This section shows pages that exhibit browser-specific behavior, or trigger browser bugs.
+
+</details>
+
+<details>
+  <summary>Search</summary>
+
+This section shows search engine guideline violations, and pages that don't comply with search optimization best practices.
+
+<details>
+  <summary>Priority 1</summary>
+
+2 issues on 2 pages
+
+<details>
+  <summary>
+Offer an HTML site map to your users with links that point to the important parts of your site. Links embedded in menus, list boxes, and similar elements are not accessible to web crawlers unless they appear in your site map. If the site map is larger than 100 or so links, you may want to break the site map into separate pages.</summary>
+
+<https://cmh-kh.herokuapp.com/> line 1  
+
+Guideline: [Google](https://www.google.com/webmasters/guidelines.html) [Bing](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a)
+</details>
+
+<details>
+  <summary>
+This page has no h1 element, which violates Bing webmaster guidelines.</summary>
+
+Add an h1 element just before the main content describing the page.
+
+<https://cmh-kh.herokuapp.com/artworks/2/> line 47  
+
+Guideline: [Bing](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a)
+</details>
+
+</details>
+
+<details>
+  <summary>Priority 2</summary>
+
+1 issues on 10 pages
+
+<details>
+  <summary>This page title is not unique. Assign unique, descriptive title elements to every page.</summary>
+
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 44\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/basket/> line 47  
+
+Guideline: [Google](https://support.google.com/webmasters/bin/answer.py?answer=35624) [Bing](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a)
+</details>
+
+</details>
+
+<details>
+  <summary>Priority 3</summary>
+
+1 issues on 10 pages
+
+<details>
+  <summary>No meta description tag found. Use a description tag that accurately describes the contents of a web page.</summary>
+
+A well-written meta description attracts more clicks in search results than an irrelevant or missing description.
+
+<https://cmh-kh.herokuapp.com/> line 1\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 1\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 1\
+<https://cmh-kh.herokuapp.com/artworks/> line 1\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 1\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 1\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 1\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 1\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 1\
+<https://cmh-kh.herokuapp.com/basket/> line 1  
+
+Guideline: [Yahoo](https://help.yahoo.com/kb/search/search-content-quality-guidelines-sln2245.html) [Google](https://support.google.com/webmasters/bin/answer.py?answer=35624#1) [Bing](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a)
+</details>
+
+</details>
+
+<details>
+  <summary>Informative</summary>
+
+These messages are for information only and do not indicate errors
+
+<details>
+  <summary>No search keywords are set in SortSite, so no keyword optimization rules have been run.</summary>
+
+If you want to check keyword optimization, set the keywords using the Edit Scan command in the OnDemand edition.
+
+<https://cmh-kh.herokuapp.com/> line 1
+
+Search engines cannot index areas of sites that require a log in.
+
+<https://cmh-kh.herokuapp.com/accounts/login/> line 151\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 154 155  
+
+Guideline: [Google Blogs](https://www.mattcutts.com/blog/guest-post-vanessa-fox-on-organic-site-review-session/)
+
+</details>
+
+</details>
+
+</details>
+
+<details>
+  <summary>Standards</summary>
+
+This section shows pages that do not comply with W3C standards.
+
+<details>
+  <summary>Priority 1</summary>
+
+7 issues on 12 pages
+
+<details>
+  <summary><strike>Element div not allowed as child element in this context.</strike></summary>
+
+<https://cmh-kh.herokuapp.com/> line 55\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 59\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 59\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 59\
+<https://cmh-kh.herokuapp.com/artworks/> line 58\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 58\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 58\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 58\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 58\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 58\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 55\
+<https://cmh-kh.herokuapp.com/basket/> line 58  
+
+Guideline: [HTML5](https://html.spec.whatwg.org/multipage/)
+</details>
+
+<details>
+  <summary>End tag for body seen, but there were unclosed elements.</summary>
+
+<https://cmh-kh.herokuapp.com/accounts/login/> line 200\
+<https://cmh-kh.herokuapp.com/artworks/> line 240\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 240\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 227  
+
+Guideline: [HTML5](https://html.spec.whatwg.org/multipage/)
+</details>
+
+<details>
+  <summary>The allowtransparency attribute on the iframe element is obsolete.</summary> 
+  
+  Use CSS instead.
+
+<https://cmh-kh.herokuapp.com/> line 144  
+
+Guideline: [HTML5](https://www.w3.org/TR/html5-diff/#obsolete-elements)
+
+</details>
+
+<details>
+  <summary>The charset attribute on the link element is obsolete. Use an HTTP Content-Type header on the linked resource instead.</summary>
+
+<https://cmh-kh.herokuapp.com/> line 10\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 21 30\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 21 30\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 21 30\
+<https://cmh-kh.herokuapp.com/artworks/> line 21\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 21\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 21\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 21\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 21\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 21\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 21\
+<https://cmh-kh.herokuapp.com/basket/> line 21  
+
+Guideline: [HTML5](https://html.spec.whatwg.org/multipage/)
+</details>
+
+<details>
+  <summary>The frameborder attribute on the iframe element is obsolete. Use CSS instead.</summary>
+
+<https://cmh-kh.herokuapp.com/> line 144  
+
+Guideline: [HTML5](https://www.w3.org/TR/html5-diff/#obsolete-elements)
+</details>
+
+<details>
+  <summary>The scrolling attribute on the iframe element is obsolete. Use CSS instead.</summary>
+
+<https://cmh-kh.herokuapp.com/> line 144  
+
+Guideline: [HTML5](https://www.w3.org/TR/html5-diff/#obsolete-elements)
+
+</details>
+
+<details>
+  <summary>Unclosed element div.</summary>
+
+<https://cmh-kh.herokuapp.com/accounts/login/> line 200\
+<https://cmh-kh.herokuapp.com/artworks/> line 240\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 227\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 240\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 227  
+
+Guideline: [HTML5](https://html.spec.whatwg.org/multipage/)
+</details>
+
+</details>
+
+</details>
+
+<details>
+  <summary>Usability</summary>
+
+This section shows general usability issues, indicating navigation problems for all users.
+
+<details>
+  <summary>Priority 2</summary>
+
+6 issues on 12 pages
+
+
+<details>
+  <summary>An active 'Home' link on the home page makes some users think that it's not the home page.</summary>
+
+<https://cmh-kh.herokuapp.com/> line 79  
+
+Guideline: [Usability.gov 5:6](https://www.powermapper.com/products/sortsite/rules/usegov5.6.2/)
+
+</details>
+
+<details>
+  <summary>Omitting img width or height attributes makes the page layout jump about as images load.</summary>
+
+This makes the page very hard to read or click while it's loading. Fix by adding width and height attributes to the img tag matching the image dimensions. In responsive layouts, specifying width and height prevents layout jumping because the browser can pre-calculate the final image size when CSS like this is used: img { max-width: 100%; height: auto }
+
+<https://cmh-kh.herokuapp.com/> line 115\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 130  
+
+Guideline: [Usability.gov 14:3](https://www.powermapper.com/products/sortsite/rules/usegov14.3/) [W3C](https://developer.mozilla.org/en-US/docs/Web/Media/images/aspect_ratio_mapping)
+
+</details>
+
+<details>
+  <summary>Provide a search option on each page of content-rich web sites.</summary>
+
+A search option should be provided on all pages where it may be useful - users should not have to return to the homepage to conduct a search. Search engines can be helpful on content-rich web sites, but do not add value on other types of sites.
+
+<https://cmh-kh.herokuapp.com/> line 1\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 1\
+<https://cmh-kh.herokuapp.com/accounts/signup/> line 1\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 1\
+<https://cmh-kh.herokuapp.com/basket/> line 1  
+
+Guideline: [Usability.gov 17:4](https://www.powermapper.com/products/sortsite/rules/usegov17.4/)
+
+</details>
+
+<details>
+  <summary>This page title is not unique. Each page should have a descriptive and meaningfully different title.</summary>
+
+Title refers to the text displayed on browser tabs, favorites, and in search engines results pages. If two or more pages have the same title, they cannot be differentiated by users or the Favorites capability of the browser.
+
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/accounts/login/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/accounts/password/reset/> line 48\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 47\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/artworks/2/> line 44\
+'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
+<https://cmh-kh.herokuapp.com/basket/> line 47  
+
+Guideline: [Usability.gov 9:2](https://www.powermapper.com/products/sortsite/rules/usegov9.2.2/)
+
+</details>
+
+<details>
+  <summary>Use label elements for each data entry field to show what data is expected.</summary>
+
+Make sure each input field has an associated label describing the field.
+
+<https://cmh-kh.herokuapp.com/artworks/> line 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=3d> line 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=multimedia> line 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=painting> line 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=photography> line 162 171\
+<https://cmh-kh.herokuapp.com/artworks/?category=video> line 162 171  
+
+Guideline: [Usability.gov 13:5](https://www.powermapper.com/products/sortsite/rules/usegov13.5/)
+
+</details>
+
+<details>
+  <summary>Use text links rather than image links. In general, text links are more easily recognized as clickable.</summary>
+
+Text links usually download faster, are preferred by users, and should change colors after being selected. It is usually easier to convey a link's destination in text, rather than with the use of an image. Users often find it hard to tell which images are clickable without moving the cursor over them ('minesweeping'). Another benefit to using text links is that users with text-only and deactivated graphical browsers can see the navigation options.
+
+<https://cmh-kh.herokuapp.com/artworks/2/> line 130  
+
+Guideline: [Usability.gov 10:6](https://www.powermapper.com/products/sortsite/rules/usegov10.6/)
+
+</details>
+
+</details>
+
+<details>
+  <summary>Priority 4</summary>
+
+1 issues on 1 pages
+
+<details>
+  <summary>Use site maps for web sites that have many pages.</summary>
+
+Site maps provide an overview of the Web site. They may display the hierarchy of the Web site, may be designed to resemble a traditional table of contents, or may be a simple index.
+
+<https://cmh-kh.herokuapp.com/> line 1  
+
+Guideline: [Usability.gov 7:10](https://www.powermapper.com/products/sortsite/rules/usegov7.10/)
+</details>
+
+</details>
+
+</details>
 
 # Deployment
 This website was deployed on Heroku and can be found at https://kunst-huset.herokuapp.com/
