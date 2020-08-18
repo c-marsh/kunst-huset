@@ -1,4 +1,4 @@
-{%extends 'base.html'%} {%load static%} {% load basket_calc %}{% block extra_css %}
+{%extends 'base.html'%} {%load static%} {% load basket_calc %}{% block title %} Basket - {{ grand_total|floatformat:2 }}{% endblock %}{% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css" charset="utf-8" />
 
 {% endblock %}{% block page_header %}
