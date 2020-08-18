@@ -495,6 +495,9 @@ Guideline: [WCAG 2.1 AA 2.4.5](https://www.w3.org/TR/UNDERSTANDING-WCAG20/naviga
 
 This section shows pages that exhibit browser-specific behavior, or trigger browser bugs.
 
+![Imgur](https://i.imgur.com/MJakhCF.png)
+
+
 </details>
 
 <details>

@@ -15,9 +15,9 @@
         <div class="col-12 ">
             
             {%if search_string or categories or sorting != 'None_None' %}
-            <a class="btn search-btn border-black rounded-0" href="{% url 'gallery' %}" id="reset">
+            <a class="btn search-btn border-black rounded-0" href="{% url 'gallery' %}" title="reset results"id="reset">
                 <span class="icon">
-                    <i class="fas fa-undo"></i>                            
+                    <i class="fas fa-undo"></i>                    
                 </span>
             </a>
             <p class="text-muted mt-3 text-left small mb-0 d-inline-block">         
@@ -30,13 +30,13 @@
             <form method="GET" action="{% url 'gallery' %}">
                 <div class="input-group w-100">
                     <div class="input-group-append">
-                        <button class="form-control btn search-btn border border-black rounded-0" type="submit" id="btn-search" name="search button">
+                        <button class="form-control btn search-btn border border-black rounded-0" type="submit" id="btn-search" title="search button" name="search button">
                             <span class="icon">
                                 <i class="fas fa-search"></i>
                             </span>
                         </button>
                     </div>
-                    <input class="form-control border border-black rounded-0" type="text" name="search" placeholder="Search Title, Artist, Description and medium" />
+                    <input class="form-control border border-black rounded-0" type="text" ="search field" name="search" placeholder="Search Title, Artist, Description and medium" />
                 </div>
             </form>
         </div>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="sort-select-wrapper w-100 mb-3">
                     <select
-                    id="sort-selector"
+                    id="sort-selector" title="filter"
                     class="custom-select rounded-0 {%if current_sorting != 'None_None' %}border-info{%else%}{%endif%}"
                     >
                         <option value="reset" {%if current_sorting == 'None_None' %}selected{%endif%}>Sort by...</option> 
