@@ -11,7 +11,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         'user',
         'is_artist',
         'is_customer',
-        
     )
+
 
 admin.site.register(UserProfile, UserProfileAdmin)

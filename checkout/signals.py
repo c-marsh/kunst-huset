@@ -19,4 +19,3 @@ def update_on_delete(sender, instance, **kwargs):
     """
 
     instance.order.update_total()
-

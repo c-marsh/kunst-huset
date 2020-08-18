@@ -39,7 +39,7 @@ class Artwork(models.Model):
                                 blank=False, null=True)
     weight = models.DecimalField('weight (g)', max_digits=6, decimal_places=2,
                                  null=True, blank=True)
-    duration = models.IntegerField('duration (mins)',null=True, blank=True)
+    duration = models.IntegerField('duration (mins)', null=True, blank=True)
     image = models.ImageField(null=False, blank=False)
 
     def __str__(self):
@@ -47,4 +47,3 @@ class Artwork(models.Model):
 
     def get_artist(self):
         return self.artist
-

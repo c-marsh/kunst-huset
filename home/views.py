@@ -4,6 +4,9 @@ from artworks.models import Category
 
 # Create your views here.
 def index(request):
+    """
+    Return homepage
+    """
     categories = Category.objects.all()
 
     context = {

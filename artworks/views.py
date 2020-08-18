@@ -9,17 +9,8 @@ from .forms import ArtworkForm
 
 
 def gallery(request):
-    # Shows gallery view of all art
-
-    # final_list = []
     artworks = Artwork.objects.all()
     categories = Category.objects.all()
-    # for art in artworks:
-    #     if art.artist not in final_list:
-    #         final_list.append(art.artist)
-    #     print(final_list)
-    #     return final_list
-
     query = None
     category = None
     sort = None

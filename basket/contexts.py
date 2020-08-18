@@ -6,7 +6,9 @@ from profiles.models import UserProfile
 
 
 def basket_content(request):
-    """return basket contents"""
+    """
+    return basket contents
+    """
     basket_items = []
     sub_total = 0
     items_count = 0

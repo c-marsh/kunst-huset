@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <fieldset class="mx-auto">
-                <p class="my-3">If your name doesn't appear in the Artist field, please add it in your Public Profile <a class="link-orange" href="{% url 'edit_artist' user_id=request.user %}">settings</a></p>
+                    <p class="my-3">If your name doesn't appear in the Artist field, please add it in your Public Profile <a class="link-orange" href="{% url 'edit_artist' user_id=request.user %}">settings</a></p>
                     {{ form| crispy }}
 
                     <hr />

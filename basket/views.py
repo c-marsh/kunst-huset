@@ -1,8 +1,8 @@
-from django.shortcuts import get_object_or_404, HttpResponse
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
-from artworks.models import Category, Artwork
+from artworks.models import Artwork
 
 
 def remove_basket(request, item_id):
@@ -27,7 +27,7 @@ def add_to_basket(request, item_id):
 
     basket = request.session.get('basket', {})
 
-    # while basket[item_id] <= artwork.qty:
+
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
         messages.success(
@@ -38,14 +38,11 @@ def add_to_basket(request, item_id):
         messages.success(request, f'Added {artwork.title} to your basket')
     request.session['basket'] = basket
     return redirect(redirect_url)
-    # basket[item_id] = quantity
-    # messages.error(request, f'Not enough of {artwork.title} on sale')
-    # request.session['basket'] = basket
-    # return redirect(redirect_url)
 
 
-# Create your views here.
 def view_basket(request):
-    # A view to return the basket
+    """
+    A view to return the basket
+    """
 
     return render(request, 'basket/basket.html')

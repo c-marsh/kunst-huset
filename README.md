@@ -187,6 +187,8 @@ This provides navigation of the account and purchasing related elements and disp
 
  - Currently a user doesn't have to provide a name on signup. This populates the list or Artists with a lot of plank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated awy from without completing.). 
 
+ - Search causes error
+
 ## Minor
 - Artists disappear from menu on some pages
 
@@ -205,7 +207,23 @@ This provides navigation of the account and purchasing related elements and disp
 
 
 # Testing
+## Test Driven Developement
 
+While automated testing hasn't been used in development, contiual testing of feature while being implemented has to ensure they work while being made. While a thorough record of this hasn't been kept, the commit list evidences some of this, and an example here exists of validating webhooks:
+
+<details>
+  <summary> Evidence of full successful payment process </summary>
+
+![Imgur](https://i.imgur.com/b0iow7k.gif)
+
+</details>
+
+## Validation
+
+Powermapper has been used for automated validation and assesment of the site. It provides a useful basis from which to start a testing regime on the front end.
+
+<details>
+  <summary> Results</summary>
 **Issue Report **
 
 Site quality report for https://cmh-kh.herokuapp.com/ produced on Tuesday, August 18, 2020.
@@ -844,6 +862,8 @@ Site maps provide an overview of the Web site. They may display the hierarchy of
 <https://cmh-kh.herokuapp.com/> line 1  
 
 Guideline: [Usability.gov 7:10](https://www.powermapper.com/products/sortsite/rules/usegov7.10/)
+</details>
+
 </details>
 
 </details>

@@ -8,9 +8,9 @@ from .models import UserProfile
 from artworks.models import Artwork
 
 
-def public_profile(request, user):
+def public_profile(request, user_id):
     """ A view to individual profiles"""
-    profile = get_object_or_404(UserProfile, user=user_id)
+    profile = get_object_or_404(UserProfile, pk=user_id)
     artworks = Artwork.objects.all()
 
     template = 'profiles/public_profile.html'
