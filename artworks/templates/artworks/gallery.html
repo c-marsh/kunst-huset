@@ -30,7 +30,7 @@
             <form method="GET" action="{% url 'gallery' %}">
                 <div class="input-group w-100">
                     <div class="input-group-append">
-                        <button class="form-control btn search-btn border border-black rounded-0" type="submit" id="btn-search">
+                        <button class="form-control btn search-btn border border-black rounded-0" type="submit" id="btn-search" name="search button">
                             <span class="icon">
                                 <i class="fas fa-search"></i>
                             </span>
@@ -91,15 +91,15 @@
                 </div>
             </div>
         </a> 
-        
-        {%endif%} {%empty%}<p>There are no results. Currently the search does not search artists, however they are listed alphabetically in the menu.</p>{%endfor%}
+        {%endif%} {%empty%}
+        <p>There are no results. Currently the search does not search artists, however they are listed alphabetically in the menu.</p>{%endfor%}
     </main>
     <div class="top-button shadow-sm rounded-0">
-<a class="top-link d-flex h-100">
-<i class="fas fa-arrow-up text-black mx-auto my-auto"></i> 
-</a> 
+    <a class="top-link d-flex h-100">
+        <i class="fas fa-arrow-up text-black mx-auto my-auto"></i> 
+    </a> 
+    </div>
 </div>
-
     {%endblock%}
     {%block postloadjs%}
 {{block.super}}
