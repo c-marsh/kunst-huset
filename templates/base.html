@@ -141,7 +141,7 @@
                         <!-- list of artists -->
                         <ul class="sub-nav__list">
                             {%for artwork in menu_artist%}{% if artwork.artist is not None %}{% ifchanged artwork.artist%}
-                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artwork.artist}}</a></li>{% endifchanged %}{%endif%}
+                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="#">{{artwork.artist}}</a></li>{% endifchanged %}{%endif%}
                             {%endfor%}
                         </ul>
                     </div>
