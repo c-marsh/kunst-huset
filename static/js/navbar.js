@@ -1,4 +1,5 @@
-$( document ).ready(function() {
+"use strict"
+$(document).ready(function () {
     
     // Function to change the nav-bar on scroll
     $(window).scroll(function(){

@@ -1,3 +1,5 @@
+// JSHint Checked
+
 /*
     Core logic/payment flow for this comes from here:
     https://stripe.com/docs/payments/accept-a-payment
@@ -5,7 +7,7 @@
     https://stripe.com/docs/stripe-js
     Built on files from Code Institute 
 */
-
+"use strict"
 var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 var clientSecret = $("#id_client_secret").text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
@@ -119,5 +121,5 @@ form.addEventListener("submit", function (ev) {
     }).fail(function() {
         // just reload the page, the error will be in django messages
         location.reload();
-    })
+    });
 });

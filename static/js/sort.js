@@ -1,4 +1,5 @@
 // Back to top and sort selector code from Code Institute resources
+"use strict"
 $(".top-link").click(function (e) {
     window.scrollTo(0, 0);
 });

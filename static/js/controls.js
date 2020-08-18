@@ -1,4 +1,4 @@
-
+"use strict"
 // Disable +/- buttons outside 1-stock available range
 function handleEnableDisable(itemId) {
     var numb = parseInt($('.available').text());
