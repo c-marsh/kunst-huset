@@ -2,10 +2,11 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from artworks.models import Artwork
+from profiles.models import UserProfile
 
 
 def basket_content(request):
-
+    """return basket contents"""
     basket_items = []
     sub_total = 0
     items_count = 0

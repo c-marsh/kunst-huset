@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ArtworksConfig(AppConfig):
-    name = 'artworks'
+class Menu_artistConfig(AppConfig):
+    name = 'menu_artist'

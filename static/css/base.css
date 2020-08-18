@@ -958,7 +958,10 @@ select option[value=""] {
 #id_country {
     font-size: 14px;
 }
-
+a.link-orange, .link-orange:hover,
+.link-orange a, .link-orange a:hover{
+    color: #e78533;
+}
 
 @media screen and (max-width: 800px) {
     .fixed-nav-bar .logo {

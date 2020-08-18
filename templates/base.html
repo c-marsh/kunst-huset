@@ -117,7 +117,7 @@
                             <a class=" " href="{% url 'view_basket'%}">
                                 <p class="my-0">
                                     Basket Total: 
-                                    {% if grand_total %} ${{ grand_total|floatformat:2 }} {% else %} $0.00 {% endif %}
+                                    {% if grand_total %} £{{ grand_total|floatformat:2 }} {% else %} £0.00 {% endif %}
                                 </p>
                             </a>
                         </div>
@@ -140,8 +140,8 @@
                         </ul>
                         <!-- list of artists -->
                         <ul class="sub-nav__list">
-                            {%for artwork in artworks%}{% ifchanged artwork.artist%}
-                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artwork.artist}}</a></li>{% endifchanged %}
+                            {%for artwork in menu_artist%}{% if artwork.artist is not None %}{% ifchanged artwork.artist%}
+                            <li class="text-muted sub-nav__list-item sub-nav__list-item-artists"><a class="artist-list" href="">{{artwork.artist}}</a></li>{% endifchanged %}{%endif%}
                             {%endfor%}
                         </ul>
                     </div>
