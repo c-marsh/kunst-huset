@@ -559,7 +559,7 @@ body.sub-nav-active .sub-nav__list-item:nth-child(10) {
     -webkit-box-flex: 1;
     flex: 1 1 0;
     text-align: center;
-    border-right: 1px solid #555;
+
 }
 
 .footer-links-container .footer-flex-column li:hover {
