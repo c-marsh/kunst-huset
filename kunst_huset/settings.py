@@ -120,9 +120,6 @@ WSGI_APPLICATION = 'kunst_huset.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -203,6 +200,7 @@ if 'USE_AWS' in os.environ:
     # override static and media URLS in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
 # Use SMTP account if not in development
 # if 'DEVELOPMENT' in os.environ:
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
