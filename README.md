@@ -1164,6 +1164,8 @@ These video cover most functionality on the site. All buttons have been tested, 
 
 # Deployment
 
+It's worth noting here, I had a lot of problems with deployment, hence a slightly odd commit history full of guincorn(🦄).
+
 This website was deployed on Heroku and can be found at https://cmh-kh.herokuapp.com/
 
 ## Heroku Deployment
@@ -1202,7 +1204,7 @@ Will install gunicorn which acts as a webserver.
 You will then need to create a ‘Procfile’, which lists the process types in an application:
 
 ```
-echo web: gunicorn kunst-huset.wsgi:application > Procfile
+echo web: gunicorn kunst_huset.wsgi:application > Procfile
 ```
 
 This should then be commited to your repository before Pushing to Heroku:
