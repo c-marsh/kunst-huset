@@ -187,7 +187,7 @@ If there is nothing in the basket, text indicates the basket is empty and a butt
 ### Administration
 
 Custom styled login/out/account admin pages.
-
+<details>
 <summary>Wireframe</summary>
 
 ![Imgur](https://i.imgur.com/i9n8X2Z.png)
@@ -267,7 +267,7 @@ The artists when logged in can see a button to edit the profile.
 </details>
 
 <details>
-  <summary>Site Map</summery>
+  <summary>Site Map</summary>
   
  ![Imgur](https://i.imgur.com/0rMCIhw.png)
  
