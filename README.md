@@ -1082,10 +1082,8 @@ Logging in
 </details>
 <details>
   <summary>| 12 / 13        | Buyer / Artist   | Can edit account                               | To update info                                                    |</summary>
-</details>
-
-This can be done from the menu on the right
-
+  
+  This can be done from the menu on the right
 </details>
 <details>
   <summary>| 14 /15         | Buyer / Artist  | Can delete account                             | To remove info                                                    |</summary>
