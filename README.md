@@ -161,6 +161,8 @@ Two Menus are provided via means of hamburger icons at either end of the menu ba
 
 This provides navigation of the art related elements with filters for categories, direct links to artists profiles, home and the unfiltered gallery.
 
+![Imgur](https://i.imgur.com/UOJLItV.gif)
+
 </details>
 
 <details>
@@ -181,9 +183,20 @@ This provides navigation of the account and purchasing related elements and disp
     -   logout option
     -   basket total and link
 
+    ![Imgur](https://i.imgur.com/UOJLItV.gif)
+
 </details>
 
 ### Profile/Artist Page
+
+This page acts as puplic for the artists. It shows:
+- A profile image
+- Name
+- Location
+- A biography
+- Their work listed on the site.
+
+The artists when logged in can see a button to edit the profile.
 
 # Bugs
 
@@ -197,13 +210,13 @@ This provides navigation of the account and purchasing related elements and disp
 
 -   Checkout does not update inventory of stock or show an update an item as sold if the inventory is sold out. Ideally this would happen from the payment webhook.
 
--   Currently a user doesn't have to provide a name on signup. This populates the list or Artists with a lot of plank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated awy from without completing.).
+-   Currently a user doesn't have to provide a name on signup. This could populate the list of Artists with a lot of blank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated awy from without completing.).
 
--   Search causes error
 
 ## Minor
 
 -   ~~Artists disappear from menu on some pages~~
+- Profile Deletion isn't functioning, and has been removed.
 
 ### Cosmetic
 
@@ -214,7 +227,6 @@ This provides navigation of the account and purchasing related elements and disp
 
 # Future Developement
 
--   Show all art from an artist on their public profile
 -   Sign-up including more profile data
 -   Implement better use of the is_artist/is_customer fields to streamline menus.
 -   Better gallery filtering including filtering out sold pieces.
@@ -911,6 +923,8 @@ Guideline: [Usability.gov 7:10](https://www.powermapper.com/products/sortsite/ru
 
 </details>
 
+</details>
+
 ### Testing User Stories
 <details>
   <summary>Click to view user Stories!</summary>
@@ -918,76 +932,143 @@ Guideline: [Usability.gov 7:10](https://www.powermapper.com/products/sortsite/ru
 | Id         | As a/an | I want to be able to:                          | So I can                                                          |
 | ---------- | ------- | ---------------------------------------------- | ----------------------------------------------------------------- |
 | Admin      |         |                                                |                                                                   |
+
+
+<details>
+  <summary>| 5          | Artist  | create a profile                               | Add info/create a portal about myself                             |</summary>
+
+Gif shows adding name to profile info to appear in Artist list.
+![Imgur](https://i.imgur.com/e2Epljw.gif)
+
+</details>
+
 <details>
   <summary>| 1          | Artist  | add work                                       | Add info and image of work                                        |</summary>
 
-
+![Imgur](https://i.imgur.com/JBzwFd7.gif)
 
 
 </details>
 <details>
   <summary>| 2          | Artist  | edit work                                      | Edit info and image of work                                       |</summary>
+
+  ![Imgur](https://i.imgur.com/yLtEIpP.gif)
+
 </details>
 <details>
   <summary>| 3          | Artist  | Remove work                                    | Remove info and image of work                                     |</summary>
+
+  ![Imgur](https://i.imgur.com/M5UR3bN.gif)
+
 </details>
 <details>
   <summary>| 4          | Artist  | sell work                                      | Add info and image of work                                        |</summary>
-</details>
-<details>
-  <summary>| 5          | Artist  | create a profile                               | Add info/create a portal about myself                             |</summary>
 
+The artist can list and the consumer can buy.
 </details>
+
 
 | Browsing   |         |                                                |                                                                   |
-</details>
-<details>
-  <summary>| 6          | Buyers  | Can browse/look for work                       | To see an array of available works                                |</summary>
-</details>
+
 <details>
   <summary>| 7          | Buyers  | Can view details                               | To see more info about the piece of work                          |</summary>
+  
+  ![Imgur](https://i.imgur.com/MbJGJDV.gif)
 </details>
 <details>
   <summary>| 8          | Buyers  | Can view info about artist                     | To find pieces of work                                            |</summary>
+
+![Imgur](https://i.imgur.com/Byt8aZu.gif)
+
+![Imgur](https://i.imgur.com/VzlvHQ1.gif)
+
 </details>
 <details>
-  <summary>| 9          | Buyers  | Can search/filter                              | To find work by criteria                                          |
+  <summary>| 6 / 9          | Buyers  | Can browse/look for work / Can search/filter                              | To find work by criteria                                          |</summary>
+
+Search by filter. A bug in the video shows that artist filter is by id number.
+![Imgur](https://i.imgur.com/eZ0SXsk.gif)
+
+Back to top button
+![Imgur](https://i.imgur.com/AzpgLZL.gif)
+
+</details>
+
 | Accounts   |         |                                                |                                                                   ||
+
+<details>
+  <summary>| 10 / 11        | Buyer / Artist    | Can make account                               | Create an account to access history of purchases/save information |</summary>
+
+Creating an account
+  ![Imgur](https://i.imgur.com/X2d8teU.gif)
+
+Logging in
+  ![Imgur](https://i.imgur.com/5yM9sfa.gif)
+
 </details>
 <details>
-  <summary>| 10         | Buyer   | Can make account                               | Create an account to access history of purchases/save information |</summary>
+  <summary>| 12 / 13        | Buyer / Artist   | Can edit account                               | To update info                                                    |</summary>
+</details>
+
+This can be done from the menu on the right
+
 </details>
 <details>
-  <summary>| 11         | Artist  | Can make account                               | To manage profile information and see a history of works sold     |</summary>
+  <summary>| 14 /15         | Buyer / Artist  | Can delete account                             | To remove info                                                    |</summary>
+
+  This currently can't be done.
+
 </details>
-<details>
-  <summary>| 12         | Buyer   | Can edit account                               | To update info                                                    |</summary>
-</details>
-<details>
-  <summary>| 13         | Artist  | Can edit account                               | To update info                                                    |</summary>
-</details>
-<details>
-  <summary>| 14         | Buyer   | Can delete account                             | To remove info                                                    |</summary>
-</details>
-<details>
-  <summary>| 15         | Artist  | Can delete account                             | To remove info                                                    |</summary>
-</details>
+
 | Purchasing |         |                                                |                                                                   |
 </details>
-<details>
-  <summary>| 16         | Buyer   | Can complete a payment                         | securely complete a Strip transaction                             |</summary>
-</details>
+
+
 <details>
   <summary>| 17         | Buyer   | Can view purchase details/total before payment | ensure purchase details are correct                               |</summary>
+
+  Part 1: add to cart
+  ![Imgur](https://i.imgur.com/DasYFyy.gif)
+
+  PArt 2: see whats in cart and remove:
+  ![Imgur](https://i.imgur.com/jSaEOup.gif)
+
+
 </details>
 <details>
-  <summary>| 18         | Buyer   | Can provide shipping details                   | input correct info                                                |</summary>
+  <summary>| 16/18         | Buyer   | Can provide shipping details / Can complete a payment                   | input correct info                                                |</summary>
+
+  ![Imgur](https://i.imgur.com/RPi1X33.gif)
 </details>
 <details>
-  <summary>| 19         | Buyer   | View a puchase history                         |                                                                   |</summary>
+  <summary>| 19         | Buyer   | View a purchase history                         |                                                                   |</summary>
+  
+  This shows the order overview, how the rows are clickable to the full order page, and how the back button returns to the order history page.
+  ![Imgur](https://i.imgur.com/5258Nss.gif)
 </details>
 <details>
   <summary>| 20         | Artist  | View a history of items sold                   |                                                                   |</summary>
+
+This is a feature to be implemented at a later date. Artists can contact a superuser for this info.
+
+</details>
+
+These video cover most functionality on the site. All buttons have been tested, and the site has been viewed and checked for visual Compatibility on Chrome, Edge and Firefox.
+
+<details>
+  <summary>The site is responsive, and here are snapshots to demonstrate.</summary>
+
+![Imgur](https://i.imgur.com/MZYnlC9.png)
+![Imgur](https://i.imgur.com/jtrAzhK.png)
+![Imgur](https://i.imgur.com/BxrkFzx.png)
+![Imgur](https://i.imgur.com/ue8ZtEx.png)
+![Imgur](https://i.imgur.com/arKcz9c.png)
+![Imgur](https://i.imgur.com/bhPE2LK.png)
+![Imgur](https://i.imgur.com/BxKawxu.png)
+![Imgur](https://i.imgur.com/1QtNj5V.png)
+![Imgur](https://i.imgur.com/CIQ8Y73.png)
+![Imgur](https://i.imgur.com/0ofjhDS.png)
+![Imgur](https://i.imgur.com/7u8gsXU.png)
 
 </details>
 
