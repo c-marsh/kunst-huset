@@ -57,6 +57,8 @@ A featured artist, link to see more about them, and a link to more art.
 
 </details>
 
+</details>
+
 ### Gallery
 <details>
   <summary> The gallery page features</summary>
