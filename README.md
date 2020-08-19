@@ -45,9 +45,19 @@ The site is designed using a minimalist colour scheme. This is to allow the art 
 The site is made up of the following pages:
 
 ### Home Page
+<details>
+  <summary> The Home page features</summary>
 
-### Gallery Page
+A featured artist, link to see more about them, and a link to more art.
 
+<details>
+  <summary> Wireframe</summary>
+
+  ![Imgur](https://i.imgur.com/RIkZLxh.png)
+
+</details>
+
+### Gallery
 <details>
   <summary> The gallery page features</summary>
 
@@ -74,6 +84,13 @@ The site is made up of the following pages:
 
 </details>
 
+<details>
+  <summary>Wireframe</summary>
+
+![Imgur](https://i.imgur.com/MKlyx5r.png)
+
+</details>
+
 ### Artwork Page
 
 <details>
@@ -94,6 +111,13 @@ The site is made up of the following pages:
     -   A button back to the gallery
 -   if the piece has been sold
     -   A button back to the gallery
+
+<details>
+  <summary>Wireframe</summary>
+
+![Imgur](https://i.imgur.com/1gjQQUG.png)
+
+</details>
 
 </details>
 
@@ -140,6 +164,20 @@ If there is nothing in the basket, text indicates the basket is empty and a butt
         -   An order summary presented after checkout
         -   Defensive design that ensures an order is created from return stripe webhook, in the case of a failure on the front end to create an order.
 
+<details>
+<summary>Wireframe: Checkout</summary>
+
+![Imgur](https://i.imgur.com/WL5sImW.png)
+
+</details>
+
+<details>
+<summary>Wireframe: Order Summary</summary>
+
+![Imgur](https://i.imgur.com/CARuymk.png)
+
+</details>
+
 </details>
 
 ## Additional Features
@@ -147,6 +185,13 @@ If there is nothing in the basket, text indicates the basket is empty and a butt
 ### Administration
 
 Custom styled login/out/account admin pages.
+
+<summary>Wireframe</summary>
+
+![Imgur](https://i.imgur.com/i9n8X2Z.png)
+
+</details>
+
 
 ### Notifications
 
@@ -189,7 +234,10 @@ This provides navigation of the account and purchasing related elements and disp
 
 ### Profile/Artist Page
 
-This page acts as puplic for the artists. It shows:
+<details>
+<summary>Artist page</summary>
+
+This page acts as public for the artists. It shows:
 - A profile image
 - Name
 - Location
@@ -197,6 +245,30 @@ This page acts as puplic for the artists. It shows:
 - Their work listed on the site.
 
 The artists when logged in can see a button to edit the profile.
+
+
+<details>
+<summary>Database Design</summary>
+
+![Imgur](https://i.imgur.com/QgniTCN.png)
+</details>
+
+</details>
+
+## Database
+
+<details>
+<summary>Database Design</summary>
+
+![Imgur](https://i.imgur.com/b1gJf8g.png)
+
+</summary>
+
+## Backend
+This Project used Django, with Python, JavaScript, CSS and HTML as lanaguages to build the site. A number of python libraries were used which can be seen in the requirements.txt file along with Bootstrap and Jquery.
+
+The project was built in Gitpod as an IDE, used Github for git control, and has been deployed to Heroku with static and media files served by Amazon AWS.
+
 
 # Bugs
 
@@ -210,7 +282,7 @@ The artists when logged in can see a button to edit the profile.
 
 -   Checkout does not update inventory of stock or show an update an item as sold if the inventory is sold out. Ideally this would happen from the payment webhook.
 
--   Currently a user doesn't have to provide a name on signup. This could populate the list of Artists with a lot of blank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated awy from without completing.).
+-   Currently a user doesn't have to provide a name on signup. This could populate the list of Artists with a lot of blank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated aawy from without completing the form).
 
 
 ## Minor
@@ -225,11 +297,12 @@ The artists when logged in can see a button to edit the profile.
 -   Make right hand menu bass responsive to number of menu items.
 -   image upload fields need styling
 
-# Future Developement
+## Future Developement
 
--   Sign-up including more profile data
--   Implement better use of the is_artist/is_customer fields to streamline menus.
--   Better gallery filtering including filtering out sold pieces.
+- Outstanding issues
+- Sign-up including more profile data
+- Implement better use of the is_artist/is_customer fields to streamline menus.
+- Better gallery filtering including filtering out sold pieces.
 
 # Testing
 
@@ -1163,8 +1236,14 @@ os.environ["STRIPE_WH_SECRET"] = key
 
 For the rest reference the Django documentation.
 
-# Resources
-Nav bar based on: https://demos.creative-tim.com/navbar-with-icons/index.html?_ga=2.98554264.649268495.1596619877-1871526498.1594128054 
+# Resources and Acknowledgements
+Nav bars based on: https://demos.creative-tim.com/navbar-with-icons/index.html?_ga=2.98554264.649268495.1596619877-1871526498.1594128054 and from https://codepen.io/stevenrzy/pen/pogXXEB
+Sliding button based on  - https://codepen.io/mrnathan8/pen/wvaJREX 
 Font: https://www.fontsquirrel.com/fonts/Latin-Modern-Mono 
+Icons from Fontawesome
 Body Font: https://fonts.google.com/specimen/Open+Sans+Condensed?standard-styles=&sidebar.open=true&selection.family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300
+Adapted from Code Institute Boutique Ado: https://github.com/ckz8780/boutique_ado_v1/blob/master/products/forms.py
 
+Art from my instagram, Arabella Hilfiker, and the [MOMA](https://www.moma.org/collection/works/401353?locale=en&page=1&with_images=true) collection. 
+
+I'm grateful for the huge amount Cormac Lawlors patience which has gone into chasing gunicorns in this project, the help of my mentor Akshat Garg, and the staff of Code Institute.
