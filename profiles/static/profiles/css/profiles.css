@@ -141,44 +141,49 @@ select.list-dt:focus {
     background-color: #e5e9e9;
 }
 
-#web-bar {
+#progressbar {
     margin-bottom: 30px;
     padding-right: 40px;
     overflow: hidden;
     color: lightgrey;
 }
 
-#web-bar .active {
+#progressbar .active {
     color: #000000;
 }
 
-#web-bar li {
+#progressbar li {
     list-style-type: none;
     font-size: 12px;
     
 }
 
-#web-bar #web:before {
+#progressbar #account:before {
     font-family: FontAwesome;
     content: "\f007";
 }
 
-#web-bar #insta:before {
+#progressbar #web:before {
     font-family: FontAwesome;
-    content: "\f48b";
+    content: "\f0ac";
 }
 
-#web-bar #deviant:before {
+#progressbar #insta:before {
     font-family: FontAwesome;
-    content: "\f09d";
+    content: "\f16d";
 }
 
-#web-bar #twitter:before {
+#progressbar #deviant:before {
     font-family: FontAwesome;
-    content: "\f00c";
+    content: "\f1bd";
 }
 
-#web-bar li:before {
+#progressbar #twitter:before {
+    font-family: FontAwesome;
+    content: "\f099";
+}
+
+#progressbar li:before {
     width: 50px;
     height: 50px;
     line-height: 45px;
@@ -191,7 +196,7 @@ select.list-dt:focus {
     padding: 2px;
 }
 
-#web-bar li:after {
+#progressbar li:after {
     content: "";
     width: 100%;
     height: 2px;
@@ -202,8 +207,8 @@ select.list-dt:focus {
     z-index: -1;
 }
 
-#web-bar li.active:before,
-#web-bar li.active:after {
+#progressbar li.active:before,
+#progressbar li.active:after {
     background: #e78533;
 }
 
