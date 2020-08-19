@@ -82,3 +82,12 @@
     </a>
     {%endblock%}
 </div>
+{%block postloadjs%}
+{{block.super}}
+<script>
+"use strict"
+$(".top-link").click(function (e) {
+    window.scrollTo(0, 0);
+});
+</script>
+{%endblock%}
