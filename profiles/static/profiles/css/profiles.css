@@ -158,22 +158,22 @@ select.list-dt:focus {
     
 }
 
-#web-bar #account:before {
+#web-bar #web:before {
     font-family: FontAwesome;
     content: "\f007";
 }
 
-#web-bar #personal:before {
+#web-bar #insta:before {
     font-family: FontAwesome;
     content: "\f48b";
 }
 
-#web-bar #payment:before {
+#web-bar #deviant:before {
     font-family: FontAwesome;
     content: "\f09d";
 }
 
-#web-bar #confirm:before {
+#web-bar #twitter:before {
     font-family: FontAwesome;
     content: "\f00c";
 }
