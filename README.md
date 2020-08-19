@@ -42,7 +42,7 @@ The site is designed using a minimalist colour scheme. This is to allow the art 
 
 ## Pages
 
-The site is made up of the following pages:
+The site is made up of the following pages. The pages here contain wireframes. Visit the site or see the gifs in user testing to see the site in action:
 
 ### Home Page
 <details>
@@ -113,6 +113,8 @@ A featured artist, link to see more about them, and a link to more art.
     -   A button back to the gallery
 -   if the piece has been sold
     -   A button back to the gallery
+- Edit and delete capability for the artist who uploaded it/superuser
+    - These buttons are hidden for people without permissions, and will also return messages should they show for some reason.
 
 <details>
   <summary>Wireframe</summary>
@@ -186,7 +188,7 @@ If there is nothing in the basket, text indicates the basket is empty and a butt
 
 ### Administration
 
-Custom styled login/out/account admin pages.
+Custom styled login/out/account/auth admin pages.
 <details>
 <summary>Wireframe</summary>
 
@@ -245,8 +247,10 @@ This page acts as public for the artists. It shows:
 - Location
 - A biography
 - Their work listed on the site.
+- Edit capability for the artist who uploaded it/superuser
+    - These buttons are hidden for people without permissions, and will also return messages should they show for some reason.
 
-The artists when logged in can see a button to edit the profile.
+
 
 
 <details>
@@ -307,6 +311,7 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 -   Make right hand menu bass responsive to number of menu items.
 -   image upload fields need styling
 -   The bio fields don't seem to store line breaks/formatting, which results in quite unreadable biographies. It would be good to find a better way of handling this.
+-  The screen is scrolled too far down when clicking through to the card entry details.
 
 ## Future Development
 
@@ -314,6 +319,7 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 - Sign-up including more profile data
 - Implement better use of the is_artist/is_customer fields to streamline menus.
 - Better gallery filtering including filtering out sold pieces.
+- Ability to add exhibition dates to public_profile page
 
 # Testing
 
@@ -1158,7 +1164,7 @@ These video cover most functionality on the site. All buttons have been tested, 
 
 # Deployment
 
-This website was deployed on Heroku and can be found at https://kunst-huset.herokuapp.com/
+This website was deployed on Heroku and can be found at https://cmh-kh.herokuapp.com/
 
 ## Heroku Deployment
 
@@ -1248,10 +1254,15 @@ For the rest reference the Django documentation.
 
 # Resources and Acknowledgements
 Nav bars based on: https://demos.creative-tim.com/navbar-with-icons/index.html?_ga=2.98554264.649268495.1596619877-1871526498.1594128054 and from https://codepen.io/stevenrzy/pen/pogXXEB
+
 Sliding button based on  - https://codepen.io/mrnathan8/pen/wvaJREX 
-Font: https://www.fontsquirrel.com/fonts/Latin-Modern-Mono 
+
 Icons from Fontawesome
+
+Font: https://www.fontsquirrel.com/fonts/Latin-Modern-Mono 
+
 Body Font: https://fonts.google.com/specimen/Open+Sans+Condensed?standard-styles=&sidebar.open=true&selection.family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300
+
 Adapted from Code Institute Boutique Ado: https://github.com/ckz8780/boutique_ado_v1/blob/master/products/forms.py
 
 Art from my instagram, Arabella Hilfiker, and the [MOMA](https://www.moma.org/collection/works/401353?locale=en&page=1&with_images=true) collection. 
