@@ -3,21 +3,33 @@
 {% endblock %} {%block content%}
 <div class="jumbotron my-5 m-md-5">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-3 featured-artist-img"><img src="{% static 'img/logo.png'%}" class="rounded-circle" alt="Arabella Hilfiker" /></div>
+        {%if artist.image%}
+        <div class="col-12 col-lg-3 featured-artist-img"><img src="{{artist.image.url}}" class="rounded-circle" alt="{{artist}}" /></div>
+        {%else%}
+        <div class="col-12 col-lg-3 featured-artist-img"><img src="{% static 'img/logo.png'%}" class="" alt="logo" /></div>
+        {%endif%}
         <div class="col-12 col-md-7">
-            <h1 class="text-uppercase">Featured Artist</h1>
-            <h2 class="text-uppercase">Arabella Hilfiker</h2>
-            <blockquote class="blockquote">Working with paint, text and print Arabella documents the relevance of everyday life within the bigger picture of the human experience. Her work is a collection of images, thoughts and opinions, which manifest themselves into a story of their own direction. 
-
-Her focus hasn’t changed since coming to Pilotenkueche, but she is hoping to expand the stories past the paintings through experimentation with sculpture and installation; mentioning puppetry as a particular area of interest. The exploration of this medium reflects the playful nature of her work and continues to encompass the honest and naive humour of the style with which she paints. “Art can be too serious”, she says when discussing the processes behind her work, adding that through personal experience she sees her work as, “something more intuitive” – starting with a sketch and thereafter seeing possible relations to wider themes. 
-
-Arabella’s current body of work opens the conversation of how we situate happiness within our lives. With the connectivity of the internet becoming increasingly apparent, she cites the recurring motif of the mobile phone as a background presence both in her work and everyday life; something, that without even realising, becomes unavoidable and, “forces us to not be in the present”.</blockquote>
-            
+            <h1 class="text-uppercase mb-3">Featured Artist:</h1>
+            {%if artist%}
+            <h2 class="text-uppercase mb-2">{{artist}}</h2>
+            {%else%}
+            <h2 class="text-uppercase mb-2">Stay Tuned...</h2>
+            {%endif%} {%if artist.bio%}
+            <blockquote class="blockquote">{{artist.bio|truncatewords:60}}</blockquote>
+            {%else%}
+            <blockquote class="blockquote">New Featured Artist coming soon!</blockquote>
+            {%endif%}{%if artist.bio and artist.full_name%}
+            <div class="jumbotron row m-md-5 justify-content-center">
+                <div class="wrap">
+                    <a class="slider-btn slider-btn-more-art" href="{%url 'public_profile' artist.pk%}">Learn More</a>
+                </div>
+            </div>
+            {%endif%}
         </div>
     </div>
 </div>
 
-<div class="jumbotron row my-5 m-md-5 justify-content-center">
+<div class="jumbotron row m-md-5 justify-content-center">
     <div class="wrap">
         <a class="slider-btn slider-btn-more-art" href="{%url 'gallery'%}">More art</a>
     </div>
