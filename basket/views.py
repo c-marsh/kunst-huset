@@ -31,7 +31,9 @@ def add_to_basket(request, item_id):
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
         messages.success(
-            request, f'Added {artwork.title} to {basket[item_id]}')
+            request, f'Added {artwork.title} to {basket[item_id]}.' +
+                      'Please make sure your' +
+                      ' basket total is not more than the quantity available.')
 
     else:
         basket[item_id] = quantity
