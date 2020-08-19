@@ -1095,7 +1095,7 @@ This can be done from the menu on the right
 </details>
 
 | Purchasing |     
-</details>
+
 
 
 <details>
@@ -1124,6 +1124,8 @@ This can be done from the menu on the right
   <summary>| 20         | Artist  | View a history of items sold                                                                                     |</summary>
 
 This is a feature to be implemented at a later date. Artists can contact a superuser for this info.
+
+</details>
 
 </details>
 
