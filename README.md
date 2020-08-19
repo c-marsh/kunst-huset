@@ -31,7 +31,7 @@ This project uses Django to build a site for artists to sell art. It works on pr
 | 16         | Buyer   | Can complete a payment                         | securely complete a Strip transaction                             |
 | 17         | Buyer   | Can view purchase details/total before payment | ensure purchase details are correct                               |
 | 18         | Buyer   | Can provide shipping details                   | input correct info                                                |
-| 19         | Buyer   | View a puchase history                         |                                                                   |
+| 19         | Buyer   | View a purchase history                         |                                                                   |
 | 20         | Artist  | View a history of items sold                   |                                                                   |
 
 </details>
@@ -265,7 +265,7 @@ The artists when logged in can see a button to edit the profile.
 </summary>
 
 ## Backend
-This Project used Django, with Python, JavaScript, CSS and HTML as lanaguages to build the site. A number of python libraries were used which can be seen in the requirements.txt file along with Bootstrap and Jquery.
+This Project used Django, with Python, JavaScript, CSS and HTML as languages to build the site. A number of python libraries were used which can be seen in the requirements.txt file along with Bootstrap and Jquery.
 
 The project was built in Gitpod as an IDE, used Github for git control, and has been deployed to Heroku with static and media files served by Amazon AWS.
 
@@ -278,11 +278,11 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 
 -   ~~Order history not saving to profiles~~
 
--   While more items than inventory can't be added to a basket from the page, this could be added again by revisting the page. Ideally the basket should verify against the inventory of an item to prevent buying more than is in stock.
+-   While more items than inventory can't be added to a basket from the page, this could be added again by re-visiting the page. Ideally the basket should verify against the inventory of an item to prevent buying more than is in stock.
 
 -   Checkout does not update inventory of stock or show an update an item as sold if the inventory is sold out. Ideally this would happen from the payment webhook.
 
--   Currently a user doesn't have to provide a name on signup. This could populate the list of Artists with a lot of blank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated aawy from without completing the form).
+-   Currently a user doesn't have to provide a name on sign-up. This could populate the list of Artists with a lot of blank entries. This could be solved by creating a custom sign up page to include name (most secure), redirecting to the edit profile page on sign-up (however this could be navigated away from without completing the form).
 
 
 ## Minor
@@ -307,7 +307,7 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 
 # Testing
 
-## Test Driven Developement
+## Test Driven Development
 
 While automated testing hasn't been used in development, continual testing of feature while being implemented has to ensure they work while being made. While a thorough record of this hasn't been kept, the commit list evidences some of this, and an example here exists of validating webhooks:
 
@@ -320,7 +320,7 @@ While automated testing hasn't been used in development, continual testing of fe
 
 ## Validation
 
-Powermapper has been used for automated validation and assesment of the site. It provides a useful basis from which to start a testing regime on the front end.
+Powermapper has been used for automated validation and assessment of the site. It provides a useful basis from which to start a testing regime on the front end.
 
 <details>
   <summary> Results</summary>
@@ -618,7 +618,7 @@ Guideline: [WCAG 2.1 AA 2.4.5](https://www.w3.org/TR/UNDERSTANDING-WCAG20/naviga
 <details>
   <summary>Compatibility</summary>
 
-This section shows pages that exhibit browser-specific behavior, or trigger browser bugs.
+This section shows pages that exhibit browser-specific behaviour, or trigger browser bugs.
 
 ![Imgur](https://i.imgur.com/MJakhCF.png)
 
@@ -917,7 +917,7 @@ Guideline: [Usability.gov 17:4](https://www.powermapper.com/products/sortsite/ru
 <details>
   <summary><strike>This page title is not unique. Each page should have a descriptive and meaningfully different title.</strike>FIXED</summary>
 
-Title refers to the text displayed on browser tabs, favorites, and in search engines results pages. If two or more pages have the same title, they cannot be differentiated by users or the Favorites capability of the browser.
+Title refers to the text displayed on browser tabs, favourites, and in search engines results pages. If two or more pages have the same title, they cannot be differentiated by users or the Favourites capability of the browser.
 
 'Kunst Huset ' is also used on <https://cmh-kh.herokuapp.com/>\
 <https://cmh-kh.herokuapp.com/accounts/login/> line 48\
@@ -1005,7 +1005,7 @@ Guideline: [Usability.gov 7:10](https://www.powermapper.com/products/sortsite/ru
 
 | Id         | As a/an | I want to be able to:                          | So I can                                                          |
 | ---------- | ------- | ---------------------------------------------- | ----------------------------------------------------------------- |
-| Admin      |         |                                                |                                                                   |
+| Admin     
 
 
 <details>
@@ -1042,7 +1042,7 @@ The artist can list and the consumer can buy.
 </details>
 
 
-| Browsing   |         |                                                |                                                                   |
+| Browsing  
 
 <details>
   <summary>| 7          | Buyers  | Can view details                               | To see more info about the piece of work                          |</summary>
@@ -1068,7 +1068,7 @@ Back to top button
 
 </details>
 
-| Accounts   |         |                                                |                                                                   ||
+| Accounts  
 
 <details>
   <summary>| 10 / 11        | Buyer / Artist    | Can make account                               | Create an account to access history of purchases/save information |</summary>
@@ -1094,7 +1094,7 @@ This can be done from the menu on the right
 
 </details>
 
-| Purchasing |         |                                                |                                                                   |
+| Purchasing |     
 </details>
 
 
@@ -1115,13 +1115,13 @@ This can be done from the menu on the right
   ![Imgur](https://i.imgur.com/RPi1X33.gif)
 </details>
 <details>
-  <summary>| 19         | Buyer   | View a purchase history                         |                                                                   |</summary>
+  <summary>| 19         | Buyer   | View a purchase history                                                                                         |</summary>
   
   This shows the order overview, how the rows are clickable to the full order page, and how the back button returns to the order history page.
   ![Imgur](https://i.imgur.com/5258Nss.gif)
 </details>
 <details>
-  <summary>| 20         | Artist  | View a history of items sold                   |                                                                   |</summary>
+  <summary>| 20         | Artist  | View a history of items sold                                                                                     |</summary>
 
 This is a feature to be implemented at a later date. Artists can contact a superuser for this info.
 
