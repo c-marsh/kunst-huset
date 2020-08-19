@@ -248,7 +248,7 @@ The artists when logged in can see a button to edit the profile.
 
 
 <details>
-<summary>Database Design</summary>
+<summary>Wireframe</summary>
 
 ![Imgur](https://i.imgur.com/QgniTCN.png)
 </details>
@@ -262,7 +262,14 @@ The artists when logged in can see a button to edit the profile.
 
 ![Imgur](https://i.imgur.com/b1gJf8g.png)
 
-</summary>
+</details>
+
+<details>
+  <summary>Site Map</summery>
+  
+ ![Imgur](https://i.imgur.com/0rMCIhw.png)
+ 
+</details>
 
 ## Backend
 This Project used Django, with Python, JavaScript, CSS and HTML as languages to build the site. A number of python libraries were used which can be seen in the requirements.txt file along with Bootstrap and Jquery.
@@ -278,7 +285,7 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 
 -   ~~Order history not saving to profiles~~
 
--   While more items than inventory can't be added to a basket from the page, this could be added again by re-visiting the page. Ideally the basket should verify against the inventory of an item to prevent buying more than is in stock.
+-   While more items than inventory can't be added to a basket from the page, this could be added again by re-visiting the page. Ideally the basket should verify against the inventory of an item to prevent buying more than is in stock. Time restrictions have prevented this being properly implemented.
 
 -   Checkout does not update inventory of stock or show an update an item as sold if the inventory is sold out. Ideally this would happen from the payment webhook.
 
@@ -293,6 +300,7 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 ### Cosmetic
 
 -   Artist fields for adding art displaying all users not just artists
+-   Artists in menu alphabetical
 -   Buttons on some form pages too close to text
 -   Make right hand menu bass responsive to number of menu items.
 -   image upload fields need styling
@@ -330,19 +338,19 @@ Site quality report for https://cmh-kh.herokuapp.com/ produced on Tuesday, Augus
 
 **Category Results**
 
-Overall Quality ██████████ 12 pages with quality issues
+~~Overall Quality ██████████ 12 pages with quality issues
 
-Errors ██████████ 12 pages with broken links or other errors
+~~Errors ██████████ 12 pages with broken links or other errors
 
-Accessibility ██████████ 12 pages with accessibility problems
+~~Accessibility ██████████ 12 pages with accessibility problems
 
-Compatibility ██████████ 0 pages with browser specific issues
+~~Compatibility ██████████ 0 pages with browser specific issues
 
-Search ██████████ 12 pages with search engine issues
+~~Search ██████████ 12 pages with search engine issues
 
-Standards ██████████ 12 pages have W3C standards issues
+~~Standards ██████████ 12 pages have W3C standards issues
 
-Usability ██████████ 12 pages with usability issues
+~~Usability ██████████ 12 pages with usability issues
 
 Totals 34 pages and images checked
 
