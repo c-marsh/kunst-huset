@@ -141,44 +141,44 @@ select.list-dt:focus {
     background-color: #e5e9e9;
 }
 
-#progressbar {
+#web-bar {
     margin-bottom: 30px;
     padding-right: 40px;
     overflow: hidden;
     color: lightgrey;
 }
 
-#progressbar .active {
+#web-bar .active {
     color: #000000;
 }
 
-#progressbar li {
+#web-bar li {
     list-style-type: none;
     font-size: 12px;
     
 }
 
-#progressbar #account:before {
+#web-bar #account:before {
     font-family: FontAwesome;
     content: "\f007";
 }
 
-#progressbar #personal:before {
+#web-bar #personal:before {
     font-family: FontAwesome;
     content: "\f48b";
 }
 
-#progressbar #payment:before {
+#web-bar #payment:before {
     font-family: FontAwesome;
     content: "\f09d";
 }
 
-#progressbar #confirm:before {
+#web-bar #confirm:before {
     font-family: FontAwesome;
     content: "\f00c";
 }
 
-#progressbar li:before {
+#web-bar li:before {
     width: 50px;
     height: 50px;
     line-height: 45px;
@@ -191,7 +191,7 @@ select.list-dt:focus {
     padding: 2px;
 }
 
-#progressbar li:after {
+#web-bar li:after {
     content: "";
     width: 100%;
     height: 2px;
@@ -202,8 +202,8 @@ select.list-dt:focus {
     z-index: -1;
 }
 
-#progressbar li.active:before,
-#progressbar li.active:after {
+#web-bar li.active:before,
+#web-bar li.active:after {
     background: #e78533;
 }
 
