@@ -157,6 +157,10 @@ select.list-dt:focus {
     font-size: 12px;
     
 }
+#progressbar a:hover {
+    text-decoration: none;
+    
+}
 
 #progressbar #account:before {
     font-family: FontAwesome;

@@ -20,8 +20,8 @@
 		</div>
 		<div class="col-12 col-md-7 text-center text-lg-left">
 			<h1 class="text-uppercase">{{profile.full_name}}</h1>
-			<div class="card sm-container">
-				<ul id="progressbar" class="text-center">
+			<div class="card sm-container mt-4">
+				<ul id="progressbar" class="text-center justify-content-around d-flex">
 					{% if profile.artist_link%}<a href="{{profile.artist_link}}" target="_blank">
 						<li class="active" id="web"><strong>Website</strong></li>
 					</a>{%endif%} {% if profile.artist_insta%}<a href="{{profile.artist_insta}}" target="_blank">
