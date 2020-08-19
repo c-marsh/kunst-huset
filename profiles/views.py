@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from checkout.models import Order
 from django.contrib import messages
@@ -132,17 +132,18 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+
 @login_required
-def delete_art(request, art_id):
+def delete_profile(request, user_id):
     """Delete Artworks"""
     superuser = request.user.is_superuser
     current_user = request.user.id
-    original_artist = artwork.artist_id
+    original_artist = get_object_or_404(UserProfile, pk=user_id)
 
     if current_user != original_artist:
         if not superuser:
             messages.error(request, 'Only the Artist,' +
                            ' or Superuser can perform this action.')
-    UserProfile.delete()
+    UserProfile.delete(self: UserProfile)
     messages.success(request, 'The account has been deleted!')
     return redirect(reverse('gallery'))
