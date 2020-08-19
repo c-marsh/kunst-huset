@@ -21,20 +21,13 @@ def basket_content(request):
         sub_total += quantity * artwork.price
 
         items_count += quantity
-        if quantity <= item_stock:
-            basket_items.append({
-                'item_id': item_id,
-                'quantity': quantity,
-                'artwork': artwork,
-            })
-        else:
-            basket_items.append({
-                'item_id': item_id,
-                'quantity': item_stock,
-                'artwork': artwork,
-            })
-            messages.error(request,f"Sorry, there isn't enough stock to \
-                add {Artwork.title} to the basket.")
+        # if quantity is less than or equal to item_stock
+        basket_items.append({
+            'item_id': item_id,
+            'quantity': quantity,
+            'artwork': artwork,
+        })
+        # else above with quantity updated to item stock and send message
 
     if sub_total < settings.FIXED_DELIVERY_THRESHOLD:
         delivery = sub_total * Decimal(
