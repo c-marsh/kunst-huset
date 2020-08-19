@@ -1,0 +1,29 @@
+{%extends 'base.html'%} {%load static%} {% block title %}{{artwork.title}} by {{artwork.artist}}{% endblock %}{% block page_header %}
+<div class="page-header"></div>
+{% endblock %} {%block content%}
+<div class="jumbotron my-5 m-md-6">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-3 featured-art-img">
+            <img class="align-self-center mt-3" src="{% static 'img/404.jpg'%}" alt="404 error" />
+        </div>
+
+        <div class="col-12 col-md-5">
+            <h1 class="d-none">Uh Oh...</h1>
+            <h3 class="text-uppercase mt-3">There's Nothing to see here...</h3>
+            <h4 class="text-uppercase lead"></h4>
+
+            <blockquote class="blockquote">...that's not ideal for a gallery</blockquote>
+
+            <div class="row my-5 justify-content-around">
+                <div class="wrap">
+                    <a class="slider-btn slider-btn-back" href="{% url 'gallery' %}">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%} {%block postloadjs%} {{block.super}}
+<script src="{% static 'js/controls.js' %}"></script>
+
+{%endblock%}

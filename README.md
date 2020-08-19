@@ -296,8 +296,9 @@ The project was built in Gitpod as an IDE, used Github for git control, and has 
 -   Buttons on some form pages too close to text
 -   Make right hand menu bass responsive to number of menu items.
 -   image upload fields need styling
+-   The bio fields don't seem to store line breaks/formatting, which results in quite unreadable biographies. It would be good to find a better way of handling this.
 
-## Future Developement
+## Future Development
 
 - Outstanding issues
 - Sign-up including more profile data
@@ -1208,8 +1209,7 @@ $ git add .
 $ git commit -am “initial commit to heroku”
 $ git push Heroku master
 ```
-
-On Heroku, select ‘Open app’ to see your live app.
+From here, follow the [Heroku documentation](https://devcenter.heroku.com/articles/s3) on deploying to AWS.
 
 ## Local Deployment
 
