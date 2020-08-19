@@ -144,6 +144,6 @@ def delete_profile(request, user_id):
         if not superuser:
             messages.error(request, 'Only the Artist,' +
                            ' or Superuser can perform this action.')
-    UserProfile.delete(self: UserProfile)
+    UserProfile.delete(self)
     messages.success(request, 'The account has been deleted!')
     return redirect(reverse('gallery'))

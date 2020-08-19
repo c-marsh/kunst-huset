@@ -50,7 +50,7 @@ def gallery(request):
             # Search in fields
             queries = Q(title__icontains=query) | Q(
                 description__icontains=query) | Q(
-                    medium__icontains=query) | Q(artist__name__icontains=query)
+                    medium__icontains=query)
             artworks = artworks.filter(queries)
 
     sorting = f'{sort}_{direction}'
@@ -60,7 +60,6 @@ def gallery(request):
         'artworks': artworks,
         'search_string': query,
         'sorting': sorting,
-        # 'artists': final_list,
     }
 
     return render(request, 'artworks/gallery.html', context)
